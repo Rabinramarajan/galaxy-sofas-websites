@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #111827;
+  --color-secondary: #f59e0b;
+  --color-background: #ffffff;
+  --color-surface: #f9fafb;
+  --color-text: #111827;
+  --color-success: #10b981;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  color: var(--color-text);
+  background: radial-gradient(circle at top right, #fff7e6, var(--color-background) 30%);
+  scroll-behavior: smooth;
+}
+
+body.dark {
+  --color-background: #0b1220;
+  --color-surface: #111827;
+  --color-text: #f9fafb;
+  background: radial-gradient(circle at top right, #30220a, #0b1220 35%);
+}
+
+.glass-card {
+  background: color-mix(in oklab, var(--color-surface) 85%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-secondary) 20%, white);
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 40px rgba(17, 24, 39, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  letter-spacing: 0.01em;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(245, 158, 11, 0.35); }
+  50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.35); }
+}
+
+.float-animate { animation: float 6s ease-in-out infinite; }
+.glow-animate { animation: glow 4s ease-in-out infinite; }
