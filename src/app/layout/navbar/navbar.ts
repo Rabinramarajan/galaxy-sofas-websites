@@ -1,0 +1,205 @@
+import { Component, computed, inject, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { NAV_ITEMS, SITE } from '../../core/config/site.config';
+import { ThemeService } from '../../core/services/theme.service';
+import { AppSearch } from '../../shared/components/app-search/app-search';
+import { AppIcon } from '../../shared/components/app-icon/app-icon';
+import { CompareService, WishlistService } from '../../core/services/store.services';
+import { cx } from '../../core/utils/utils';
+
+/**
+ * Sticky glass navbar — clean top-level links in the header only.
+ * Scroll-aware: shrinks + gains shadow when scrolled.
+ */
+@Component({
+  selector: 'app-navbar',
+  imports: [RouterLink, AppIcon, AppSearch],
+  template: `
+    <!-- Top info bar -->
+    <div class="relative z-[60] hidden bg-gradient-to-r from-dark via-dark-soft to-dark text-white lg:block">
+      <div class="section-shell flex items-center justify-between py-2 text-xs">
+        <p class="flex items-center gap-2 text-white/80">
+          <app-icon name="truck" class="h-3.5 w-3.5 text-secondary" />
+          Free delivery + white-glove assembly on all orders above ₹25,000
+        </p>
+        <div class="flex items-center gap-6">
+          <span class="flex items-center gap-2 text-white/70">
+            <app-icon name="phone" class="h-3.5 w-3.5 text-secondary" /> {{ SITE.phone }}
+          </span>
+          <span class="flex items-center gap-2 text-white/70">
+            <app-icon name="map" class="h-3.5 w-3.5 text-secondary" /> {{ SITE.showroomCount }} showrooms across India
+          </span>
+          <span class="flex items-center gap-2 text-white/70">
+            <app-icon name="clock" class="h-3.5 w-3.5 text-secondary" /> {{ SITE.hours }}
+          </span>
+          <span class="flex items-center gap-1.5 border-l border-white/10 pl-6">
+            <a href="{{ SITE.social.instagram }}" target="_blank" rel="noopener" class="text-white/70 transition-colors hover:text-secondary" aria-label="Instagram">
+              <app-icon name="instagram" class="h-3.5 w-3.5" />
+            </a>
+            <a href="{{ SITE.social.facebook }}" target="_blank" rel="noopener" class="text-white/70 transition-colors hover:text-secondary" aria-label="Facebook">
+              <app-icon name="facebook" class="h-3.5 w-3.5" />
+            </a>
+            <a href="{{ SITE.social.youtube }}" target="_blank" rel="noopener" class="text-white/70 transition-colors hover:text-secondary" aria-label="YouTube">
+              <app-icon name="youtube" class="h-3.5 w-3.5" />
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main navbar -->
+    <header
+      class="sticky top-0 z-50 border-b bg-white/85 backdrop-blur-xl transition-all duration-500 dark:bg-dark-soft/85"
+      [class]="headerClasses()"
+    >
+      <nav class="section-shell flex items-center justify-between gap-6" aria-label="Main navigation">
+        <!-- Brand -->
+        <a routerLink="/" class="group flex items-center gap-2.5" aria-label="Galaxy Sofas home">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gold-gradient shadow-gold transition-transform duration-500 group-hover:rotate-12">
+            <app-icon name="sofa" class="h-5 w-5 text-white" />
+          </span>
+          <span class="leading-none">
+            <span class="block font-display text-lg font-bold tracking-tight text-primary dark:text-white">Galaxy <span class="text-gradient-gold">Sofas</span></span>
+            <span class="block text-[9px] font-semibold uppercase tracking-[0.3em] text-muted">{{ SITE.tagline }}</span>
+          </span>
+        </a>
+
+        <!-- Desktop links (top-level only, in header) -->
+        <ul class="hidden items-center gap-0.5 xl:gap-1 lg:flex">
+          @for (item of navItems(); track item.path + item.label) {
+            <li>
+              <a
+                routerLink="{{ item.path }}"
+                class="relative inline-flex items-center rounded-full px-3.5 py-2 text-sm font-semibold transition-colors"
+                [class]="linkClass(item.path)"
+              >
+                {{ item.label }}
+              </a>
+            </li>
+          }
+        </ul>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <button type="button" (click)="search.toggle()" class="flex h-10 w-10 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary/5 hover:text-secondary dark:text-white dark:hover:bg-white/10" aria-label="Search">
+            <app-icon name="search" class="h-4 w-4" />
+          </button>
+
+          <button type="button" (click)="theme.toggle()" class="flex h-10 w-10 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary/5 hover:text-secondary dark:text-white dark:hover:bg-white/10" [attr.aria-label]="isDark() ? 'Switch to light mode' : 'Switch to dark mode'">
+            @if (isDark()) {
+              <app-icon name="sun" class="h-4 w-4" />
+            } @else {
+              <app-icon name="moon" class="h-4 w-4" />
+            }
+          </button>
+
+          <a routerLink="/wishlist" class="relative hidden h-10 w-10 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary/5 hover:text-secondary sm:flex dark:text-white dark:hover:bg-white/10" aria-label="Wishlist">
+            <app-icon name="heart" class="h-4 w-4" />
+            @if (wishlistCount() > 0) {
+              <span class="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold-gradient px-1 text-[9px] font-bold text-white">{{ wishlistCount() }}</span>
+            }
+          </a>
+
+          <a routerLink="/compare" class="relative hidden h-10 w-10 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary/5 hover:text-secondary md:flex dark:text-white dark:hover:bg-white/10" aria-label="Compare">
+            <app-icon name="compare" class="h-4 w-4" />
+            @if (compareCount() > 0) {
+              <span class="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[9px] font-bold text-white">{{ compareCount() }}</span>
+            }
+          </a>
+
+          <a routerLink="/contact" class="hidden rounded-full bg-gold-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-gold transition-all duration-300 hover:shadow-glow hover:brightness-105 md:inline-flex">
+            Book a Consultation
+          </a>
+
+          <button type="button" (click)="mobileOpen.set(!mobileOpen())" class="flex h-10 w-10 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary/5 lg:hidden dark:text-white dark:hover:bg-white/10" [attr.aria-label]="mobileOpen() ? 'Close menu' : 'Open menu'" [attr.aria-expanded]="mobileOpen()">
+            @if (mobileOpen()) {
+              <app-icon name="close" class="h-5 w-5" />
+            } @else {
+              <app-icon name="menu" class="h-5 w-5" />
+            }
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile drawer -->
+      @if (mobileOpen()) {
+        <div class="border-t border-primary/10 bg-white/95 backdrop-blur-xl lg:hidden dark:border-white/10 dark:bg-dark-soft/95">
+          <div class="section-shell max-h-[75vh] overflow-y-auto py-4">
+            @for (item of navItems(); track item.path + item.label) {
+              <a routerLink="{{ item.path }}" (click)="mobileOpen.set(false)" class="block rounded-xl px-3 py-3 font-semibold text-primary hover:bg-primary/5 hover:text-secondary dark:text-white">
+                {{ item.label }}
+              </a>
+            }
+            <a routerLink="/wishlist" (click)="mobileOpen.set(false)" class="mt-2 flex items-center gap-2 rounded-xl bg-secondary/10 px-3 py-3 font-semibold text-secondary">
+              <app-icon name="heart" class="h-5 w-5" /> My Wishlist
+            </a>
+            <a routerLink="/contact" (click)="mobileOpen.set(false)" class="mt-2 flex items-center gap-2 rounded-xl bg-gold-gradient px-3 py-3 font-semibold text-white shadow-gold">
+              <app-icon name="phone" class="h-5 w-5" /> Book a Consultation
+            </a>
+          </div>
+        </div>
+      }
+    </header>
+
+    <app-search #search />
+  `,
+})
+export class Navbar {
+  readonly SITE = SITE;
+  readonly navItems = signal(NAV_ITEMS);
+  readonly mobileOpen = signal(false);
+  readonly scrolled = signal(false);
+
+  readonly theme = inject(ThemeService);
+  readonly #wishlist = inject(WishlistService);
+  readonly #compare = inject(CompareService);
+  readonly #router = inject(Router);
+  readonly #navigationEnd = signal<string>(typeof window !== 'undefined' ? window.location.pathname : '/');
+
+  readonly isDark = computed(() => this.theme.isDark());
+  readonly wishlistCount = computed(() => this.#wishlist.count());
+  readonly compareCount = computed(() => this.#compare.count());
+
+  readonly url = this.#navigationEnd;
+
+  readonly headerClasses = computed(() =>
+    cx(
+      'border-primary/5 dark:border-white/5',
+      this.scrolled() ? 'py-3 shadow-soft' : 'py-5'
+    )
+  );
+
+  constructor() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', this.#onScroll, { passive: true });
+      this.#router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          this.#navigationEnd.set(event.urlAfterRedirects.split('?')[0] ?? '');
+          this.mobileOpen.set(false);
+        }
+      });
+    }
+  }
+
+  linkClass(path: string): string {
+    const active = this.url() === path;
+    return cx(
+      'text-primary hover:text-secondary dark:text-white dark:hover:text-secondary',
+      active && 'text-secondary dark:text-secondary'
+    );
+  }
+
+  isActive(path: string): boolean {
+    return this.url() === path;
+  }
+
+  #onScroll = (): void => {
+    this.scrolled.set(window.scrollY > 12);
+  };
+
+  ngOnDestroy(): void {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('scroll', this.#onScroll);
+    }
+  }
+}

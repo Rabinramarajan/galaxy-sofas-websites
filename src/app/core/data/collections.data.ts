@@ -1,0 +1,73 @@
+import type { Collection } from '../models/furniture.model';
+
+const img = (id: string, w = 1100) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+export const COLLECTIONS: Collection[] = [
+  {
+    id: 'heritage',
+    slug: 'collections',
+    name: 'The Heritage',
+    description: 'Classic silhouettes, hand-carved sheesham and finishes that age like fine wine. Heirloom furniture for the modern home.',
+    image: img('photo-1567016432779-094069958ea5'),
+    alt: 'Heritage collection wooden furniture in a warm classic living room',
+    tag: 'Classic · Solid Wood',
+    productCount: 36,
+    featured: true,
+  },
+  {
+    id: 'urban-nordic',
+    slug: 'collections',
+    name: 'Urban Nordic',
+    description: 'Light oak, clean lines and quiet minimalism. Scandinavian calm, engineered in India.',
+    image: img('photo-1493809842364-78817add7ffb'),
+    alt: 'Urban Nordic light oak furniture in a minimalist bright apartment',
+    tag: 'Minimal · Light Oak',
+    productCount: 28,
+    featured: true,
+  },
+  {
+    id: 'royal-velvet',
+    slug: 'collections',
+    name: 'Royal Velvet',
+    description: 'Plush velvet, deep jewel tones and statement silhouettes. Opulence that whispers, not shouts.',
+    image: img('photo-1555041469-a586c61ea9bc'),
+    alt: 'Royal Velvet collection plush velvet sofa in rich jewel tones',
+    tag: 'Luxury · Velvet',
+    productCount: 22,
+    featured: true,
+  },
+  {
+    id: 'studio-raw',
+    slug: 'collections',
+    name: 'Studio Raw',
+    description: 'Artisanal, organic and tactile. Raw-edge slabs, textured upholstery and honest materials.',
+    image: img('photo-1618221195710-dd6b41faaea6'),
+    alt: 'Studio Raw collection organic natural furniture in a designer interior',
+    tag: 'Artisan · Organic',
+    productCount: 19,
+    featured: true,
+  },
+  {
+    id: 'cloud-nine',
+    slug: 'collections',
+    name: 'Cloud Nine',
+    description: 'Feather-soft modulars, deep seats and cloud-loft cushions. Built for hours of drifting.',
+    image: img('photo-1540574163026-643ea20ade25'),
+    alt: 'Cloud Nine ultra soft modular sofa in a cosy premium living room',
+    tag: 'Soft · Modular',
+    productCount: 17,
+    featured: true,
+  },
+  {
+    id: 'executive-suite',
+    slug: 'collections',
+    name: 'Executive Suite',
+    description: 'Boardroom-calibre desks, ergonomic thrones and storage that means business.',
+    image: img('photo-1497366216548-37526070297c'),
+    alt: 'Executive Suite office furniture in a prestigious modern office',
+    tag: 'Office · Prestige',
+    productCount: 24,
+    featured: true,
+  },
+];
