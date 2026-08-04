@@ -258,12 +258,12 @@ export const SOCIAL_POSTS: SocialPost[] = [
 ];
 
 export const STORE_LOCATIONS: StoreLocation[] = [
-  { id: 'blr', city: 'Bengaluru', name: 'Galaxy Sofas — MG Road Flagship', address: '42 Galaxy Avenue, MG Road, Bengaluru 560001', phone: '+91 98765 43210', hours: 'Mon–Sun · 10 AM – 9 PM', lat: 12.9716, lng: 77.5946 },
-  { id: 'mum', city: 'Mumbai', name: 'Galaxy Sofas — Worli', address: 'Sea Link Plaza, Worli, Mumbai 400030', phone: '+91 98765 43211', hours: 'Mon–Sun · 10 AM – 9 PM', lat: 19.0176, lng: 72.8266 },
-  { id: 'del', city: 'New Delhi', name: 'Galaxy Sofas — Vasant Kunj', address: '12, Vasant Vihar, New Delhi 110070', phone: '+91 98765 43212', hours: 'Mon–Sun · 10 AM – 9 PM', lat: 28.5245, lng: 77.1553 },
-  { id: 'hyd', city: 'Hyderabad', name: 'Galaxy Sofas — Banjara Hills', address: '88, Road No. 5, Banjara Hills, Hyderabad 500034', phone: '+91 98765 43213', hours: 'Mon–Sun · 10 AM – 9 PM', lat: 17.4154, lng: 78.4416 },
-  { id: 'pun', city: 'Pune', name: 'Galaxy Sofas — Koregaon Park', address: 'Lane 7, Koregaon Park, Pune 411001', phone: '+91 98765 43214', hours: 'Mon–Sun · 10 AM – 9 PM', lat: 18.5362, lng: 73.8898 },
-  { id: 'chn', city: 'Chennai', name: 'Galaxy Sofas — T Nagar', address: '55, Usman Road, T Nagar, Chennai 600017', phone: '+91 98765 43215', hours: 'Mon–Sun · 10 AM – 9 PM', lat: 13.0418, lng: 80.2341 },
+  { id: 'chn', city: 'Chennai', name: 'Galaxy Sofas — Chennai Flagship', address: 'No:19, Nerkundram, Virugambakkam, Chennai, Tamil Nadu 600107', phone: '+91 97862 11128', hours: 'Mon–Sun · 9 AM – 10 PM', lat: 13.0674, lng: 80.1915 },
+  { id: 'blr', city: 'Bengaluru', name: 'Galaxy Sofas — MG Road Flagship', address: '42 Galaxy Avenue, MG Road, Bengaluru 560001', phone: '+91 97862 11128', hours: 'Mon–Sun · 9 AM – 10 PM', lat: 12.9716, lng: 77.5946 },
+  { id: 'mum', city: 'Mumbai', name: 'Galaxy Sofas — Worli', address: 'Sea Link Plaza, Worli, Mumbai 400030', phone: '+91 97862 11128', hours: 'Mon–Sun · 9 AM – 10 PM', lat: 19.0176, lng: 72.8266 },
+  { id: 'del', city: 'New Delhi', name: 'Galaxy Sofas — Vasant Kunj', address: '12, Vasant Vihar, New Delhi 110070', phone: '+91 97862 11128', hours: 'Mon–Sun · 9 AM – 10 PM', lat: 28.5245, lng: 77.1553 },
+  { id: 'hyd', city: 'Hyderabad', name: 'Galaxy Sofas — Banjara Hills', address: '88, Road No. 5, Banjara Hills, Hyderabad 500034', phone: '+91 97862 11128', hours: 'Mon–Sun · 9 AM – 10 PM', lat: 17.4154, lng: 78.4416 },
+  { id: 'pun', city: 'Pune', name: 'Galaxy Sofas — Koregaon Park', address: 'Lane 7, Koregaon Park, Pune 411001', phone: '+91 97862 11128', hours: 'Mon–Sun · 9 AM – 10 PM', lat: 18.5362, lng: 73.8898 },
 ];
 
 export const WHY_US_FEATURES: Feature[] = [

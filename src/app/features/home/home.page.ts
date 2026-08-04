@@ -18,7 +18,9 @@ import { HomeLocation } from './sections/home-location/home-location';
 import { HomeContactCta } from './sections/home-contact-cta/home-contact-cta';
 import { HomeLookbook } from './sections/home-lookbook/home-lookbook';
 
-/** The Galaxy Sofas landing page — 16 crafted sections. */
+import { HomeMaterialAtelier } from './sections/home-material-atelier/home-material-atelier';
+
+/** The Galaxy Sofas landing page — 17 crafted sections. */
 @Component({
   selector: 'app-home-page',
   imports: [
@@ -27,6 +29,7 @@ import { HomeLookbook } from './sections/home-lookbook/home-lookbook';
     HomeCompanyIntro,
     HomeCollections,
     HomeCategories,
+    HomeMaterialAtelier,
     HomeTrending,
     HomeWhyUs,
     HomeCraftsmanship,
@@ -45,6 +48,7 @@ import { HomeLookbook } from './sections/home-lookbook/home-lookbook';
     <app-home-company-intro />
     <app-home-collections />
     <app-home-categories />
+    <app-home-material-atelier />
     <app-home-trending />
     <app-home-why-us />
     <app-home-craftsmanship />

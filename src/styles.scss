@@ -1,37 +1,55 @@
 @use 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 /* ============================================================
-   GALAXY SOFAS — DESIGN SYSTEM
-   Tailwind CSS 4 Theme + Premium Utilities
+   GALAXY SOFAS — ELITE DESIGN SYSTEM (Awwwards Grade)
+   Tailwind CSS 4 Theme + Luxury Custom Tokens
    ============================================================ */
 
 @theme {
-  /* Brand colors */
-  --color-primary: #111827;
+  /* Brand luxury colors */
+  --color-primary: #0b0c0e;
+  --color-obsidian-950: #0b0c0e;
+  --color-obsidian-900: #121418;
+  --color-velvet-800: #1e2229;
+  
+  --color-champagne-100: #f7f4ef;
+  --color-champagne-200: #efe9df;
+  --color-champagne-300: #e2d7c5;
+
+  --color-bronze-400: #d4af37;
+  --color-bronze-500: #c59b27;
+  --color-bronze-600: #9a771c;
+
+  --color-terracotta-500: #a85842;
+  --color-olive-600: #5b6350;
+
   --color-primary-soft: #1f2937;
-  --color-secondary: #f59e0b;
-  --color-secondary-light: #fcd34d;
-  --color-secondary-dark: #b45309;
-  --color-surface: #f9fafb;
+  --color-secondary: #c59b27;
+  --color-secondary-light: #d4af37;
+  --color-secondary-dark: #9a771c;
+  --color-surface: #f7f4ef;
   --color-success: #10b981;
-  --color-ink: #111827;
-  --color-muted: #6b7280;
-  --color-cream: #fbf7f0;
-  --color-dark: #0b0f19;
-  --color-dark-soft: #121829;
-  --color-dark-card: #161d30;
-  --color-dark-border: #232c44;
-  --color-gold-gradient: linear-gradient(135deg, #fcd34d 0%, #f59e0b 45%, #b45309 100%);
+  --color-ink: #0b0c0e;
+  --color-muted: #78716c;
+  --color-cream: #f7f4ef;
+  --color-dark: #0b0c0e;
+  --color-dark-soft: #121418;
+  --color-dark-card: #1e2229;
+  --color-dark-border: #2e3440;
+  --color-gold-gradient: linear-gradient(135deg, #d4af37 0%, #c59b27 50%, #9a771c 100%);
 
   /* Typography */
   --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: 'Playfair Display', 'Georgia', serif;
+  --font-display: 'Cinzel', 'Playfair Display', 'Georgia', serif;
+  --font-serif: 'Playfair Display', 'Georgia', serif;
 
   /* Shadows */
-  --shadow-soft: 0 10px 40px -12px rgb(17 24 39 / 0.12);
-  --shadow-lift: 0 24px 60px -20px rgb(17 24 39 / 0.28);
-  --shadow-gold: 0 12px 40px -10px rgb(245 158 11 / 0.45);
-  --shadow-glow: 0 0 60px -12px rgb(245 158 11 / 0.5);
+  --shadow-soft: 0 10px 40px -12px rgba(11, 12, 14, 0.08);
+  --shadow-lift: 0 24px 60px -20px rgba(11, 12, 14, 0.22);
+  --shadow-gold: 0 12px 40px -10px rgba(212, 175, 55, 0.35);
+  --shadow-glow: 0 0 60px -12px rgba(212, 175, 55, 0.4);
+
 
   /* Radius */
   --radius-xl2: 1.25rem;
