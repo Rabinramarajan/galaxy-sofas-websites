@@ -1,55 +1,81 @@
 @use 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
 /* ============================================================
-   GALAXY SOFAS — ELITE DESIGN SYSTEM (Awwwards Grade)
+   GALAXY SOFAS — "WARM EDITORIAL LUXURY" DESIGN SYSTEM
    Tailwind CSS 4 Theme + Luxury Custom Tokens
+   ------------------------------------------------------------
+   Direction: warm ivory paper, espresso ink, champagne gold.
+   Editorial magazine rhythm · hairline rules · serif display.
    ============================================================ */
 
 @theme {
-  /* Brand luxury colors */
-  --color-primary: #0b0c0e;
-  --color-obsidian-950: #0b0c0e;
-  --color-obsidian-900: #121418;
-  --color-velvet-800: #1e2229;
-  
-  --color-champagne-100: #f7f4ef;
-  --color-champagne-200: #efe9df;
-  --color-champagne-300: #e2d7c5;
+  /* Brand palette — warm editorial luxury */
+  --color-paper: #faf7f1;              /* warm ivory page background */
+  --color-linen: #f4eee3;              /* alternating section wash    */
+  --color-snow: #ffffff;               /* cards & elevated surfaces   */
 
-  --color-bronze-400: #d4af37;
-  --color-bronze-500: #c59b27;
-  --color-bronze-600: #9a771c;
+  --color-ink: #201b15;                /* espresso — primary text     */
+  --color-ink-soft: #2b251e;
+  --color-umber: #4a4237;              /* secondary text              */
+  --color-taupe: #857b6f;              /* muted text                  */
+  --color-line: #e7dfcf;               /* hairline borders (light)    */
 
-  --color-terracotta-500: #a85842;
-  --color-olive-600: #5b6350;
+  --color-gold: #b98a2f;               /* champagne gold — accent     */
+  --color-gold-light: #d9b458;
+  --color-gold-dark: #8f681d;
 
-  --color-primary-soft: #1f2937;
-  --color-secondary: #c59b27;
-  --color-secondary-light: #d4af37;
-  --color-secondary-dark: #9a771c;
-  --color-surface: #f7f4ef;
-  --color-success: #10b981;
-  --color-ink: #0b0c0e;
-  --color-muted: #78716c;
-  --color-cream: #f7f4ef;
-  --color-dark: #0b0c0e;
-  --color-dark-soft: #121418;
-  --color-dark-card: #1e2229;
-  --color-dark-border: #2e3440;
-  --color-gold-gradient: linear-gradient(135deg, #d4af37 0%, #c59b27 50%, #9a771c 100%);
+  --color-clay: #b06a4a;               /* warm terracotta accent      */
+  --color-sage: #7a7a5e;               /* olive accent                */
+  --color-success: #4a7c59;
 
-  /* Typography */
-  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: 'Cinzel', 'Playfair Display', 'Georgia', serif;
-  --font-serif: 'Playfair Display', 'Georgia', serif;
+  /* Dark theme — deep espresso */
+  --color-espresso: #16130f;           /* page background (dark)      */
+  --color-espresso-soft: #1d1914;      /* card surface                */
+  --color-mocha: #262017;              /* elevated card               */
+  --color-bone: #f2ebdf;               /* primary text (dark)         */
+  --color-fawn: #a89a86;               /* muted text (dark)           */
+  --color-line-dark: #2c261c;          /* hairline borders (dark)     */
 
-  /* Shadows */
-  --shadow-soft: 0 10px 40px -12px rgba(11, 12, 14, 0.08);
-  --shadow-lift: 0 24px 60px -20px rgba(11, 12, 14, 0.22);
-  --shadow-gold: 0 12px 40px -10px rgba(212, 175, 55, 0.35);
-  --shadow-glow: 0 0 60px -12px rgba(212, 175, 55, 0.4);
+  /* Back-compat aliases so every existing component inherits the theme */
+  --color-primary: #201b15;
+  --color-primary-soft: #332c24;
+  --color-secondary: #b98a2f;
+  --color-secondary-light: #d9b458;
+  --color-secondary-dark: #8f681d;
+  --color-surface: #f4eee3;
+  --color-muted: #857b6f;
+  --color-cream: #faf7f1;
+  --color-dark: #16130f;
+  --color-dark-soft: #1d1914;
+  --color-dark-card: #262017;
+  --color-dark-border: #2c261c;
 
+  --color-champagne-100: #faf7f1;
+  --color-champagne-200: #f4eee3;
+  --color-champagne-300: #e7dfcf;
+  --color-obsidian-950: #16130f;
+  --color-obsidian-900: #1d1914;
+  --color-velvet-800: #262017;
+  --color-bronze-400: #d9b458;
+  --color-bronze-500: #b98a2f;
+  --color-bronze-600: #8f681d;
+  --color-terracotta-500: #b06a4a;
+  --color-olive-600: #7a7a5e;
+
+  --color-gold-gradient: linear-gradient(120deg, #e3c173 0%, #b98a2f 45%, #8f681d 100%);
+
+  /* Typography — Fraunces (editorial serif) + Manrope (UI sans) */
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+
+  /* Shadows — soft, warm, diffused */
+  --shadow-soft: 0 12px 40px -14px rgba(32, 27, 21, 0.10);
+  --shadow-lift: 0 28px 70px -24px rgba(32, 27, 21, 0.24);
+  --shadow-gold: 0 14px 44px -12px rgba(185, 138, 47, 0.38);
+  --shadow-glow: 0 0 70px -10px rgba(185, 138, 47, 0.42);
+  --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.6);
 
   /* Radius */
   --radius-xl2: 1.25rem;
@@ -91,8 +117,8 @@
     100% { transform: translateX(0) }
   }
   @keyframes pulse-gold {
-    0%, 100% { box-shadow: 0 0 0 0 rgb(245 158 11 / 0.45) }
-    50% { box-shadow: 0 0 0 14px rgb(245 158 11 / 0) }
+    0%, 100% { box-shadow: 0 0 0 0 rgb(185 138 47 / 0.4) }
+    50% { box-shadow: 0 0 0 14px rgb(185 138 47 / 0) }
   }
   @keyframes gradient-shift {
     0%, 100% { background-position: 0% 50% }
@@ -129,20 +155,22 @@
     -webkit-tap-highlight-color: transparent;
   }
   body {
-    @apply bg-white text-primary font-sans antialiased;
+    @apply bg-paper text-ink font-sans antialiased;
     text-rendering: optimizeLegibility;
+    font-feature-settings: 'ss01' 1;
   }
   .dark body {
-    @apply bg-dark text-white;
+    @apply bg-espresso text-bone;
   }
   ::selection {
-    @apply bg-secondary/30 text-primary;
+    @apply bg-secondary/25 text-ink;
   }
   .dark ::selection {
-    @apply bg-secondary/70 text-dark font-medium;
+    @apply bg-secondary/60 text-espresso;
   }
   h1, h2, h3, h4, .font-display {
     @apply font-display;
+    font-optical-sizing: auto;
   }
   img {
     -webkit-user-drag: none;
@@ -151,33 +179,34 @@
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/20 rounded-full;
+    @apply bg-ink/15 rounded-full;
   }
-  ::-webkit-scrollbar-thumb:hover { @apply bg-secondary/60; }
-  .dark ::-webkit-scrollbar-thumb { @apply bg-white/20; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-secondary/70; }
+  .dark ::-webkit-scrollbar-thumb { @apply bg-bone/20; }
 }
 
 /* ---------- Utilities ---------- */
 @utility glass {
-  background: rgb(255 255 255 / 0.65);
+  background: rgb(255 255 255 / 0.62);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgb(255 255 255 / 0.5);
+  border: 1px solid rgb(255 255 255 / 0.55);
+  box-shadow: 0 18px 50px -20px rgb(32 27 21 / 0.18);
 }
 @utility glass-dark {
-  background: rgb(11 15 25 / 0.55);
+  background: rgb(22 19 15 / 0.55);
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
-  border: 1px solid rgb(255 255 255 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.1);
 }
 @utility text-gradient-gold {
-  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 45%, #b45309 100%);
+  background: linear-gradient(120deg, #e3c173 0%, #b98a2f 45%, #8f681d 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 @utility bg-gold-gradient {
-  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 45%, #b45309 100%);
+  background: linear-gradient(120deg, #e3c173 0%, #b98a2f 45%, #8f681d 100%);
 }
 @utility text-balance {
   text-wrap: balance;
@@ -194,11 +223,25 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* Hairline editorial rule */
+@utility hairline {
+  position: relative;
+}
+.hairline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-line), transparent);
+}
+
 /* Skeleton shimmer */
 @utility skeleton {
   position: relative;
   overflow: hidden;
-  background: rgb(17 24 39 / 0.06);
+  background: rgb(32 27 21 / 0.05);
 }
 .skeleton::after {
   content: '';
@@ -206,13 +249,13 @@
   inset: 0;
   transform: translateX(-100%);
   animation: skeleton-load 1.6s var(--ease-lux) infinite;
-  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.7), transparent);
 }
 .dark .skeleton {
-  background: rgb(255 255 255 / 0.08);
+  background: rgb(255 255 255 / 0.07);
 }
 .dark .skeleton::after {
-  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.12), transparent);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.1), transparent);
 }
 @keyframes skeleton-load {
   100% { transform: translateX(100%) }
@@ -245,19 +288,19 @@
   @apply bg-gold-gradient text-white shadow-gold;
 }
 .badge-primary {
-  @apply bg-primary text-white dark:bg-white dark:text-primary;
+  @apply bg-primary text-white dark:bg-bone dark:text-ink;
 }
 .badge-dark {
-  @apply bg-dark text-white;
+  @apply bg-dark text-bone;
 }
 .badge-success {
-  @apply bg-success/15 text-emerald-600;
+  @apply bg-success/15 text-success;
 }
 .section-shell {
-  @apply mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-8 xl:px-10;
+  @apply mx-auto w-full max-w-[88rem] px-4 sm:px-6 lg:px-10 xl:px-14;
 }
 .eyebrow {
-  @apply inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.28em];
+  @apply inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.32em];
 }
 .btn-ripple { position: relative; overflow: hidden; }
 .ripple-ink {
@@ -268,7 +311,7 @@
   animation: ripple-in 0.7s ease-out forwards;
   pointer-events: none;
 }
-.ripple-ink-dark { background: rgb(17 24 39 / 0.2); }
+.ripple-ink-dark { background: rgb(32 27 21 / 0.18); }
 @keyframes ripple-in {
   to { transform: scale(4); opacity: 0 }
 }

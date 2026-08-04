@@ -1,4 +1,4 @@
-# Design System Master File
+# Design System Master File — Galaxy Sofas
 
 > **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
 > If that file exists, its rules **override** this Master file.
@@ -6,9 +6,10 @@
 
 ---
 
-**Project:** Galaxy Sofas
-**Generated:** 2026-08-03 00:19:48
-**Category:** E-commerce Luxury
+**Project:** Galaxy Sofas — "Warm Editorial Luxury"
+**Last updated:** 2026-08-04 (matches `src/styles.scss` implementation)
+**Category:** Luxury furniture / premium corporate
+**Mood:** warm ivory paper · espresso ink · champagne gold · editorial magazine rhythm
 
 ---
 
@@ -18,25 +19,31 @@
 
 | Role | Hex | CSS Variable |
 |------|-----|--------------|
-| Primary | `#111827` | `--color-primary` |
-| Secondary / Accent | `#F59E0B` | `--color-secondary` |
-| Background | `#FFFFFF` | `--color-background` |
-| Surface | `#F9FAFB` | `--color-surface` |
-| Text | `#111827` | `--color-text` |
-| Success | `#10B981` | `--color-success` |
+| Primary (ink) | `#201b15` | `--color-ink` |
+| Dark background | `#16130f` | `--color-espresso` |
+| Accent (gold) | `#b98a2f` | `--color-gold` |
+| Accent light | `#d9b458` | `--color-gold-light` |
+| Background (light) | `#faf7f1` | `--color-paper` |
+| Surface (cards) | `#ffffff` / `#f4eee3` | `--color-snow` / `--color-linen` |
+| Muted text | `#857b6f` | `--color-taupe` |
+| Hairline borders | `#e7dfcf` | `--color-line` |
+| Dark surfaces | `#1d1914` / `#262017` | `--color-espresso-soft` / `--color-mocha` |
+| Dark text | `#f2ebdf` | `--color-bone` |
+| Success | `#4a7c59` | `--color-success` |
 
-**Color Notes:** Premium dark charcoal + golden amber accent, clean white background
+**Color Notes:** warm editorial luxury — cream page, espresso ink, champagne-gold accents; terracotta `#b06a4a` and sage `#7a7a5e` as tertiary accents. Full token set lives in `src/styles.scss` `@theme`.
 
 ### Typography
 
-- **Heading Font:** Playfair Display
-- **Body Font:** Plus Jakarta Sans
-- **Mood:** luxury, high-end, elegant, refined, premium, editorial
-- **Google Fonts:** [Playfair Display + Plus Jakarta Sans](https://fonts.google.com/share?selection.family=Playfair+Display:wght@400;500;600;700;800;900|Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap)
+- **Display / Heading Font:** Fraunces (editorial serif, optical sizing)
+- **Body / UI Font:** Manrope (humanist sans)
+- **Mood:** luxury, editorial, warm, high-end, refined
+- **Weights:** Fraunces 300–700 (incl. italics); Manrope 200–800
+- **Google Fonts:** [Fraunces + Manrope](https://fonts.google.com/share?selection.family=Fraunces:opsz,wght@9..144,300..700|Manrope:wght@200..800)
 
-**CSS Import:**
+**CSS Import (matches `src/styles.scss`):**
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 ```
 
 ### Spacing Variables
@@ -272,29 +279,39 @@
 
 ## Style Guidelines
 
-**Style:** Liquid Glass / Editorial Luxury
+**Style:** Warm Editorial Luxury
 
-**Keywords:** Flowing glass, morphing, smooth transitions, fluid effects, translucent, animated blur, iridescent, editorial typography, generous whitespace, golden accents
+**Keywords:** warm ivory paper, espresso ink, champagne gold, editorial magazine rhythm, generous white space, hairline rules, glass overlays, cinematic lighting
 
-**Best For:** Premium luxury e-commerce, high-end furniture, editorial experiences
+**Best For:** Premium luxury furniture, high-end brand showcase, editorial experiences
 
-**Key Effects:**
-- Morphing elements (SVG/CSS clip-path animations)
-- Fluid animations (400-600ms cubic-bezier curves)
-- Dynamic blur (backdrop-filter: blur(20px))
-- Color transitions with gold accent
-- Parallax scroll reveals
-- Magnetic hover interactions
-- Text reveal animations (split text)
-- Image zoom on hover
-- Staggered entrance animations
+**Key Effects (implemented in `src/styles.scss` + shared components):**
+- Scroll reveal engine (`RevealDirective`: fade-up/down/left/right/scale/blur/slide)
+- Image parallax (`ParallaxDirective`) and ken-burns hero zoom
+- Glass panels (`glass` / `glass-dark` utilities, backdrop blur 20px)
+- Gold gradient accents, soft warm shadows, aurora glow blobs
+- Floating badges, magnetic hover, ripple buttons, sheen sweep, marquee ticker
+- Counter animation, scroll-progress bar, custom cursor (pointer:fine only)
+- `prefers-reduced-motion` fully respected
 
 ### Page Pattern
 
-**Pattern Name:** Editorial Luxury Showcase
+**Pattern Name:** Editorial Journey (home page)
 
-- **CTA Placement:** Above fold + sticky CTA on scroll
-- **Section Order:** Hero → Trust/Intro → Featured Collections → Categories → Trending → Why Choose → Craftsmanship → Process → Collections → Gallery → Reviews → Social Proof → Location → Contact → Footer
+- **CTA Placement:** above fold + recurring section CTAs + floating WhatsApp/call
+- **Section Order:** Hero → Marquee → Brand Story → Collections → Categories → Best Sellers → Craft → Materials → Manufacturing (+stats) → Custom → Why Us → Inspiration → Gallery → Video → Testimonials → Awards → FAQs → Contact → Footer
+
+### Asset Prompts & Docs
+
+| Doc | Contents |
+|-----|----------|
+| [`brand-guidelines.md`](./brand-guidelines.md) | Brand story, voice, logo, type, palette, tokens, icons, photography, textures, materials |
+| [`ux-strategy.md`](./ux-strategy.md) | Personas/journeys, navigation map, IA, flows, CTA strategy |
+| [`components.md`](./components.md) | Enterprise specs for all 18 components (all states + a11y) |
+| [`pages.md`](./pages.md) | Per-page UX/hierarchy/wireframe/motion/responsive/a11y/SEO/Angular specs |
+| [`ai-image-prompts.md`](./ai-image-prompts.md) | 105 image prompts (camera · lens · light · grade · DOF · 8K) |
+| [`ai-video-prompts.md`](./ai-video-prompts.md) | 10 cinematic video prompts (duration · path · framerate · sound · loop · CTA) |
+| [`gif-prompts.md`](./gif-prompts.md) | 12 seamless loop GIF concepts + technical budget notes |
 
 ---
 
