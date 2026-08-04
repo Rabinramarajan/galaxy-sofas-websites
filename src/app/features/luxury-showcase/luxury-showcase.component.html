@@ -1,0 +1,217 @@
+<div class="relative min-h-screen bg-stone-950 text-stone-100 selection:bg-amber-400 selection:text-stone-950 font-sans overflow-x-hidden">
+
+  <!-- Ambient Floating Background Blobs -->
+  <div class="pointer-events-none fixed inset-0 overflow-hidden z-0">
+    <div class="absolute -left-40 top-1/4 h-96 w-96 rounded-full bg-amber-600/10 blur-[120px]"></div>
+    <div class="absolute -right-40 top-2/3 h-[30rem] w-[30rem] rounded-full bg-yellow-700/10 blur-[150px]"></div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-stone-950/70 backdrop-blur-2xl transition-all duration-300">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+      <a href="#" class="flex items-center gap-3">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-200 to-amber-500 font-serif text-xl font-bold text-stone-950 shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+          G
+        </span>
+        <div class="flex flex-col">
+          <span class="font-serif text-lg tracking-widest text-white uppercase font-light">Galaxy Sofas</span>
+          <span class="text-[9px] tracking-[0.3em] text-amber-400 uppercase">Milan • High Atelier</span>
+        </div>
+      </a>
+
+      <!-- Quick Search Bar -->
+      <div class="hidden md:flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md focus-within:border-amber-400/50">
+        <svg class="h-4 w-4 text-amber-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input
+          type="text"
+          placeholder="Search collections..."
+          [value]="service.searchQuery()"
+          (input)="onSearchInput($event)"
+          class="bg-transparent pl-3 pr-2 text-xs text-white placeholder-stone-400 focus:outline-none w-48"
+        />
+      </div>
+
+      <div class="flex items-center gap-4">
+        <app-luxury-button label="Explore Atelier" variant="secondary">
+          <svg slot="icon-right" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </app-luxury-button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- HERO SECTION -->
+    <section [@heroStagger] class="relative min-h-[90vh] flex flex-col justify-center px-6 lg:px-8 py-20 max-w-7xl mx-auto">
+      <div appParallax [parallaxSpeed]="0.08" class="space-y-6 text-center md:text-left max-w-4xl">
+        <div class="hero-reveal-item inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 backdrop-blur-md">
+          <span class="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span>
+          <span class="text-xs font-semibold tracking-widest text-amber-300 uppercase">2026 Haute Couture Collection</span>
+        </div>
+
+        <h1 class="hero-reveal-item font-serif text-5xl md:text-7xl lg:text-8xl font-extralight tracking-tight text-white leading-[1.05]">
+          Sculptural Comfort <br />
+          <span class="italic font-normal bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100 bg-clip-text text-transparent">
+            Redefined for Eternity
+          </span>
+        </h1>
+
+        <p class="hero-reveal-item text-base md:text-xl text-stone-300 font-light leading-relaxed max-w-2xl">
+          Where Italian heritage woodworking meets futuristic architectural silhouettes. Every sofa is individually crafted in Milan with bespoke bouclé and Tuscan leather.
+        </p>
+
+        <div class="hero-reveal-item pt-4 flex flex-wrap items-center gap-5 justify-center md:justify-start">
+          <app-luxury-button label="View Masterpieces" variant="primary">
+            <svg slot="icon-right" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </app-luxury-button>
+          
+          <app-luxury-button label="Cinematic Studio Prompts" variant="ghost"></app-luxury-button>
+        </div>
+      </div>
+
+      <!-- Hero Metrics Bar -->
+      <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-white/10 pt-10">
+        @for (m of service.metrics(); track m.id) {
+          <div [@counterAnimate] class="space-y-1">
+            <div class="font-serif text-3xl md:text-4xl text-amber-300 font-light">
+              {{ m.value }}{{ m.suffix }}
+            </div>
+            <div class="text-xs font-semibold tracking-wider text-white uppercase">{{ m.label }}</div>
+            <div class="text-[11px] text-stone-400 font-light">{{ m.description }}</div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- FURNITURE COLLECTION GRID -->
+    <section class="py-24 px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+        <div>
+          <span class="text-xs font-semibold tracking-[0.25em] text-amber-400 uppercase">Curated Catalog</span>
+          <h2 class="mt-2 font-serif text-3xl md:text-5xl font-light text-white">
+            Living Architecture & Sofas
+          </h2>
+        </div>
+
+        <!-- Filter Pill Controls -->
+        <div class="flex flex-wrap items-center gap-2">
+          @for (f of service.filterOptions; track f.id) {
+            <button
+              type="button"
+              (click)="service.setCategory(f.category)"
+              [class.bg-amber-400]="service.activeCategory() === f.category"
+              [class.text-stone-950]="service.activeCategory() === f.category"
+              [class.bg-white-5]="service.activeCategory() !== f.category"
+              [class.text-stone-300]="service.activeCategory() !== f.category"
+              class="rounded-full border border-white/10 px-5 py-2 text-xs font-medium tracking-wider transition-all duration-300 hover:border-amber-400"
+            >
+              {{ f.label }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Grid Items -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (item of service.filteredItems(); track item.id) {
+          <app-glass-card
+            [item]="item"
+            (cardClick)="openModal($event)"
+          ></app-glass-card>
+        } @empty {
+          <div class="col-span-full py-16 text-center border border-dashed border-white/10 rounded-3xl">
+            <p class="text-stone-400 text-sm">No luxury pieces found matching your current filter.</p>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- CINEMATIC 8K PROMPT STUDIO SECTION -->
+    <section class="py-24 px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="text-xs font-semibold tracking-[0.3em] text-amber-400 uppercase">AI & Visual Artistry</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-white font-light">
+          8K Photorealistic Banner Studio
+        </h2>
+        <p class="text-stone-400 text-sm font-light">
+          Production prompts engineered for Midjourney v6, Sora, and Runway Gen-3 to generate luxury furniture hero assets.
+        </p>
+      </div>
+
+      <!-- Banner Navigation Switcher -->
+      <div class="flex items-center justify-center gap-3 mb-10 overflow-x-auto pb-2">
+        @for (b of service.cinematicBanners(); track b.id; let idx = $index) {
+          <button
+            type="button"
+            (click)="service.setBannerIndex(idx)"
+            [class.border-amber-400]="service.activeBannerIndex() === idx"
+            [class.bg-amber-400-10]="service.activeBannerIndex() === idx"
+            class="flex items-center gap-3 rounded-full border border-white/10 bg-stone-900/60 px-5 py-2.5 text-xs font-medium text-white backdrop-blur-md transition-all duration-300"
+          >
+            <span class="h-2 w-2 rounded-full" [class.bg-amber-400]="service.activeBannerIndex() === idx" [class.bg-stone-600]="service.activeBannerIndex() !== idx"></span>
+            {{ b.sceneType }}
+          </button>
+        }
+      </div>
+
+      <!-- Active Prompt Card Component -->
+      <app-cinematic-prompt-card
+        [banner]="service.currentBanner()"
+      ></app-cinematic-prompt-card>
+    </section>
+
+  </main>
+
+  <!-- Detail Modal -->
+  @if (service.selectedItem()) {
+    <div [@fadeSlideIn] class="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/80 p-4 backdrop-blur-2xl">
+      <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-stone-900 p-8">
+        <button
+          type="button"
+          (click)="closeModal()"
+          class="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white hover:bg-amber-400 hover:text-stone-950 transition-all"
+        >
+          ✕
+        </button>
+
+        @if (service.selectedItem(); as modalItem) {
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-stone-950">
+              <img [src]="modalItem.imageUrl" [alt]="modalItem.imageAlt" class="h-full w-full object-cover" />
+            </div>
+            <div class="space-y-4">
+              <span class="text-xs text-amber-400 uppercase tracking-widest">{{ modalItem.category }}</span>
+              <h3 class="font-serif text-3xl text-white">{{ modalItem.title }}</h3>
+              <p class="text-xs text-stone-300 leading-relaxed">{{ modalItem.description }}</p>
+              
+              <div class="border-t border-white/10 pt-4">
+                <span class="text-xs text-stone-400 block">Dimensions</span>
+                <span class="text-sm text-amber-200">
+                  Width: {{ modalItem.dimensions.width }} • Height: {{ modalItem.dimensions.height }} • Depth: {{ modalItem.dimensions.depth }}
+                </span>
+              </div>
+
+              <div class="border-t border-white/10 pt-4 flex items-center justify-between">
+                <span class="font-serif text-2xl text-amber-300">
+                  {{ modalItem.price | currency:modalItem.currency:'symbol':'1.0-0' }}
+                </span>
+                <app-luxury-button label="Reserve Piece" variant="primary"></app-luxury-button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-12 px-6 lg:px-8 max-w-7xl mx-auto text-center text-xs text-stone-500">
+    <p>© 2026 Galaxy Sofas High Atelier. Milan • London • New York. Zoneless Angular 22 Signals Architecture.</p>
+  </footer>
+</div>

@@ -1,56 +1,67 @@
-import { Directive, ElementRef, HostBinding, Input, inject } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, OnDestroy, inject, NgZone } from '@angular/core';
 
-/**
- * Parallax directive — translates the element vertically based on scroll
- * position, giving depth to hero imagery and decorative layers.
- *
- * Usage: <div appParallax speed="0.2"> ... </div>
- */
 @Directive({
   selector: '[appParallax]',
-  standalone: true,
+  standalone: true
 })
-export class ParallaxDirective {
-  private readonly element = inject(ElementRef<HTMLElement>).nativeElement;
-  private readonly isBrowser = typeof window !== 'undefined';
-  private readonly prefersReduced = this.isBrowser && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+export class ParallaxDirective implements OnInit, OnDestroy {
+  private readonly el = inject(ElementRef);
+  private readonly ngZone = inject(NgZone);
 
-  @Input() speed = 0.15;
-  @Input() axis: 'y' | 'x' = 'y';
-  @Input() enabled = true;
-
-  @HostBinding('style.will-change') willChange = 'transform';
-
-  constructor() {
-    if (this.isBrowser && !this.prefersReduced && typeof IntersectionObserver !== 'undefined') {
-      new IntersectionObserver(
-        ([entry]) => {
-          if (entry?.isIntersecting) this.#bind();
-          else this.#unbind();
-        },
-        { rootMargin: '20% 0px 20% 0px' }
-      ).observe(this.element);
+  @Input() parallaxSpeed = 0.15;
+  @Input() set speed(val: number) {
+    if (val !== undefined && val !== null) {
+      this.parallaxSpeed = val;
     }
   }
+  @Input() enableMouseTilt = true;
 
-  #onScroll = (): void => {
-    const rect = this.element.getBoundingClientRect();
-    const viewport = window.innerHeight;
-    const offset = rect.top + rect.height / 2 - viewport / 2;
-    const value = offset * -this.speed;
-    this.element.style.transform = this.axis === 'y' ? `translate3d(0, ${value}px, 0)` : `translate3d(${value}px, 0, 0)`;
+  private rafId: number | null = null;
+  private currentY = 0;
+  private targetY = 0;
+
+  ngOnInit(): void {
+    if (typeof window === 'undefined') return;
+
+    this.ngZone.runOutsideAngular(() => {
+      window.addEventListener('scroll', this.onScroll, { passive: true });
+      if (this.enableMouseTilt) {
+        window.addEventListener('mousemove', this.onMouseMove, { passive: true });
+      }
+      this.animate();
+    });
+  }
+
+  private onScroll = (): void => {
+    const rect = this.el.nativeElement.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      this.targetY = (rect.top - windowHeight / 2) * this.parallaxSpeed;
+    }
   };
 
-  #bind(): void {
-    window.addEventListener('scroll', this.#onScroll, { passive: true });
-    this.#onScroll();
-  }
+  private onMouseMove = (e: MouseEvent): void => {
+    const { innerWidth, innerHeight } = window;
+    const offsetX = (e.clientX - innerWidth / 2) * 0.015;
+    const offsetY = (e.clientY - innerHeight / 2) * 0.015;
+    this.el.nativeElement.style.setProperty('--mouse-offset-x', `${offsetX}px`);
+    this.el.nativeElement.style.setProperty('--mouse-offset-y', `${offsetY}px`);
+  };
 
-  #unbind(): void {
-    window.removeEventListener('scroll', this.#onScroll);
-  }
+  private animate = (): void => {
+    this.currentY += (this.targetY - this.currentY) * 0.1;
+    this.el.nativeElement.style.transform = `translate3d(var(--mouse-offset-x, 0px), calc(${this.currentY}px + var(--mouse-offset-y, 0px)), 0)`;
+    this.rafId = requestAnimationFrame(this.animate);
+  };
 
   ngOnDestroy(): void {
-    if (typeof window !== 'undefined') this.#unbind();
+    if (typeof window === 'undefined') return;
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.enableMouseTilt) {
+      window.removeEventListener('mousemove', this.onMouseMove);
+    }
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+    }
   }
 }

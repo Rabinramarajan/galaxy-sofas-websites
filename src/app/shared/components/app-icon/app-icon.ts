@@ -152,7 +152,7 @@ const FA_MAP: Record<string, { f: Family; c: string }> = {
   menu: { f: 'fa-solid', c: 'fa-bars'},
   close: { f: 'fa-solid', c: 'fa-xmark'},
   x: { f: 'fa-solid', c: 'fa-xmark'},
-  sun: { f: 'fa-solid', c: 'fa-sun'},
+  sun: { f: 'fa-regular', c: 'fa-sun'},
   moon: { f: 'fa-solid', c: 'fa-moon'},
   plus: { f: 'fa-solid', c: 'fa-plus'},
   minus: { f: 'fa-solid', c: 'fa-minus'},

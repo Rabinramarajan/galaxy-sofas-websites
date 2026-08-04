@@ -6,6 +6,11 @@ import type { Routes } from '@angular/router';
  */
 export const routes: Routes = [
   {
+    path: 'luxury-showcase',
+    loadComponent: () => import('./features/luxury-showcase/luxury-showcase.component').then((m) => m.LuxuryShowcaseComponent),
+    title: 'Luxury Atelier Showcase — Galaxy Sofas',
+  },
+  {
     path: '',
     loadComponent: () => import('./features/home/home.page').then((m) => m.HomePage),
     title: 'Galaxy Sofas — Luxury Furniture & Premium Sofas',

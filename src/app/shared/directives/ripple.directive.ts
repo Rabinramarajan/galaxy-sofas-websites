@@ -1,45 +1,37 @@
-import { Directive, ElementRef, Input, inject } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject, Renderer2, Input } from '@angular/core';
 
-/**
- * Material-style ripple effect on click.
- *
- * Usage: <button appRipple> ... </button>
- */
 @Directive({
   selector: '[appRipple]',
-  standalone: true,
+  standalone: true
 })
 export class RippleDirective {
-  private readonly element = inject(ElementRef<HTMLElement>).nativeElement;
-  private readonly isBrowser = typeof window !== 'undefined';
+  private readonly el = inject(ElementRef);
+  private readonly renderer = inject(Renderer2);
 
-  @Input() rippleColor: 'light' | 'dark' = 'light';
+  @Input() rippleColor: string = 'light';
 
-  constructor() {
-    if (!this.isBrowser) return;
-    this.element.classList.add('btn-ripple');
-    this.element.addEventListener('pointerdown', this.#onDown);
-  }
-
-  #onDown = (event: PointerEvent): void => {
-    const rect = this.element.getBoundingClientRect();
-    const diameter = Math.max(rect.width, rect.height) * 1.2;
+  @HostListener('click', ['$event'])
+  onClick(event: MouseEvent): void {
+    const target = this.el.nativeElement as HTMLElement;
+    const rect = target.getBoundingClientRect();
+    const diameter = Math.max(rect.width, rect.height);
     const radius = diameter / 2;
-    const x = event.clientX - rect.left - radius;
-    const y = event.clientY - rect.top - radius;
 
-    const ripple = document.createElement('span');
-    ripple.className = `ripple-ink ${this.rippleColor === 'dark' ? 'ripple-ink-dark' : ''}`;
-    ripple.style.width = ripple.style.height = `${diameter}px`;
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-    ripple.style.position = 'absolute';
-    this.element.appendChild(ripple);
+    const circle = this.renderer.createElement('span');
+    this.renderer.setStyle(circle, 'width', `${diameter}px`);
+    this.renderer.setStyle(circle, 'height', `${diameter}px`);
+    this.renderer.setStyle(circle, 'left', `${event.clientX - rect.left - radius}px`);
+    this.renderer.setStyle(circle, 'top', `${event.clientY - rect.top - radius}px`);
+    this.renderer.addClass(circle, 'luxury-ripple-effect');
 
-    ripple.addEventListener('animationend', () => ripple.remove());
-  };
+    const existing = target.getElementsByClassName('luxury-ripple-effect')[0];
+    if (existing) {
+      existing.remove();
+    }
 
-  ngOnDestroy(): void {
-    this.element.removeEventListener('pointerdown', this.#onDown);
+    this.renderer.appendChild(target, circle);
+    setTimeout(() => {
+      circle.remove();
+    }, 600);
   }
 }
