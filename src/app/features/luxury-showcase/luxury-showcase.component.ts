@@ -6,10 +6,8 @@ import { FurnitureItem } from '../../core/models/showcase.model';
 import { HERO_ANIMATIONS, CARD_ANIMATIONS, UI_ANIMATIONS } from '../../core/animations/luxury.animations';
 import { LuxuryButtonComponent } from '../../shared/components/luxury-button/luxury-button.component';
 import { GlassCardComponent } from '../../shared/components/glass-card/glass-card.component';
-import { SkeletonLoaderComponent } from '../../shared/components/skeleton-loader/skeleton-loader.component';
 import { CinematicPromptCardComponent } from '../../shared/components/cinematic-prompt-card/cinematic-prompt-card.component';
 import { ParallaxDirective } from '../../shared/directives/parallax.directive';
-import { RippleDirective } from '../../shared/directives/ripple.directive';
 
 @Component({
   selector: 'app-luxury-showcase',
@@ -18,10 +16,8 @@ import { RippleDirective } from '../../shared/directives/ripple.directive';
     CommonModule,
     LuxuryButtonComponent,
     GlassCardComponent,
-    SkeletonLoaderComponent,
     CinematicPromptCardComponent,
-    ParallaxDirective,
-    RippleDirective
+    ParallaxDirective
   ],
   animations: [
     ...HERO_ANIMATIONS,

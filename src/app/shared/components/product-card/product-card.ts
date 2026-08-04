@@ -1,7 +1,6 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AppImage } from '../app-image/app-image';
-import { AppBadge } from '../app-badge/app-badge';
 import { AppRating } from '../app-rating/app-rating';
 import { AppIcon } from '../app-icon/app-icon';
 import { TiltDirective } from '../../directives/tilt.directive';
@@ -13,7 +12,7 @@ import type { Product } from '../../../core/models/furniture.model';
 /** Grid product card with hover zoom, wishlist toggle and quick views. */
 @Component({
   selector: 'app-product-card',
-  imports: [RouterLink, AppImage, AppBadge, AppRating, AppIcon, TiltDirective, RevealDirective],
+  imports: [RouterLink, AppImage, AppRating, AppIcon, TiltDirective, RevealDirective],
   template: `
     <article appReveal effect="fade-up" class="group relative">
       <div appTilt class="relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-primary/5 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-lift hover:ring-secondary/30 dark:bg-dark-card dark:ring-white/5">
