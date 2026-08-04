@@ -40,22 +40,22 @@ import { HomeLookbook } from './sections/home-lookbook/home-lookbook';
     HomeLookbook,
   ],
   template: `
-    <app-home-hero>
-    <app-home-luxury-banner>
-    <app-home-company-intro>
-    <app-home-collections>
-    <app-home-categories>
-    <app-home-trending>
-    <app-home-why-us>
-    <app-home-craftsmanship>
-    <app-home-process>
-    <app-home-latest-collections>
-    <app-home-gallery>
-    <app-home-reviews>
-    <app-home-instagram>
-    <app-home-lookbook>
-    <app-home-location>
-    <app-home-contact-cta>
+    <app-home-hero />
+    <app-home-luxury-banner />
+    <app-home-company-intro />
+    <app-home-collections />
+    <app-home-categories />
+    <app-home-trending />
+    <app-home-why-us />
+    <app-home-craftsmanship />
+    <app-home-process />
+    <app-home-latest-collections />
+    <app-home-gallery />
+    <app-home-reviews />
+    <app-home-instagram />
+    <app-home-lookbook />
+    <app-home-location />
+    <app-home-contact-cta />
   `,
 })
 export class HomePage implements OnInit {

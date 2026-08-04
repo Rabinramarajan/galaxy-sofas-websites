@@ -121,7 +121,7 @@
     @apply bg-secondary/30 text-primary;
   }
   .dark ::selection {
-    @apply bg-secondary/40 text-white;
+    @apply bg-secondary/70 text-dark font-medium;
   }
   h1, h2, h3, h4, .font-display {
     @apply font-display;

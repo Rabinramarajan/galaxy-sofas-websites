@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppIcon } from '../app-icon/app-icon';
 import { fadeIn } from '../../animations/animations';
@@ -19,13 +19,13 @@ import { CatalogService } from '../../../core/services/catalog.service';
           <div class="flex items-center gap-3 border-b border-primary/10 px-5 py-4 dark:border-white/10">
             <app-icon name="search" class="h-5 w-5 text-muted" />
             <input
-              #input
+              #searchInput
               type="search"
               placeholder="Search sofas, beds, dining sets…"
               aria-label="Search products"
               class="w-full bg-transparent text-base text-primary outline-none placeholder:text-muted/70 dark:text-white"
               [value]="query()"
-              (input)="query.set(input.value)"
+              (input)="query.set(searchInput.value)"
             />
             <kbd class="hidden rounded-md border border-primary/10 px-2 py-1 text-[10px] font-semibold text-muted sm:block">ESC</kbd>
           </div>
@@ -72,6 +72,8 @@ export class AppSearch {
   readonly #catalog = inject(CatalogService);
   readonly #router = inject(Router);
 
+  @ViewChild('searchInput') searchInput?: ElementRef<HTMLInputElement>;
+
   readonly open = signal(false);
   readonly query = signal('');
 
@@ -81,9 +83,20 @@ export class AppSearch {
     return q ? this.#catalog.search(q).slice(0, 8) : [];
   });
 
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.open()) {
+      this.close();
+    }
+  }
+
   toggle(): void {
     this.open.update((v) => !v);
-    if (!this.open()) this.query.set('');
+    if (this.open()) {
+      setTimeout(() => this.searchInput?.nativeElement.focus(), 50);
+    } else {
+      this.query.set('');
+    }
   }
 
   close(): void {

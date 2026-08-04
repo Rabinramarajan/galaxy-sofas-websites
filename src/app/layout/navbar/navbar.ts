@@ -130,12 +130,27 @@ import { cx } from '../../core/utils/utils';
                 {{ item.label }}
               </a>
             }
-            <a routerLink="/wishlist" (click)="mobileOpen.set(false)" class="mt-2 flex items-center gap-2 rounded-xl bg-secondary/10 px-3 py-3 font-semibold text-secondary">
-              <app-icon name="heart" class="h-5 w-5" /> My Wishlist
+            <div class="mt-2 grid grid-cols-2 gap-2">
+              <a routerLink="/wishlist" (click)="mobileOpen.set(false)" class="flex items-center justify-center gap-2 rounded-xl bg-secondary/10 px-3 py-3 font-semibold text-secondary">
+                <app-icon name="heart" class="h-4 w-4" /> Wishlist
+                @if (wishlistCount() > 0) {
+                  <span class="rounded-full bg-secondary px-1.5 py-0.5 text-[10px] text-white">{{ wishlistCount() }}</span>
+                }
+              </a>
+              <a routerLink="/compare" (click)="mobileOpen.set(false)" class="flex items-center justify-center gap-2 rounded-xl bg-primary/5 px-3 py-3 font-semibold text-primary dark:bg-white/10 dark:text-white">
+                <app-icon name="compare" class="h-4 w-4" /> Compare
+                @if (compareCount() > 0) {
+                  <span class="rounded-full bg-primary px-1.5 py-0.5 text-[10px] text-white dark:bg-secondary">{{ compareCount() }}</span>
+                }
+              </a>
+            </div>
+            <a routerLink="/contact" (click)="mobileOpen.set(false)" class="mt-2 flex items-center justify-center gap-2 rounded-xl bg-gold-gradient px-3 py-3 font-semibold text-white shadow-gold">
+              <app-icon name="phone" class="h-4 w-4" /> Book a Consultation
             </a>
-            <a routerLink="/contact" (click)="mobileOpen.set(false)" class="mt-2 flex items-center gap-2 rounded-xl bg-gold-gradient px-3 py-3 font-semibold text-white shadow-gold">
-              <app-icon name="phone" class="h-5 w-5" /> Book a Consultation
-            </a>
+            <div class="mt-4 border-t border-primary/10 pt-3 text-xs text-muted dark:border-white/10">
+              <p class="flex items-center gap-2 py-1"><app-icon name="phone" class="h-3.5 w-3.5 text-secondary" /> {{ SITE.phone }}</p>
+              <p class="flex items-center gap-2 py-1"><app-icon name="clock" class="h-3.5 w-3.5 text-secondary" /> {{ SITE.hours }}</p>
+            </div>
           </div>
         </div>
       }
