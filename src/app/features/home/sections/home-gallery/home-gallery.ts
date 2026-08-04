@@ -10,14 +10,14 @@ interface ProjectShot {
 }
 
 const PROJECTS: ProjectShot[] = [
-  { image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80', title: 'The Aurora in a Chennai villa', place: 'Chennai' },
-  { image: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=900&q=80', title: 'Celestial cinema corner', place: 'Mumbai' },
-  { image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80', title: 'Serenity master suite', place: 'Bengaluru' },
-  { image: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=900&q=80', title: 'Oakwood dinner for eight', place: 'Hyderabad' },
-  { image: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=900&q=80', title: 'Nebula lounge upgrade', place: 'Pune' },
-  { image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=900&q=80', title: 'Regalia heritage living', place: 'Delhi' },
-  { image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80', title: 'Studio Raw reading corner', place: 'Kochi' },
-  { image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=80', title: 'Urban Nordic light home', place: 'Goa' },
+  { image: '/galaxysofas/image/Luxury-Living-Room/Grand-sunlit-salon.png', title: 'The Aurora in a Chennai villa', place: 'Chennai' },
+  { image: '/galaxysofas/image/Luxury-Living-Room/Compact-amber-apartment.png', title: 'Celestial cinema corner', place: 'Mumbai' },
+  { image: '/galaxysofas/image/Luxury-Living-Room/Double-height-villa-salon.png', title: 'Serenity master suite', place: 'Bengaluru' },
+  { image: '/galaxysofas/image/Luxury-Living-Room/Dusk-fireplace-den.png', title: 'Oakwood dinner for eight', place: 'Hyderabad' },
+  { image: '/galaxysofas/image/Luxury-Living-Room/Open-plan-oak-lounge.png', title: 'Nebula lounge upgrade', place: 'Pune' },
+  { image: '/galaxysofas/image/Luxury-Living-Room/Evening-velvet-sanctuary.png', title: 'Regalia heritage living', place: 'Delhi' },
+  { image: '/galaxysofas/image/Luxury-Sofa/Cognac-leather-corner.png', title: 'Studio Raw reading corner', place: 'Kochi' },
+  { image: '/galaxysofas/image/Luxury-Living-Room/Scandinavian-luxe-calm.png', title: 'Urban Nordic light home', place: 'Goa' },
 ];
 
 /** Project gallery — an organic masonry of real installed homes. */

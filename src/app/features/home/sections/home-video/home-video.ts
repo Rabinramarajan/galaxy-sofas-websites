@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { VideoBannerPlaceholder } from '../../../../shared/components/video-banner/video-banner';
+import { VideoBanner } from '../../../../shared/components/video-banner/video-banner';
 import { RevealDirective } from '../../../../shared/directives/reveal.directive';
 
 /** Craft film — a cinematic video callout that still works when offline. */
 @Component({
   selector: 'app-home-video',
-  imports: [VideoBannerPlaceholder, RevealDirective],
+  imports: [VideoBanner, RevealDirective],
   template: `
     <section class="relative bg-espresso py-24 sm:py-32">
       <div class="section-shell">
@@ -17,12 +17,11 @@ import { RevealDirective } from '../../../../shared/directives/reveal.directive'
         </div>
 
         <div appReveal effect="scale" [delay]="240" class="mt-14">
-          <app-video-banner-placeholder
-            [poster]="'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=2000&q=85'"
+          <app-video-banner
+            [videoSrc]="'/galaxysofas/video/_Hero_Video_-_Where_Li.mp4'"
+            [poster]="'/galaxysofas/image/Luxury-Living-Room/Grand-sunlit-salon.png'"
             [alt]="'The Galaxy atelier in motion'"
-            [title]="'The Atelier, in motion'"
-            [description]="'Six minutes inside our workshop — carving, upholstery and the hands behind every piece.'"
-            [duration]="'6:12'"
+            [aspectRatio]="'16/9'"
           />
         </div>
       </div>

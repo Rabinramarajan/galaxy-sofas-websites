@@ -5,7 +5,7 @@ import { breadcrumbSchema } from '../../core/seo/schema';
 import { AppIcon } from '../../shared/components/app-icon/app-icon';
 import { AppImage } from '../../shared/components/app-image/app-image';
 import { SectionHeader } from '../../shared/components/section-header/section-header';
-import { AppButton } from '../../shared/components/app-button/app-button';
+import { VideoBanner } from '../../shared/components/video-banner/video-banner';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 import { TiltDirective } from '../../shared/directives/tilt.directive';
 
@@ -21,7 +21,7 @@ interface ManufacturingStep {
 
 @Component({
   selector: 'app-manufacturing-page',
-  imports: [AppButton, AppIcon, AppImage, PageHero, RevealDirective, SectionHeader, TiltDirective],
+  imports: [AppIcon, AppImage, PageHero, RevealDirective, SectionHeader, TiltDirective, VideoBanner],
   template: `
     <app-page-hero
       title="Manufacturing Process"
@@ -124,20 +124,17 @@ interface ManufacturingStep {
 
     <!-- Workshop Video/CTA -->
     <section class="section-shell py-12 lg:py-16">
-      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary/80 to-secondary">
-        <div class="absolute inset-0 opacity-10" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1920&q=80" alt="" class="h-full w-full object-cover" />
-        </div>
-        <div class="relative section-shell flex flex-col items-center justify-center py-20 text-center text-white">
-          <span class="eyebrow text-secondary">Virtual Tour</span>
-          <h3 class="mt-4 font-display text-3xl font-semibold sm:text-4xl md:text-5xl">Step Inside Our Workshop</h3>
-          <p class="mt-4 max-w-2xl text-lg text-white/80">Experience the smell of sandalwood, the rhythm of hand-tools, and the precision of 340 master artisans — all from your screen.</p>
-          <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <app-button variant="gold" label="Watch 4K Tour" icon="play" size="xl" />
-            <app-button variant="outline" label="Book Physical Visit" icon="mapPin" size="xl" href="/contact" />
-          </div>
-        </div>
+      <div class="flex flex-col items-center text-center mb-8">
+        <span class="eyebrow text-secondary">Virtual Tour</span>
+        <h3 class="mt-2 font-display text-3xl font-semibold sm:text-4xl">Step Inside Our Workshop</h3>
+        <p class="mt-2 max-w-2xl text-muted">Experience the smell of sandalwood, the rhythm of hand-tools, and the precision of 340 master artisans.</p>
       </div>
+      <app-video-banner
+        [videoSrc]="'/galaxysofas/video/_Furniture_Craftsmanshi.mp4'"
+        [poster]="'/galaxysofas/image/Luxury-Sofa/Flagship-studio-hero.png'"
+        [alt]="'Workshop craftsmanship tour'"
+        [aspectRatio]="'16/9'"
+      />
     </section>
 
     <!-- Sustainability -->

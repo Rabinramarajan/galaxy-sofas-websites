@@ -15,7 +15,7 @@ import { RevealDirective } from '../../../../shared/directives/reveal.directive'
           <div appReveal effect="fade-up" class="relative">
             <div class="overflow-hidden rounded-[2rem] shadow-lift">
               <img
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85"
+                src="/galaxysofas/image/Luxury-Sofa/Cognac-leather-corner.png"
                 alt="Craftsman shaping solid wood in the Galaxy atelier"
                 width="1200"
                 height="1400"
@@ -26,7 +26,7 @@ import { RevealDirective } from '../../../../shared/directives/reveal.directive'
             </div>
             <div class="absolute -right-4 bottom-10 hidden w-52 overflow-hidden rounded-2xl border-4 border-paper shadow-lift sm:block dark:border-espresso">
               <img
-                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80"
+                src="/galaxysofas/image/Luxury-Living-Room/Scandinavian-luxe-calm.png"
                 alt="Hand-carving a sofa frame detail"
                 width="600"
                 height="750"

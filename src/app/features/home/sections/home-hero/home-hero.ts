@@ -28,7 +28,7 @@ const HERO_FEATURES: HeroFeature[] = [
       <!-- Background image + cinematic scrim -->
       <div class="absolute inset-0 -z-10" aria-hidden="true">
         <img
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=2400&q=85"
+          src="/galaxysofas/image/Luxury-Living-Room/Grand-sunlit-salon.png"
           alt=""
           width="2400"
           height="1600"
@@ -87,7 +87,7 @@ const HERO_FEATURES: HeroFeature[] = [
             <div class="relative overflow-hidden rounded-[2rem] border border-bone/15 shadow-lift">
               <div class="relative aspect-[4/5] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=85"
+                  src="/galaxysofas/image/Luxury-Sofa/Flagship-studio-hero.png"
                   alt="Galaxy Aurora luxury sofa bathed in warm light"
                   width="1200"
                   height="1500"

@@ -132,7 +132,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     description: 'We source kiln-dried sheesham and oak from certified plantations, rejecting anything with knots or moisture above 10%.',
     duration: 'Week 1',
     icon: 'tree',
-    image: img('photo-1616486338812-3dadae4b4ace', 900),
+    image: '/galaxysofas/image/Luxury-Sofa/Boucle-macro.png',
   },
   {
     id: 's2',
@@ -141,7 +141,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     description: 'CNC precision meets hand skill. Every plank is cut, jointed and shaped to tolerance of 0.5 mm.',
     duration: 'Week 2',
     icon: 'axe',
-    image: img('photo-1586023492125-27b2c045efd7', 900),
+    image: '/galaxysofas/image/Luxury-Sofa/Cognac-leather-corner.png',
   },
   {
     id: 's3',
@@ -150,7 +150,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     description: 'Mortise-and-tenon joints, reinforced corners and steel brackets — no staples, no shortcuts.',
     duration: 'Week 3',
     icon: 'hammer',
-    image: img('photo-1533090161767-e6ffed986c88', 900),
+    image: '/galaxysofas/image/Luxury-Living-Room/Grand-sunlit-salon.png',
   },
   {
     id: 's4',
@@ -159,7 +159,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     description: 'Master carvers shape motifs and details by hand, each piece signed by the artisan who made it.',
     duration: 'Week 3–4',
     icon: 'carve',
-    image: img('photo-1555041469-a586c61ea9bc', 900),
+    image: '/galaxysofas/image/Luxury-Living-Room/Double-height-villa-salon.png',
   },
   {
     id: 's5',
@@ -168,7 +168,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     description: 'Seven stages of fine sanding, then multiple coats of natural, VOC-free finishes and waxes.',
     duration: 'Week 4',
     icon: 'sparkles',
-    image: img('photo-1567538096630-e0c55bd6374c', 900),
+    image: '/galaxysofas/image/Luxury-Sofa/Flagship-studio-hero.png',
   },
   {
     id: 's6',
@@ -177,7 +177,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     description: 'Layers of high-resilience foam, feather blends and premium fabric, tailored and stitched by hand.',
     duration: 'Week 5',
     icon: 'scissors',
-    image: img('photo-1550254478-ead40cc54513', 900),
+    image: '/galaxysofas/image/Luxury-Living-Room/Evening-velvet-sanctuary.png',
   },
   {
     id: 's7',
@@ -186,7 +186,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     description: 'Every piece passes 40+ inspection points, a 48-hour load test and a full rub-test on upholstery.',
     duration: 'Week 5',
     icon: 'check',
-    image: img('photo-1493663284031-b7e3aefcae8e', 900),
+    image: '/galaxysofas/image/Recliner/Cinema-recliner-hero.png',
   },
   {
     id: 's8',
@@ -195,7 +195,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     description: 'Crated, trucked and assembled in your home by our uniformed team. You only enjoy the result.',
     duration: 'Week 6',
     icon: 'truck',
-    image: img('photo-1505693416388-ac5ce068fe85', 900),
+    image: '/galaxysofas/image/Luxury-Living-Room/Scandinavian-luxe-calm.png',
   },
 ];
 
