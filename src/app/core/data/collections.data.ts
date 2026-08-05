@@ -1,7 +1,7 @@
 import type { Collection } from '../models/furniture.model';
 
-const img = (id: string, w = 1100) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+/** Local art-directed imagery — warm editorial luxury, golden-hour grading. */
+const img = (name: string) => `/galaxysofas/image/${name}`;
 
 export const COLLECTIONS: Collection[] = [
   {
@@ -9,7 +9,7 @@ export const COLLECTIONS: Collection[] = [
     slug: 'collections',
     name: 'The Heritage',
     description: 'Classic silhouettes, hand-carved sheesham and finishes that age like fine wine. Heirloom furniture for the modern home.',
-    image: img('photo-1567016432779-094069958ea5'),
+    image: img('Luxury-Living-Room/Grand-sunlit-salon.png'),
     alt: 'Heritage collection wooden furniture in a warm classic living room',
     tag: 'Classic · Solid Wood',
     productCount: 36,
@@ -20,7 +20,7 @@ export const COLLECTIONS: Collection[] = [
     slug: 'collections',
     name: 'Urban Nordic',
     description: 'Light oak, clean lines and quiet minimalism. Scandinavian calm, engineered in India.',
-    image: img('photo-1493809842364-78817add7ffb'),
+    image: img('Luxury-Living-Room/Scandinavian-luxe-calm.png'),
     alt: 'Urban Nordic light oak furniture in a minimalist bright apartment',
     tag: 'Minimal · Light Oak',
     productCount: 28,
@@ -31,7 +31,7 @@ export const COLLECTIONS: Collection[] = [
     slug: 'collections',
     name: 'Royal Velvet',
     description: 'Plush velvet, deep jewel tones and statement silhouettes. Opulence that whispers, not shouts.',
-    image: img('photo-1555041469-a586c61ea9bc'),
+    image: img('Luxury-Living-Room/Evening-velvet-sanctuary.png'),
     alt: 'Royal Velvet collection plush velvet sofa in rich jewel tones',
     tag: 'Luxury · Velvet',
     productCount: 22,
@@ -42,7 +42,7 @@ export const COLLECTIONS: Collection[] = [
     slug: 'collections',
     name: 'Studio Raw',
     description: 'Artisanal, organic and tactile. Raw-edge slabs, textured upholstery and honest materials.',
-    image: img('photo-1618221195710-dd6b41faaea6'),
+    image: img('Luxury-Sofa/Oatmeal-modular.png'),
     alt: 'Studio Raw collection organic natural furniture in a designer interior',
     tag: 'Artisan · Organic',
     productCount: 19,
@@ -53,7 +53,7 @@ export const COLLECTIONS: Collection[] = [
     slug: 'collections',
     name: 'Cloud Nine',
     description: 'Feather-soft modulars, deep seats and cloud-loft cushions. Built for hours of drifting.',
-    image: img('photo-1540574163026-643ea20ade25'),
+    image: img('Luxury-Living-Room/Open-plan-oak-lounge.png'),
     alt: 'Cloud Nine ultra soft modular sofa in a cosy premium living room',
     tag: 'Soft · Modular',
     productCount: 17,
@@ -64,7 +64,7 @@ export const COLLECTIONS: Collection[] = [
     slug: 'collections',
     name: 'Executive Suite',
     description: 'Boardroom-calibre desks, ergonomic thrones and storage that means business.',
-    image: img('photo-1497366216548-37526070297c'),
+    image: img('Luxury-Sofa/Cognac-leather-corner.png'),
     alt: 'Executive Suite office furniture in a prestigious modern office',
     tag: 'Office · Prestige',
     productCount: 24,
