@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SITE } from '../../../../core/config/site.config';
 import { AppIcon } from '../../../../shared/components/app-icon/app-icon';
 import { AppButton } from '../../../../shared/components/app-button/app-button';
@@ -9,7 +10,7 @@ const CITIES = ['Chennai', 'Bengaluru', 'Mumbai', 'Delhi', 'Hyderabad', 'Pune', 
 /** Contact — a standing invitation in deep espresso, gold-threaded, warm. */
 @Component({
   selector: 'app-home-contact',
-  imports: [AppIcon, AppButton, RevealDirective],
+  imports: [RouterLink, AppIcon, AppButton, RevealDirective],
   template: `
     <section class="relative isolate overflow-hidden bg-espresso py-24 text-bone sm:py-32">
       <!-- Atmosphere -->
@@ -76,7 +77,7 @@ const CITIES = ['Chennai', 'Bengaluru', 'Mumbai', 'Delhi', 'Hyderabad', 'Pune', 
                 </div>
               </dl>
 
-              <a href="/store-location" class="mt-8 inline-flex items-center gap-2 rounded-full bg-gold-gradient px-6 py-3 text-sm font-bold text-white shadow-gold transition-all duration-300 hover:shadow-glow hover:brightness-105">
+              <a routerLink="/store-location" class="mt-8 inline-flex items-center gap-2 rounded-full bg-gold-gradient px-6 py-3 text-sm font-bold text-white shadow-gold transition-all duration-300 hover:shadow-glow hover:brightness-105">
                 Find a showroom <app-icon name="arrowRight" class="h-4 w-4" />
               </a>
             </div>

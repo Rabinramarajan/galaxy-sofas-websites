@@ -115,7 +115,7 @@ const PIECES: SignaturePiece[] = [
                     {{ piece.index }}
                   </span>
 
-                  <figcaption class="absolute inset-x-4 bottom-4 rounded-2xl glass-dark p-4 backdrop-blur-xl">
+                  <div class="absolute inset-x-4 bottom-4 rounded-2xl glass-dark p-4 backdrop-blur-xl">
                     <div class="flex items-end justify-between gap-3">
                       <div class="min-w-0">
                         <span class="block text-[10px] font-bold uppercase tracking-[0.2em] text-gold-light">{{ piece.spec }}</span>
@@ -126,7 +126,7 @@ const PIECES: SignaturePiece[] = [
                         <app-icon name="arrowRight" class="h-4 w-4" />
                       </span>
                     </div>
-                  </figcaption>
+                  </div>
                 </div>
               </a>
             </article>

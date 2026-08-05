@@ -1,5 +1,7 @@
 @use 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+/* Fonts are loaded in src/index.html via preconnect + preload + display=swap
+   to avoid a duplicate render-blocking @import request. */
 
 /* ============================================================
    GALAXY SOFAS — "WARM EDITORIAL LUXURY" DESIGN SYSTEM

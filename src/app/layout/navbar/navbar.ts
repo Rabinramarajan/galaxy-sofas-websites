@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal, viewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { NAV_ITEMS, SITE } from '../../core/config/site.config';
 import { ThemeService } from '../../core/services/theme.service';
@@ -185,10 +185,13 @@ import { cx } from '../../core/utils/utils';
           </a>
 
           <button
+            #mobileToggle
             type="button"
             (click)="mobileOpen.set(!mobileOpen())"
             class="flex h-10 w-10 items-center justify-center rounded-full text-taupe transition-colors hover:bg-ink/5 dark:text-fawn dark:hover:bg-bone/10 lg:hidden"
             [attr.aria-label]="mobileOpen() ? 'Close menu' : 'Open menu'"
+            [attr.aria-expanded]="mobileOpen()"
+            aria-controls="mobile-menu"
           >
             @if (mobileOpen()) {
               <app-icon name="close" class="h-5 w-5" />
@@ -201,7 +204,11 @@ import { cx } from '../../core/utils/utils';
 
       <!-- Mobile drawer -->
       @if (mobileOpen()) {
-        <div class="border-t border-line bg-paper/95 backdrop-blur-2xl lg:hidden dark:bg-espresso/95 dark:border-line-dark">
+        <div
+          id="mobile-menu"
+          (keydown)="onDrawerKeydown($event)"
+          class="border-t border-line bg-paper/95 backdrop-blur-2xl lg:hidden dark:bg-espresso/95 dark:border-line-dark"
+        >
           <div class="section-shell max-h-[75vh] overflow-y-auto py-6 space-y-1">
             @for (item of navItems(); track item.path + item.label) {
               <a routerLink="{{ item.path }}" (click)="mobileOpen.set(false)" class="block rounded-xl px-4 py-3 font-display text-sm font-semibold tracking-wide text-ink hover:bg-linen hover:text-gold transition-colors dark:text-bone dark:hover:bg-mocha">
@@ -249,6 +256,22 @@ export class Navbar {
   readonly scrolled = signal(false);
   readonly activeMenu = signal<string | null>(null);
 
+  readonly drawer = viewChild<HTMLElement>('mobileMenu');
+  readonly mobileToggle = viewChild<HTMLButtonElement>('mobileToggle');
+
+  readonly #bodyScrollLock = effect(() => {
+    if (typeof document === 'undefined') return;
+    const open = this.mobileOpen();
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      window.setTimeout(() => {
+        this.drawer()?.querySelector<HTMLElement>('a[href], button:not([disabled])')?.focus();
+      }, 0);
+    } else {
+      this.mobileToggle()?.focus();
+    }
+  });
+
   readonly theme = inject(ThemeService);
   readonly #wishlist = inject(WishlistService);
   readonly #compare = inject(CompareService);
@@ -271,6 +294,7 @@ export class Navbar {
   constructor() {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', this.#onScroll, { passive: true });
+      window.addEventListener('keydown', this.#onKeydown);
       this.#router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
           this.#navigationEnd.set(event.urlAfterRedirects.split('?')[0] ?? '');
@@ -297,9 +321,39 @@ export class Navbar {
     this.scrolled.set(window.scrollY > 12);
   };
 
+  #onKeydown = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape' && this.mobileOpen()) {
+      this.mobileOpen.set(false);
+    }
+  };
+
+  onDrawerKeydown(event: KeyboardEvent): void {
+    if (event.key !== 'Tab' || !this.mobileOpen()) return;
+    const drawer = this.drawer();
+    if (!drawer) return;
+    const focusables = Array.from(
+      drawer.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter((el) => el.offsetParent !== null);
+    if (focusables.length === 0) return;
+    const first = focusables[0]!;
+    const last = focusables[focusables.length - 1]!;
+    const active = document.activeElement;
+    if (event.shiftKey && active === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   ngOnDestroy(): void {
+    this.#bodyScrollLock.destroy();
     if (typeof window !== 'undefined') {
       window.removeEventListener('scroll', this.#onScroll);
+      window.removeEventListener('keydown', this.#onKeydown);
     }
   }
 }

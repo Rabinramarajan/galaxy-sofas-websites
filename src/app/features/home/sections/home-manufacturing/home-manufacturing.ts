@@ -45,6 +45,8 @@ import { RevealDirective } from '../../../../shared/directives/reveal.directive'
               <button 
                 type="button"
                 (click)="activeStepIndex.set(i)"
+                [attr.aria-pressed]="activeStepIndex() === i"
+                [attr.aria-label]="'Show stage ' + step.index + ': ' + step.title"
                 [class.bg-mocha]="activeStepIndex() === i"
                 [class.border-gold\/40]="activeStepIndex() === i"
                 [class.shadow-2xl]="activeStepIndex() === i"

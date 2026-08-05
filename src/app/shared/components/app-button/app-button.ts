@@ -1,4 +1,5 @@
 import { Component, computed, input, output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { MagneticDirective } from '../../directives/magnetic.directive';
 import { RippleDirective } from '../../directives/ripple.directive';
 import { cx } from '../../../core/utils/utils';
@@ -13,11 +14,12 @@ export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
  */
 @Component({
   selector: 'app-button',
-  imports: [MagneticDirective, RippleDirective],
+  imports: [RouterLink, MagneticDirective, RippleDirective],
   template: `
     @if (href()) {
       <a
-        [href]="href()"
+        [routerLink]="usesRouterLink() ? href() : null"
+        [href]="usesRouterLink() ? null : href()"
         [attr.target]="external() ? '_blank' : null"
         [attr.rel]="external() ? 'noopener noreferrer' : null"
         appMagnetic
@@ -81,6 +83,11 @@ export class AppButton {
   readonly darkRipple = computed(
     () => this.variant() === 'outline' || this.variant() === 'ghost' || this.variant() === 'white'
   );
+
+  readonly usesRouterLink = computed(() => {
+    const h = this.href();
+    return !!h && !/^[a-z][a-z\d+\-.]*:/i.test(h) && !h.startsWith('#');
+  });
 
   readonly iconPath = computed(() => {
     const i = this.icon();

@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { COLLECTIONS } from '../../../../core/data/collections.data';
 import { AppIcon } from '../../../../shared/components/app-icon/app-icon';
 import { AppButton } from '../../../../shared/components/app-button/app-button';
@@ -7,7 +8,7 @@ import { RevealDirective } from '../../../../shared/directives/reveal.directive'
 /** Featured collections — a magazine-style numbered index with editorial rows. */
 @Component({
   selector: 'app-home-collections',
-  imports: [AppIcon, AppButton, RevealDirective],
+  imports: [RouterLink, AppIcon, AppButton, RevealDirective],
   template: `
     <section class="relative bg-linen py-24 sm:py-32 dark:bg-espresso-soft">
       <div class="section-shell grid gap-14 lg:grid-cols-12">
@@ -37,7 +38,7 @@ import { RevealDirective } from '../../../../shared/directives/reveal.directive'
             @for (collection of collections(); track collection.id; let i = $index) {
               <li appReveal effect="fade-up" [delay]="i * 80">
                 <a
-                  href="/collections"
+                  routerLink="/collections"
                   class="group flex items-center gap-5 py-7 transition-all duration-500 sm:gap-8 sm:py-8"
                 >
                   <span class="font-display text-3xl font-light text-taupe/50 transition-colors duration-300 group-hover:text-gold sm:text-4xl">

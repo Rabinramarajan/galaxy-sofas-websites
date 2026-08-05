@@ -36,7 +36,10 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
             <label class="sr-only" for="newsletter-email">Email address</label>
             <input
               id="newsletter-email"
+              name="email"
               type="email"
+              inputmode="email"
+              autocomplete="email"
               required
               placeholder="you@example.com"
               class="w-full flex-1 rounded-full border border-bone/15 bg-bone/5 px-6 py-3.5 text-sm text-bone outline-none backdrop-blur-sm transition-colors placeholder:text-bone/40 focus:border-gold"
