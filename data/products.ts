@@ -6,7 +6,7 @@ const CARE_FABRIC =
 const CARE_WOOD =
   "Dust with a dry microfibre cloth. Use a slightly damp cloth for marks, then dry immediately. Keep away from standing water and extreme heat. Use coasters on tabletops.";
 const DELIVERY =
-  "White-glove delivery is available within Chennai city limits, typically 10–21 days for ready pieces and 4–8 weeks for made-to-order. A specialist will confirm access, floor and assembly before dispatch.";
+  "Delivery within Chennai is arranged after we confirm the piece, access and assembly. Lead times depend on whether the item is available to view or made to order — the showroom will confirm this when you enquire.";
 
 type Draft = Omit<Product, "currency" | "careInstructions" | "deliveryInformation" | "images"> & {
   care?: string;
@@ -29,7 +29,7 @@ export const products: Product[] = [
     name: "Modern L-Shaped Sofa",
     category: "sofas",
     subcategory: "L-Shaped Sofas",
-    subcategorySlug: "l-shaped",
+    subcategorySlug: "l-shaped-sofas",
     shortDescription: "A low, generous corner sofa with deep seats and a quiet contemporary profile.",
     description:
       "The Modern L-Shaped Sofa is designed for living rooms that need to host without looking overstuffed. Deep cushions, a chaise that can be specified left or right, and a timber plinth keep the silhouette calm. Upholstery is available in performance weaves suited to family use.",
@@ -47,7 +47,7 @@ export const products: Product[] = [
     tags: ["l-shaped", "family", "living room", "performance fabric"],
     featured: true,
     availability: "made-to-order",
-    seoTitle: "Modern L-Shaped Sofa | Galaxy Sofas",
+    seoTitle: "Modern L-Shaped Sofa in Chennai | Galaxy Sofas",
     seoDescription:
       "Explore the Modern L-Shaped Sofa from Galaxy Sofas in Chennai. Deep seating, custom chaise orientation and performance fabrics for everyday living.",
     keywords: ["l shaped sofa", "corner sofa Chennai", "modern sofa"],
@@ -58,7 +58,7 @@ export const products: Product[] = [
     name: "Harbour L-Shaped Sofa",
     category: "sofas",
     subcategory: "L-Shaped Sofas",
-    subcategorySlug: "l-shaped",
+    subcategorySlug: "l-shaped-sofas",
     shortDescription: "Soft rolled arms and a wider chaise for rooms that open onto a view or a garden.",
     description:
       "Harbour is a more traditional L-shape with rolled arms and a slightly higher back. It suits formal living rooms that still need to be comfortable for a full evening. Cushions are fibre-wrapped foam so they recover without looking rigid.",
@@ -75,7 +75,7 @@ export const products: Product[] = [
     tags: ["l-shaped", "formal", "linen"],
     featured: false,
     availability: "made-to-order",
-    seoTitle: "Harbour L-Shaped Sofa | Galaxy Sofas",
+    seoTitle: "Harbour L-Shaped Sofa in Chennai | Galaxy Sofas",
     seoDescription:
       "The Harbour L-Shaped Sofa offers rolled arms, a higher back and linen-blend upholstery. Available from Galaxy Sofas in Chennai.",
     keywords: ["linen l shaped sofa", "formal corner sofa"],
@@ -86,7 +86,7 @@ export const products: Product[] = [
     name: "Calicut Three-Seater",
     category: "sofas",
     subcategory: "3-Seater Sofas",
-    subcategorySlug: "3-seater",
+    subcategorySlug: "3-seater-sofas",
     shortDescription: "A straight three-seater with slim arms so more of the width is actual sitting space.",
     description:
       "Calicut is the sofa we recommend when a room cannot take a corner piece. Slim track arms, a bench-style seat option, and legs that lift the frame keep the floor visually open. It pairs cleanly with our coffee tables and side chairs.",
@@ -104,7 +104,7 @@ export const products: Product[] = [
     tags: ["3-seater", "apartment", "track arm"],
     featured: true,
     availability: "in-stock",
-    seoTitle: "Calicut Three-Seater Sofa | Galaxy Sofas",
+    seoTitle: "Calicut Three-Seater Sofa in Chennai | Galaxy Sofas",
     seoDescription:
       "Shop the Calicut Three-Seater — a slim-arm sofa designed for Indian apartments. Available in Fog, Ink and Terracotta from Galaxy Sofas, Chennai.",
     keywords: ["3 seater sofa", "apartment sofa Chennai"],
@@ -115,7 +115,7 @@ export const products: Product[] = [
     name: "Nook Two-Seater",
     category: "sofas",
     subcategory: "2-Seater Sofas",
-    subcategorySlug: "2-seater",
+    subcategorySlug: "2-seater-sofas",
     shortDescription: "A compact two-seater for studies, guest rooms and tight city living rooms.",
     description:
       "Nook sits two adults comfortably without asking for a full wall. Use it opposite a three-seater, under a window, or as the only sofa in a studio. The seat depth is slightly reduced so conversation stays upright and easy.",
@@ -132,7 +132,7 @@ export const products: Product[] = [
     tags: ["2-seater", "compact", "studio"],
     featured: false,
     availability: "in-stock",
-    seoTitle: "Nook Two-Seater Sofa | Galaxy Sofas",
+    seoTitle: "Nook Two-Seater Sofa in Chennai | Galaxy Sofas",
     seoDescription:
       "The Nook Two-Seater is a compact sofa for smaller rooms. See sizes, fabrics and availability at Galaxy Sofas in Chennai.",
     keywords: ["2 seater sofa", "compact sofa", "love seat"],
@@ -143,7 +143,7 @@ export const products: Product[] = [
     name: "Atelier Sectional",
     category: "sofas",
     subcategory: "Sectional Sofas",
-    subcategorySlug: "sectional",
+    subcategorySlug: "sectional-sofas",
     shortDescription: "A modular sectional you can start as a three-piece and grow as the room changes.",
     description:
       "Atelier is built as connected modules: armless seats, corners, ottomans and a chaise. Families who move homes, or who are still deciding how a room should work, can add pieces later in matching fabric. Hidden connectors keep the join tidy.",
@@ -160,7 +160,7 @@ export const products: Product[] = [
     tags: ["sectional", "modular", "open plan"],
     featured: true,
     availability: "made-to-order",
-    seoTitle: "Atelier Sectional Sofa | Galaxy Sofas",
+    seoTitle: "Atelier Sectional Sofa in Chennai | Galaxy Sofas",
     seoDescription:
       "Configure the Atelier Sectional with add-on modules, ottomans and chaises. Made to order at Galaxy Sofas, Chennai.",
     keywords: ["sectional sofa", "modular sofa"],
@@ -171,7 +171,7 @@ export const products: Product[] = [
     name: "Stillwater Recliner Sofa",
     category: "sofas",
     subcategory: "Recliner Sofas",
-    subcategorySlug: "recliner",
+    subcategorySlug: "recliner-sofas",
     shortDescription: "A three-seat recliner with a refined profile — not a bulky home-theatre silhouette.",
     description:
       "Stillwater reclines electrically with a slim mechanism hidden in the seat. The arm and back stay visually light, so it can live in a sitting room rather than only a media room. USB charging is optional, not default, so the piece stays calm.",
@@ -188,7 +188,7 @@ export const products: Product[] = [
     tags: ["recliner", "leather", "media"],
     featured: false,
     availability: "limited",
-    seoTitle: "Stillwater Recliner Sofa | Galaxy Sofas",
+    seoTitle: "Stillwater Recliner Sofa in Chennai | Galaxy Sofas",
     seoDescription:
       "Stillwater is a refined three-seat recliner sofa in leather or fabric. Enquire with Galaxy Sofas in Chennai for finishes and lead times.",
     keywords: ["recliner sofa", "electric recliner sofa"],
@@ -216,7 +216,7 @@ export const products: Product[] = [
     tags: ["sofa set", "3+2+1", "living room"],
     featured: false,
     availability: "made-to-order",
-    seoTitle: "Pavilion Sofa Set | Galaxy Sofas",
+    seoTitle: "Pavilion Sofa Set in Chennai | Galaxy Sofas",
     seoDescription:
       "The Pavilion 3+2+1 sofa set is designed as a complete living room. Available in Parchment and Moss from Galaxy Sofas, Chennai.",
     keywords: ["sofa set", "3 2 1 sofa set"],
@@ -227,7 +227,7 @@ export const products: Product[] = [
     name: "Bespoke Atelier Sofa",
     category: "sofas",
     subcategory: "Custom Sofas",
-    subcategorySlug: "custom",
+    subcategorySlug: "custom-sofas",
     shortDescription: "A made-to-measure sofa planned around your wall, doorway and fabric choice.",
     description:
       "Bespoke Atelier starts with a site discussion or a drawing of your room. We confirm seat depth, arm width, cushion fill and fabric before production. This is the right path when a standard size will not clear a stair, or when you need a precise fabric match to existing curtains or walls.",
@@ -244,7 +244,7 @@ export const products: Product[] = [
     tags: ["custom sofa", "bespoke", "made to measure"],
     featured: true,
     availability: "made-to-order",
-    seoTitle: "Bespoke Atelier Sofa | Galaxy Sofas",
+    seoTitle: "Bespoke Atelier Sofa in Chennai | Galaxy Sofas",
     seoDescription:
       "Commission a custom sofa in Chennai. Galaxy Sofas plans size, fill and fabric around your room, including customer’s own material.",
     keywords: ["custom sofa Chennai", "bespoke sofa", "made to measure sofa"],
@@ -271,7 +271,7 @@ export const products: Product[] = [
     tags: ["king bed", "headboard", "primary bedroom"],
     featured: true,
     availability: "in-stock",
-    seoTitle: "Solstice King Bed | Galaxy Sofas",
+    seoTitle: "Solstice King Bed in Chennai | Galaxy Sofas",
     seoDescription:
       "The Solstice King Bed features a tall upholstered headboard and a low footboard. See dimensions and fabrics at Galaxy Sofas, Chennai.",
     keywords: ["king size bed", "king bed Chennai"],
@@ -298,7 +298,7 @@ export const products: Product[] = [
     tags: ["queen bed", "linen", "bedroom"],
     featured: true,
     availability: "in-stock",
-    seoTitle: "Linen Queen Bed | Galaxy Sofas",
+    seoTitle: "Linen Queen Bed in Chennai | Galaxy Sofas",
     seoDescription:
       "A queen bed in linen-look fabric with a channelled headboard. Available from Galaxy Sofas in Chennai, with an optional storage upgrade.",
     keywords: ["queen size bed", "linen bed"],
@@ -325,7 +325,7 @@ export const products: Product[] = [
     tags: ["storage bed", "hydraulic", "compact bedroom"],
     featured: false,
     availability: "made-to-order",
-    seoTitle: "Hold Storage Bed | Galaxy Sofas",
+    seoTitle: "Hold Storage Bed in Chennai | Galaxy Sofas",
     seoDescription:
       "Hold is a hydraulic storage bed for compact bedrooms. Available in king or queen from Galaxy Sofas, Chennai.",
     keywords: ["storage bed", "hydraulic bed"],
@@ -352,7 +352,7 @@ export const products: Product[] = [
     tags: ["upholstered bed", "velvet", "primary bedroom"],
     featured: false,
     availability: "limited",
-    seoTitle: "Velvet Upholstered Bed | Galaxy Sofas",
+    seoTitle: "Velvet Upholstered Bed in Chennai | Galaxy Sofas",
     seoDescription:
       "A fully wrapped upholstered bed in matte velvet. See Clove and Sage colourways at the Galaxy Sofas showroom in Chennai.",
     keywords: ["upholstered bed", "velvet bed"],
@@ -380,7 +380,7 @@ export const products: Product[] = [
     tags: ["wooden bed", "teak", "slatted"],
     featured: false,
     availability: "in-stock",
-    seoTitle: "Teak Line Wooden Bed | Galaxy Sofas",
+    seoTitle: "Teak Line Wooden Bed in Chennai | Galaxy Sofas",
     seoDescription:
       "The Teak Line Wooden Bed features a slatted headboard and a natural oil finish. Available from Galaxy Sofas in Chennai.",
     keywords: ["wooden bed", "teak bed", "hardwood bed"],
@@ -407,7 +407,7 @@ export const products: Product[] = [
     tags: ["modern bed", "platform", "minimal"],
     featured: false,
     availability: "in-stock",
-    seoTitle: "Horizon Modern Bed | Galaxy Sofas",
+    seoTitle: "Horizon Modern Bed in Chennai | Galaxy Sofas",
     seoDescription:
       "Horizon is a low platform bed with a slim headboard. Available in queen and king from Galaxy Sofas, Chennai.",
     keywords: ["modern bed", "platform bed"],
@@ -434,7 +434,7 @@ export const products: Product[] = [
     tags: ["custom bed", "headboard", "bespoke bedroom"],
     featured: true,
     availability: "made-to-order",
-    seoTitle: "Custom Headboard Bed | Galaxy Sofas",
+    seoTitle: "Custom Headboard Bed in Chennai | Galaxy Sofas",
     seoDescription:
       "Commission a custom headboard bed in Chennai, including wall-to-wall panels, niches and storage. Speak to Galaxy Sofas.",
     keywords: ["custom bed Chennai", "custom headboard"],
@@ -463,7 +463,7 @@ export const products: Product[] = [
     tags: ["dining table", "timber", "6 seater"],
     featured: true,
     availability: "in-stock",
-    seoTitle: "Gather Dining Table | Galaxy Sofas",
+    seoTitle: "Gather Dining Table in Chennai | Galaxy Sofas",
     seoDescription:
       "The Gather Dining Table seats six to eight in oak or walnut tone. See it at Galaxy Sofas, a furniture showroom in Chennai.",
     keywords: ["dining table", "wooden dining table Chennai"],
@@ -491,7 +491,7 @@ export const products: Product[] = [
     tags: ["dining chair", "upholstered chair"],
     featured: false,
     availability: "in-stock",
-    seoTitle: "Curve Dining Chair | Galaxy Sofas",
+    seoTitle: "Curve Dining Chair in Chennai | Galaxy Sofas",
     seoDescription:
       "Curve is an upholstered dining chair with a supportive curved back. Available individually from Galaxy Sofas in Chennai.",
     keywords: ["dining chairs", "upholstered dining chair"],
@@ -519,7 +519,7 @@ export const products: Product[] = [
     tags: ["coffee table", "living room"],
     featured: true,
     availability: "in-stock",
-    seoTitle: "Plinth Coffee Table | Galaxy Sofas",
+    seoTitle: "Plinth Coffee Table in Chennai | Galaxy Sofas",
     seoDescription:
       "The Plinth Coffee Table is sized to Galaxy sofas, with a lower shelf and a recessed base. Available in Chennai.",
     keywords: ["coffee table", "living room table"],
@@ -547,7 +547,7 @@ export const products: Product[] = [
     tags: ["side table", "nightstand"],
     featured: false,
     availability: "in-stock",
-    seoTitle: "Ember Side Table | Galaxy Sofas",
+    seoTitle: "Ember Side Table in Chennai | Galaxy Sofas",
     seoDescription:
       "Ember is a compact round side table for sofas and beds. See finishes at Galaxy Sofas in Chennai.",
     keywords: ["side table", "bedside table"],
@@ -575,7 +575,7 @@ export const products: Product[] = [
     tags: ["tv unit", "media unit"],
     featured: false,
     availability: "made-to-order",
-    seoTitle: "Quiet TV Unit | Galaxy Sofas",
+    seoTitle: "Quiet TV Unit in Chennai | Galaxy Sofas",
     seoDescription:
       "Quiet is a handleless TV unit with cable routing and ventilation. Made to order at Galaxy Sofas, Chennai.",
     keywords: ["tv unit", "tv cabinet Chennai"],
@@ -603,7 +603,7 @@ export const products: Product[] = [
     tags: ["wardrobe", "sliding", "bedroom storage"],
     featured: false,
     availability: "made-to-order",
-    seoTitle: "Fold Wardrobe | Galaxy Sofas",
+    seoTitle: "Fold Wardrobe in Chennai | Galaxy Sofas",
     seoDescription:
       "Fold is a sliding-door wardrobe with planned interiors. Custom widths available from Galaxy Sofas in Chennai.",
     keywords: ["wardrobe", "sliding wardrobe Chennai"],
@@ -631,7 +631,7 @@ export const products: Product[] = [
     tags: ["sideboard", "cabinet", "dining"],
     featured: false,
     availability: "in-stock",
-    seoTitle: "Sideboard Cabinet | Galaxy Sofas",
+    seoTitle: "Sideboard Cabinet in Chennai | Galaxy Sofas",
     seoDescription:
       "A dining sideboard with soft-close drawers and adjustable shelves. Available from Galaxy Sofas, Chennai.",
     keywords: ["sideboard", "dining cabinet"],
@@ -659,7 +659,7 @@ export const products: Product[] = [
     tags: ["study table", "desk", "wfh"],
     featured: false,
     availability: "in-stock",
-    seoTitle: "Focus Study Table | Galaxy Sofas",
+    seoTitle: "Focus Study Table in Chennai | Galaxy Sofas",
     seoDescription:
       "Focus is a home study table with a cable port and a wide drawer. See it at Galaxy Sofas in Chennai.",
     keywords: ["study table", "home desk"],
@@ -686,7 +686,7 @@ export const products: Product[] = [
     tags: ["lamp", "lighting", "accessory"],
     featured: false,
     availability: "limited",
-    seoTitle: "Arc Floor Lamp | Galaxy Sofas",
+    seoTitle: "Arc Floor Lamp in Chennai | Galaxy Sofas",
     seoDescription:
       "The Arc Floor Lamp lights a sofa corner without a ceiling point. Available in antique brass or blackened steel from Galaxy Sofas.",
     keywords: ["floor lamp", "living room lighting"],

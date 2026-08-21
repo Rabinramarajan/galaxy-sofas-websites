@@ -3,26 +3,26 @@ import { CategoryShowroom } from "@/components/categories/category-showroom";
 import { ProductCard } from "@/components/products/product-card";
 import { Container, JsonLd } from "@/components/ui/primitives";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { IconArrow } from "@/components/ui/icons";
 import { CraftsmanshipSection } from "@/components/sections/craftsmanship";
 import { LifestyleBand } from "@/components/sections/lifestyle-band";
+import { VisitShowroomSection, WhyGalaxySection } from "@/components/sections/local-seo";
 import { primaryCategories } from "@/data/categories";
 import { getFeaturedProducts } from "@/data/products";
 import { collections } from "@/data/collections";
 import { guides } from "@/data/guides";
 import { createMetadata } from "@/lib/seo";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
-import { site } from "@/lib/site";
 import Link from "next/link";
 import { SafeImage } from "@/components/ui/safe-image";
 import { imageBlur } from "@/lib/images";
 import { media } from "@/data/media";
 
 export const metadata = createMetadata({
-  title: `Premium Sofas, Beds & Furniture | ${site.name}`,
-  description: `Explore premium sofas, beds and furniture designed for modern homes. Discover timeless designs, quality materials and personalised furniture solutions from ${site.name} in ${site.city}.`,
+  title: "Sofas & Furniture Showroom in Chennai | Galaxy Sofas",
+  description:
+    "Explore stylish sofas and furniture at Galaxy Sofas in Virugambakkam, Chennai. Discover contemporary designs for living rooms and bedrooms and visit our showroom to find the right fit for your home.",
   path: "/",
 });
 
@@ -36,14 +36,16 @@ export default function HomePage() {
       <HomeHero />
       <section className="py-20 md:py-24">
         <Container>
-          <Reveal>
-            <SectionHeading
-              as="h2"
-              eyebrow="The showroom"
-              title="Three rooms. One way of furnishing a home."
-              className="max-w-2xl"
-            />
-          </Reveal>
+          <SectionHeading
+            as="h2"
+            eyebrow="Furniture Designed for Comfortable Living"
+            title="Sofas, beds and furniture for modern Chennai homes"
+            className="max-w-2xl"
+          />
+          <p className="mt-6 max-w-2xl text-muted">
+            Galaxy Sofas is a furniture showroom in Virugambakkam for people choosing sofas and complementary home
+            furniture in person. Explore the collections below, or visit the floor to compare comfort, scale and finish.
+          </p>
           <div className="mt-12">
             <CategoryShowroom categories={primaryCategories} />
           </div>
@@ -54,7 +56,7 @@ export default function HomePage() {
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading as="h2" eyebrow="Featured pieces" title="Currently on the floor" />
             <Button href="/sofas" variant="secondary">
-              Explore our sofas
+              Explore Sofas
             </Button>
           </div>
           <div className="mt-10 grid gap-10 sm:grid-cols-2 xl:grid-cols-4">
@@ -65,42 +67,41 @@ export default function HomePage() {
         </Container>
       </section>
       <LifestyleBand />
+      <WhyGalaxySection />
       <section className="py-20 md:py-24">
         <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <Reveal variant="clip-reveal" className="lg:order-2">
-            <div className="relative aspect-[7/5] overflow-hidden bg-linen">
-              <SafeImage
-                src={media.images.furnitureDining.src}
-                alt={media.images.furnitureDining.alt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-[32%_center]"
-                placeholder="blur"
-                blurDataURL={imageBlur}
-              />
-            </div>
-          </Reveal>
-          <Reveal className="lg:order-1">
-            <SectionHeading as="h2" eyebrow="How we work" title="Materials you can sit with for years" />
-            <ul className="mt-8 space-y-6 text-sm leading-relaxed text-muted">
-              <li>
-                <strong className="block text-charcoal">Frames and fill</strong>
-                Kiln-dried hardwood frames and high-resilience foam specified for daily sitting, not showroom posing.
-              </li>
-              <li>
-                <strong className="block text-charcoal">Custom when a standard size fails</strong>
-                Sofas, beds and wardrobes can be planned around your wall, stair and fabric. We will say if a custom
-                piece is unnecessary.
-              </li>
-              <li>
-                <strong className="block text-charcoal">Warranty and delivery</strong>
-                {site.warranty} Delivery inside {site.city} is arranged with access and assembly confirmed first.
-              </li>
-            </ul>
+          <div className="relative aspect-[7/5] overflow-hidden bg-linen lg:order-2">
+            <SafeImage
+              src={media.images.furnitureDining.src}
+              alt={media.images.furnitureDining.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-[32%_center]"
+              placeholder="blur"
+              blurDataURL={imageBlur}
+            />
+          </div>
+          <div className="lg:order-1">
+            <SectionHeading as="h2" eyebrow="How we help" title="Furniture discovery, with time to decide" />
+            <p className="mt-6 text-muted">
+              Bring wall measurements if you have them. We will help you compare{" "}
+              <Link className="underline" href="/sofas/l-shaped-sofas">
+                L-shaped sofas
+              </Link>
+              ,{" "}
+              <Link className="underline" href="/sofas/3-seater-sofas">
+                3-seater sofas
+              </Link>{" "}
+              and{" "}
+              <Link className="underline" href="/beds">
+                beds
+              </Link>{" "}
+              against the way your room actually works — including walkways, door swings and how the household sits.
+            </p>
             <div className="mt-8">
-              <Button href="/about">About the showroom</Button>
+              <Button href="/about">About Galaxy Sofas</Button>
             </div>
-          </Reveal>
+          </div>
         </Container>
       </section>
       <CraftsmanshipSection />
@@ -135,7 +136,7 @@ export default function HomePage() {
         <Container>
           <SectionHeading as="h2" title="Guides worth reading before you buy" />
           <div className="mt-10 grid gap-8 md:grid-cols-3">
-            {guides.map((guide) => (
+            {guides.slice(0, 6).map((guide) => (
               <Link
                 key={guide.slug}
                 href={`/guides/${guide.slug}`}
@@ -152,24 +153,14 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+          <p className="mt-10 text-sm">
+            <Link className="underline" href="/guides">
+              All furniture buying guides
+            </Link>
+          </p>
         </Container>
       </section>
-      <section className="border-t border-border py-16 md:py-20">
-        <Container className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <div>
-            <h2 className="section-title">Visit the {site.city} showroom</h2>
-            <p className="mt-2 max-w-xl text-muted">
-              Sit in the pieces, feel the fabrics, and leave with a clear recommendation — including if you should wait.
-            </p>
-          </div>
-          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <Button href="/contact">Enquire Now</Button>
-            <Button href="/contact#showroom" variant="secondary">
-              Showroom details
-            </Button>
-          </div>
-        </Container>
-      </section>
+      <VisitShowroomSection intro="Looking for sofas or furniture in Chennai? Visit Galaxy Sofas at Nerkundram, Virugambakkam and explore our available furniture collection in person. Our showroom gives you the opportunity to compare designs, understand dimensions and choose furniture that suits your home." />
     </>
   );
 }

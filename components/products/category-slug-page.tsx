@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import type { ProductCategory } from "@/types/product";
-import { getPrimaryCategory, getSubcategories, getSubcategory } from "@/data/categories";
+import { getPrimaryCategory, getSubcategories, getSubcategory, productInSubcategory } from "@/data/categories";
 import { getProductBySlug, getProductsByCategory, getRelatedProducts } from "@/data/products";
 import Link from "next/link";
 import { Container, JsonLd, PageShell } from "@/components/ui/primitives";
@@ -40,8 +40,8 @@ export async function generateCategorySlugMetadata(
 
   if (subcategory && parent) {
     return createMetadata({
-      title: `${subcategory.name} in ${site.city}`,
-      description: `${subcategory.description} See ${subcategory.name.toLowerCase()} at ${site.name} in ${site.city}.`,
+      title: subcategory.seoTitle,
+      description: subcategory.seoDescription,
       path: `/${category}/${slug}`,
       index: !filtered,
     });
@@ -49,7 +49,7 @@ export async function generateCategorySlugMetadata(
 
   if (product) {
     return createMetadata({
-      title: product.seoTitle.replace(` | ${site.name}`, ""),
+      title: product.seoTitle,
       description: product.seoDescription,
       path: `/${category}/${slug}`,
       image: product.images[0]?.src,
@@ -90,7 +90,7 @@ export function CategorySlugPage({
           data={itemListJsonLd(
             subcategory.name,
             products
-              .filter((item) => item.subcategorySlug === slug)
+              .filter((item) => productInSubcategory(item, subcategory))
               .map((item) => ({ name: item.name, path: `/${item.category}/${item.slug}` })),
           )}
         />
@@ -105,6 +105,17 @@ export function CategorySlugPage({
           <header className="mt-8 max-w-2xl">
             <h1 className="page-title">{subcategory.name}</h1>
             <p className="mt-4 text-muted">{subcategory.description}</p>
+            <p className="mt-4 text-sm text-muted">
+              Looking for something else?{" "}
+              <a className="underline" href={parent.href}>
+                Browse all {parent.name.toLowerCase()}
+              </a>
+              {" "}or{" "}
+              <a className="underline" href="/contact">
+                visit the showroom
+              </a>
+              .
+            </p>
           </header>
           <Suspense fallback={<CatalogueSkeleton />}>
             <Catalogue products={products} subcategories={getSubcategories(category)} activeSubcategory={slug} />

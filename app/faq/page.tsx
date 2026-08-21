@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export const metadata = createMetadata({
   title: `Furniture FAQ | ${site.name}`,
-  description: `Answers on delivery, custom sofas, warranty, fabrics and visiting the ${site.name} showroom in ${site.city}.`,
+  description: `Answers on where Galaxy Sofas is in Chennai, sofa types, L-shaped sofas, visiting the Virugambakkam showroom, and what furniture you can explore.`,
   path: "/faq",
 });
 
@@ -40,8 +40,12 @@ export default function FaqPage() {
           Still unsure?{" "}
           <Link href="/contact" className="underline">
             Contact {site.name}
-          </Link>{" "}
-          or read{" "}
+          </Link>
+          , read about the{" "}
+          <Link href="/sofa-showroom-chennai" className="underline">
+            sofa showroom in Chennai
+          </Link>
+          , or see{" "}
           <Link href="/guides/how-to-choose-sofa-size" className="underline">
             how to choose the right sofa size
           </Link>

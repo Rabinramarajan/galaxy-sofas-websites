@@ -53,15 +53,22 @@ export type CategoryDefinition = {
   href: string;
   headline: string;
   description: string;
+  seoTitle: string;
+  seoDescription: string;
   image: ProductImage;
 };
+
+export type SubcategoryMatch = "slug" | "fabric" | "corner";
 
 export type SubcategoryDefinition = {
   slug: string;
   name: string;
   category: ProductCategory;
   description: string;
+  seoTitle: string;
+  seoDescription: string;
   image: ProductImage;
+  match?: SubcategoryMatch;
 };
 
 export type Collection = {

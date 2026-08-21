@@ -7,10 +7,12 @@ import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { imageBlur } from "@/lib/images";
 import { site } from "@/lib/site";
 import { media } from "@/data/media";
+import Link from "next/link";
 
 export const metadata = createMetadata({
-  title: `About ${site.name} | Premium Furniture`,
-  description: `${site.name} is a furniture showroom in ${site.city} for sofas, beds and home furnishings. Learn how we specify materials, custom work, delivery and aftercare.`,
+  title: "About Galaxy Sofas | Furniture Showroom in Chennai",
+  description:
+    "Galaxy Sofas is a furniture showroom in Virugambakkam, Chennai, focused on comfortable sofas, beds and contemporary home furniture you can see in person.",
   path: "/about",
 });
 
@@ -27,19 +29,45 @@ export default function AboutPage() {
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "About" }]} />
         <div className="mt-8 grid items-start gap-12 lg:grid-cols-2">
           <div>
-            <h1 className="page-title">A showroom, not a warehouse aisle</h1>
+            <h1 className="page-title">Furniture for the Way You Live</h1>
             <p className="mt-6 text-muted">
-              {site.name} is a furniture showroom in {site.city} for people who want sofas, beds and dining pieces that
-              will still look considered in five years. We keep a focused floor rather than a wall of lookalikes, and we
-              will tell you when a smaller piece, a different fabric, or a wait for made-to-order is the better decision.
+              Galaxy Sofas is a furniture showroom in Nerkundram, Virugambakkam, Chennai. We specialise in sofas and
+              complementary home furniture — beds, dining pieces and living storage — chosen for comfort, contemporary
+              design and everyday use.
             </p>
             <p className="mt-4 text-muted">
-              Custom work exists for rooms that standard sizes cannot serve — stairs, unusual walls, a fabric already in
-              the house. It is not a default upsell. Warranty covers manufacturing defects on frames for 36 months. We
-              do not publish ratings we have not collected.
+              The philosophy is simple: furniture should support how a household actually sits, sleeps and gathers. That
+              means paying attention to seat depth, walkways, mattress size and finish — not only how a piece photographs.
             </p>
-            <div className="mt-8">
-              <Button href="/contact">Contact the showroom</Button>
+            <p className="mt-4 text-muted">
+              Customer experience here is the showroom itself. You can compare L-shaped sofas with straight 3-seaters,
+              feel fabrics, and talk through what will fit a Chennai apartment or an independent house. Personalised
+              assistance is part of a visit; we would rather recommend a smaller piece than one that owns the floor.
+            </p>
+            <p className="mt-4 text-muted">
+              If you are exploring{" "}
+              <Link className="underline" href="/sofas">
+                sofas in Chennai
+              </Link>
+              ,{" "}
+              <Link className="underline" href="/beds">
+                beds
+              </Link>{" "}
+              or{" "}
+              <Link className="underline" href="/furniture">
+                home furniture
+              </Link>
+              , start in the catalogue or{" "}
+              <Link className="underline" href="/contact">
+                visit Galaxy Sofas
+              </Link>
+              .
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button href="/sofa-showroom-chennai">Sofa showroom in Chennai</Button>
+              <Button href="/contact" variant="secondary">
+                Contact the showroom
+              </Button>
             </div>
           </div>
           <div className="relative aspect-[4/5] overflow-hidden bg-linen">

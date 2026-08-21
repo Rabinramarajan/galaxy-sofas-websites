@@ -1,40 +1,40 @@
 export const site = {
   name: "Galaxy Sofas",
   legalName: "Galaxy Sofas",
-  tagline: "Designed for the Way You Live.",
+  tagline: "Comfort That Completes Your Home.",
   description:
-    "Discover thoughtfully crafted sofas, beds and furniture designed to bring comfort, character and timeless style into your home.",
+    "Explore stylish sofas and furniture at Galaxy Sofas in Virugambakkam, Chennai. Discover contemporary designs for living rooms and bedrooms and visit our showroom to find the right fit for your home.",
   city: "Chennai",
+  neighbourhood: "Virugambakkam",
+  locality: "Nerkundram",
   region: "Tamil Nadu",
-  postalCode: "600017",
+  postalCode: "600107",
   country: "IN",
   countryName: "India",
-  addressLine: "42, Furniture Avenue, T. Nagar",
-  phoneDisplay: "+91 44 4567 8900",
-  phoneE164: "+914445678900",
-  whatsappE164: "919876543210",
-  email: "hello@galaxysofas.in",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  hours: [
-    { days: "Monday – Saturday", time: "10:00 AM – 8:00 PM" },
-    { days: "Sunday", time: "11:00 AM – 6:00 PM" },
+  streetAddress: "No. 19, Nerkundram, Virugambakkam",
+  addressLine: "No. 19, Nerkundram, Virugambakkam",
+  fullAddress: "No. 19, Nerkundram, Virugambakkam, Chennai, Tamil Nadu 600107",
+  phoneDisplay: "097862 11128",
+  phoneE164: "+919786211128",
+  whatsappE164: "919786211128",
+  email: "galaxysofas1717@gmail.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.galaxysofas.com",
+  nearbyAreas: [
+    "Virugambakkam",
+    "Nerkundram",
+    "Valasaravakkam",
+    "Porur",
+    "Koyambedu",
+    "Arumbakkam",
+    "Anna Nagar",
+    "Saligramam",
+    "KK Nagar",
+    "Ashok Nagar",
+    "Vadapalani",
+    "Mogappair",
+    "Choolaimedu",
+    "West Chennai",
   ],
-  openingHoursSpecification: [
-    {
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "10:00",
-      closes: "20:00",
-    },
-    { dayOfWeek: "Sunday", opens: "11:00", closes: "18:00" },
-  ],
-  geo: { latitude: 13.0418, longitude: 80.2337 },
-  serviceAreas: ["Chennai", "Chengalpattu", "Kanchipuram", "Tiruvallur"],
-  social: {
-    instagram: "https://www.instagram.com/",
-    facebook: "https://www.facebook.com/",
-    pinterest: "https://www.pinterest.com/",
-  },
-  warranty: "36-month structural warranty on sofas and beds for manufacturing defects.",
 } as const;
 
 export function absoluteUrl(path = "/") {
@@ -54,16 +54,14 @@ export function telLink() {
   return `tel:${site.phoneE164}`;
 }
 
+export function mapsQuery() {
+  return `${site.name}, ${site.fullAddress}`;
+}
+
 export function mapsEmbedSrc() {
-  const query = encodeURIComponent(
-    `${site.name}, ${site.addressLine}, ${site.city} ${site.postalCode}`,
-  );
-  return `https://www.google.com/maps?q=${query}&output=embed`;
+  return `https://www.google.com/maps?q=${encodeURIComponent(mapsQuery())}&output=embed`;
 }
 
 export function mapsLink() {
-  const query = encodeURIComponent(
-    `${site.name}, ${site.addressLine}, ${site.city} ${site.postalCode}`,
-  );
-  return `https://www.google.com/maps/search/?api=1&query=${query}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery())}`;
 }

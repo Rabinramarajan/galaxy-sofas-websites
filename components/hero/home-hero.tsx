@@ -2,7 +2,6 @@
 
 import { SafeImage } from "@/components/ui/safe-image";
 import { motion, useReducedMotion } from "motion/react";
-import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { containerClass } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
@@ -48,7 +47,7 @@ export function HomeHero() {
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.7, delay: 0, ease }}
           >
-            Showroom · {site.city}
+            Galaxy Sofas · Chennai
           </motion.p>
           <motion.h1
             className="mt-4 font-display text-4xl leading-[1.08] sm:text-6xl lg:text-7xl"
@@ -56,7 +55,7 @@ export function HomeHero() {
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.75, delay: 0.1, ease }}
           >
-            {site.tagline}
+            Comfort That Completes Your Home.
           </motion.h1>
           <motion.p
             className="mt-5 max-w-md text-sm leading-relaxed text-parchment/90 sm:text-base"
@@ -64,7 +63,8 @@ export function HomeHero() {
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.7, delay: 0.2, ease }}
           >
-            {site.description}
+            Explore thoughtfully selected sofas, beds and furniture designed to bring comfort, character and everyday
+            style into your home.
           </motion.p>
           <motion.div
             className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row"
@@ -72,11 +72,11 @@ export function HomeHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.3, ease }}
           >
-            <Button href="/collections" variant="inverse">
-              Explore Collection
+            <Button href="/sofas" variant="inverse">
+              Explore Sofas
             </Button>
-            <Button href="/contact" variant="onDark">
-              Book a visit
+            <Button href="/contact#showroom" variant="onDark">
+              Visit Our Showroom
             </Button>
           </motion.div>
         </div>

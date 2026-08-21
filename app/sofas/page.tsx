@@ -1,10 +1,12 @@
 import { CategoryListing } from "@/components/products/category-listing";
 import { createMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { getPrimaryCategory } from "@/data/categories";
+
+const category = getPrimaryCategory("sofas")!;
 
 export const metadata = createMetadata({
-  title: `Premium Sofas in ${site.city}`,
-  description: `Explore L-shaped, three-seater, recliner and custom sofas at ${site.name}, a sofa showroom in ${site.city}. Sit in the pieces, compare fabrics and enquire for made-to-order sizes.`,
+  title: category.seoTitle,
+  description: category.seoDescription,
   path: "/sofas",
 });
 
@@ -12,8 +14,8 @@ export default function SofasPage() {
   return (
     <CategoryListing
       category="sofas"
-      title="Sofas"
-      intro="Corner sofas, straight seating and custom frames for living rooms in Chennai apartments and houses. Filter by type, fabric and availability, or visit the showroom to sit in them."
+      title={category.headline}
+      intro="Find a sofa that fits the way you live. Explore contemporary designs, comfortable seating options and versatile styles for living rooms of different sizes and layouts."
     />
   );
 }

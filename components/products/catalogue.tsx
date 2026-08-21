@@ -37,6 +37,7 @@ export function Catalogue({
     () =>
       filterCatalogue(products, {
         query: searchParams.get("q") ?? "",
+        category: products[0]?.category,
         subcategory: activeSubcategory,
         material: searchParams.get("material") ?? "",
         color: searchParams.get("color") ?? "",

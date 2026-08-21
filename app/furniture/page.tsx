@@ -1,10 +1,12 @@
 import { CategoryListing } from "@/components/products/category-listing";
 import { createMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { getPrimaryCategory } from "@/data/categories";
+
+const category = getPrimaryCategory("furniture")!;
 
 export const metadata = createMetadata({
-  title: `Premium Home Furniture in ${site.city}`,
-  description: `Dining tables, chairs, storage and living furniture from ${site.name} in ${site.city}. Browse the catalogue or visit the furniture showroom to see finishes in person.`,
+  title: category.seoTitle,
+  description: category.seoDescription,
   path: "/furniture",
 });
 
@@ -12,8 +14,8 @@ export default function FurniturePage() {
   return (
     <CategoryListing
       category="furniture"
-      title="Furniture"
-      intro="Dining, storage and living pieces chosen to sit beside our sofas and beds rather than compete with them."
+      title={category.headline}
+      intro="Complete your home with practical and stylish furniture for living, dining and everyday spaces — pieces chosen to sit beside our sofas and beds."
     />
   );
 }

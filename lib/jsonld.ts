@@ -4,7 +4,7 @@ import type { Product } from "@/types/product";
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": ["Organization", "FurnitureStore", "LocalBusiness"],
+    "@type": ["FurnitureStore", "LocalBusiness", "Organization"],
     name: site.name,
     legalName: site.legalName,
     url: absoluteUrl("/"),
@@ -13,26 +13,16 @@ export function organizationJsonLd() {
     image: absoluteUrl("/opengraph-image"),
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.addressLine,
+      streetAddress: site.streetAddress,
       addressLocality: site.city,
       addressRegion: site.region,
       postalCode: site.postalCode,
       addressCountry: site.country,
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: site.geo.latitude,
-      longitude: site.geo.longitude,
+    areaServed: {
+      "@type": "City",
+      name: site.city,
     },
-    openingHoursSpecification: site.openingHoursSpecification.map((item) => ({
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: item.dayOfWeek,
-      opens: item.opens,
-      closes: item.closes,
-    })),
-    areaServed: site.serviceAreas.map((name) => ({ "@type": "City", name })),
-    sameAs: [site.social.instagram, site.social.facebook, site.social.pinterest],
-    priceRange: "₹₹₹",
   };
 }
 

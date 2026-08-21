@@ -52,6 +52,27 @@ export function CategoryListing({
           <p className="eyebrow text-sand">{site.city} showroom</p>
           <h1 className="page-title mt-3 max-w-2xl text-parchment">{title}</h1>
           <p className="mt-4 max-w-xl text-sm text-parchment/85 md:text-base">{intro}</p>
+          {category === "sofas" ? (
+            <p className="mt-6 max-w-xl text-sm text-parchment/80">
+              Browse{" "}
+              <a className="underline decoration-parchment/50" href="/sofas/l-shaped-sofas">
+                L-shaped sofas
+              </a>
+              ,{" "}
+              <a className="underline decoration-parchment/50" href="/sofas/corner-sofas">
+                corner sofas
+              </a>
+              ,{" "}
+              <a className="underline decoration-parchment/50" href="/sofas/3-seater-sofas">
+                3-seaters
+              </a>{" "}
+              and{" "}
+              <a className="underline decoration-parchment/50" href="/contact">
+                visit the showroom
+              </a>{" "}
+              in Virugambakkam.
+            </p>
+          ) : null}
         </Container>
       </section>
       <Container>

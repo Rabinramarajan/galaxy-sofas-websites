@@ -1,32 +1,37 @@
 export const faqs = [
   {
-    question: "Do you deliver outside Chennai?",
+    question: "Where is Galaxy Sofas located in Chennai?",
     answer:
-      "We regularly deliver across Chennai, Chengalpattu, Kanchipuram and Tiruvallur. Longer distances are quoted after we confirm the piece, access and packing.",
+      "Galaxy Sofas is at No. 19, Nerkundram, Virugambakkam, Chennai, Tamil Nadu 600107. The showroom is in West Chennai, convenient for nearby neighbourhoods such as Valasaravakkam, Porur, Koyambedu, Anna Nagar and Vadapalani.",
   },
   {
-    question: "Can I sit in the sofas before ordering?",
+    question: "What types of sofas are available at Galaxy Sofas?",
     answer:
-      "Yes. The showroom is the right place to check seat depth, fabric and scale. Bring wall measurements if you can.",
+      "You can explore contemporary sofas including L-shaped and corner layouts, 3-seater and 2-seater sofas, recliner sofas, sofa sets and fabric sofas. Availability on the floor changes, so visit or enquire to confirm what you can sit in today.",
   },
   {
-    question: "How long does a made-to-order sofa take?",
+    question: "Does Galaxy Sofas have L-shaped sofas?",
     answer:
-      "Typically four to eight weeks after fabric and size are confirmed. Ready pieces on the floor can be quicker, subject to remaining stock.",
+      "Yes. L-shaped sofas are a core part of the showroom. They suit living rooms that have a clear corner and need extra seating without stretching a straight sofa across the whole wall.",
   },
   {
-    question: "Do you offer a warranty?",
+    question: "Where can I find a sofa showroom in Virugambakkam?",
     answer:
-      "Yes. Sofa and bed frames carry a 36-month warranty against manufacturing defects. Fabric wear from daily use, staining and accidental damage are not covered.",
+      "Galaxy Sofas is a sofa and furniture showroom in Nerkundram, Virugambakkam. You can get directions from the contact page, call 097862 11128, or email galaxysofas1717@gmail.com.",
   },
   {
-    question: "Can you use my own fabric?",
+    question: "What furniture can I explore at Galaxy Sofas?",
     answer:
-      "Often, if the cloth is suitable for seating. Bring a cutting. Drape fabrics are not always strong enough for a family sofa.",
+      "Alongside sofas, the showroom has beds — including king, queen and storage frames — plus living, dining and bedroom furniture such as tables, chairs, TV units and wardrobes.",
   },
   {
-    question: "Do you take online payment on this website?",
+    question: "Can I visit the showroom before choosing a sofa?",
     answer:
-      "Not at the moment. This site is a catalogue and enquiry desk. Pricing, deposits and invoices are handled by the showroom.",
+      "Yes. Visiting is the best way to check seat depth, fabric and overall scale against your room. Bring wall measurements and photos if you can.",
+  },
+  {
+    question: "Does this website take online payment?",
+    answer:
+      "Not at the moment. This site is a catalogue and enquiry desk. Pricing, deposits and invoices are handled through the showroom.",
   },
 ];

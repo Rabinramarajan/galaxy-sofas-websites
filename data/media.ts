@@ -168,7 +168,7 @@ export function galleryFor(category: ProductCategory, subcategorySlug: string, n
   if (category === "sofas") {
     const rotated = rotate(sofaGallery, hash(subcategorySlug + name));
     const images = rotated.map((image) => toProductImage(image, `${name} in a Galaxy Sofas interior`));
-    if (subcategorySlug === "custom") {
+    if (subcategorySlug.includes("custom")) {
       images.push(toProductImage(media.images.sofaStudio, `${name} studio views and fabric detail`));
     }
     return images;
