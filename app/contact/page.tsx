@@ -1,10 +1,11 @@
-import { Container, JsonLd } from "@/components/ui/primitives";
+import { Container, JsonLd, PageShell } from "@/components/ui/primitives";
 import { Breadcrumbs } from "@/components/products/breadcrumbs";
 import { EnquiryForm } from "@/components/forms/enquiry-form";
 import { createMetadata } from "@/lib/seo";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { mapsEmbedSrc, mapsLink, site, telLink, whatsappLink } from "@/lib/site";
 import { Button } from "@/components/ui/button";
+import { IconWhatsApp } from "@/components/ui/icons";
 
 export const metadata = createMetadata({
   title: `Contact ${site.name} | Furniture Enquiries`,
@@ -17,7 +18,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
   const product = typeof params.product === "string" ? params.product : "";
 
   return (
-    <div className="pb-24 pt-10">
+    <PageShell>
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
@@ -26,19 +27,50 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
       />
       <Container>
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Contact" }]} />
-        <div className="mt-8 grid gap-14 lg:grid-cols-2">
+        <div className="mt-8 grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h1 className="font-display text-5xl">Enquire or visit</h1>
-            <p className="mt-4 text-muted">
+            <p className="eyebrow">Visit or write</p>
+            <h1 className="page-title mt-3">Enquire or visit</h1>
+            <p className="mt-4 max-w-lg text-muted">
               Tell us the room and the piece. We reply on working days, usually within a few hours. For urgent
               availability, call or WhatsApp.
             </p>
-            <div className="mt-8">
-              <EnquiryForm defaultProduct={product} source="/contact" />
+            <ul className="mt-8 divide-y divide-border border-y border-border">
+              <li>
+                <a href={telLink()} className="flex min-h-14 items-center justify-between gap-4 py-3">
+                  <span className="eyebrow text-muted">Phone</span>
+                  <span className="text-sm sm:text-base">{site.phoneDisplay}</span>
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${site.email}`} className="flex min-h-14 items-center justify-between gap-4 py-3">
+                  <span className="eyebrow text-muted">Email</span>
+                  <span className="break-all text-sm sm:text-base">{site.email}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={whatsappLink()}
+                  className="flex min-h-14 items-center justify-between gap-4 py-3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="eyebrow text-muted">WhatsApp</span>
+                  <span className="inline-flex items-center gap-2 text-sm sm:text-base">
+                    <IconWhatsApp /> Message the showroom
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <div className="mt-10">
+              <h2 className="font-display text-2xl">Send an enquiry</h2>
+              <div className="mt-6">
+                <EnquiryForm defaultProduct={product} source="/contact" />
+              </div>
             </div>
           </div>
-          <div id="showroom">
-            <h2 className="font-display text-3xl">Showroom</h2>
+          <div id="showroom" className="scroll-mt-28">
+            <h2 className="section-title">Showroom</h2>
             <address className="mt-4 not-italic text-muted">
               {site.name}
               <br />
@@ -46,15 +78,6 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
               <br />
               {site.city}, {site.region} {site.postalCode}
             </address>
-            <p className="mt-4">
-              <a className="underline" href={telLink()}>
-                {site.phoneDisplay}
-              </a>
-              <br />
-              <a className="underline" href={`mailto:${site.email}`}>
-                {site.email}
-              </a>
-            </p>
             <ul className="mt-4 text-sm text-muted">
               {site.hours.map((item) => (
                 <li key={item.days}>
@@ -83,6 +106,6 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
           </div>
         </div>
       </Container>
-    </div>
+    </PageShell>
   );
 }

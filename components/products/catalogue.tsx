@@ -6,6 +6,7 @@ import type { Product } from "@/types/product";
 import type { SubcategoryDefinition } from "@/types/product";
 import { filterCatalogue, unique } from "@/lib/utils";
 import { ProductCard } from "@/components/products/product-card";
+import { Button } from "@/components/ui/button";
 
 export function Catalogue({
   products,
@@ -54,10 +55,10 @@ export function Catalogue({
   }
 
   return (
-    <div>
+    <div className="mt-10">
       <div className="flex flex-col gap-4 border-y border-border py-5 lg:flex-row lg:items-end lg:justify-between">
         <form
-          className="flex min-h-11 flex-1 gap-2"
+          className="flex min-h-11 min-w-0 flex-1 gap-2"
           onSubmit={(event) => {
             event.preventDefault();
             update("q", query);
@@ -71,16 +72,13 @@ export function Catalogue({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search name, category or tag"
-            className="min-h-11 w-full border border-border bg-parchment px-3 text-sm"
+            className="field-input min-w-0"
           />
-          <button
-            type="submit"
-            className="min-h-11 cursor-pointer bg-charcoal px-4 text-[10px] uppercase tracking-[0.16em] text-parchment"
-          >
+          <Button type="submit" className="shrink-0 px-4">
             Search
-          </button>
+          </Button>
         </form>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="grid min-w-0 grid-cols-2 gap-3 sm:grid-cols-4">
           <FilterSelect
             id="material"
             label="Material"
@@ -125,7 +123,7 @@ export function Catalogue({
             <a
               key={item.slug}
               href={`/${item.category}/${item.slug}`}
-              className="min-h-11 shrink-0 border border-border px-4 py-2 text-[11px] uppercase tracking-[0.14em] hover:border-charcoal"
+              className="inline-flex min-h-11 shrink-0 items-center border border-border px-4 text-[11px] uppercase tracking-[0.14em] hover:border-charcoal"
             >
               {item.name}
             </a>
@@ -134,21 +132,28 @@ export function Catalogue({
       ) : null}
       {filtered.length === 0 ? (
         <div className="py-20 text-center">
-          <h2 className="font-display text-3xl">No pieces match those filters</h2>
+          <h2 className="section-title">No furniture matched your search.</h2>
           <p className="mx-auto mt-3 max-w-md text-muted">
             Try clearing search or colour, or browse the full collection. You can also enquire and we will
             suggest a piece from the showroom floor.
           </p>
-          <a href={pathname} className="mt-6 inline-block text-sm underline">
-            Clear filters
-          </a>
+          <div className="mt-8">
+            <Button href={pathname} variant="secondary">
+              Clear filters
+            </Button>
+          </div>
         </div>
       ) : (
-        <div className="grid gap-10 pt-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        <>
+          <p className="pt-8 text-sm text-muted">
+            Showing {filtered.length} {filtered.length === 1 ? "piece" : "pieces"}
+          </p>
+          <div className="grid gap-10 pt-6 sm:grid-cols-2 xl:grid-cols-3">
+            {filtered.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
@@ -168,15 +173,15 @@ function FilterSelect({
   options: Array<string | { value: string; label: string }>;
 }) {
   return (
-    <div>
-      <label htmlFor={id} className="mb-1 block text-[11px] uppercase tracking-[0.16em] text-muted">
+    <div className="min-w-0">
+      <label htmlFor={id} className="eyebrow mb-1 block tracking-[0.16em] text-muted">
         {label}
       </label>
       <select
         id={id}
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="min-h-11 w-full border border-border bg-parchment px-2 text-sm"
+        className="field-input max-w-full"
       >
         <option value="">All</option>
         {options.map((option) => {

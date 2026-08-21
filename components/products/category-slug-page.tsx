@@ -3,9 +3,11 @@ import { Suspense } from "react";
 import type { ProductCategory } from "@/types/product";
 import { getPrimaryCategory, getSubcategories, getSubcategory } from "@/data/categories";
 import { getProductBySlug, getProductsByCategory, getRelatedProducts } from "@/data/products";
-import { Container, JsonLd } from "@/components/ui/primitives";
+import Link from "next/link";
+import { Container, JsonLd, PageShell } from "@/components/ui/primitives";
 import { Breadcrumbs } from "@/components/products/breadcrumbs";
 import { Catalogue } from "@/components/products/catalogue";
+import { CatalogueSkeleton } from "@/components/products/product-skeleton";
 import { ProductGallery } from "@/components/products/gallery";
 import { ProductCard } from "@/components/products/product-card";
 import { StickyEnquire } from "@/components/products/sticky-enquire";
@@ -76,7 +78,7 @@ export function CategorySlugPage({
   if (subcategory && parent) {
     const products = getProductsByCategory(category);
     return (
-      <div className="pb-24 pt-10">
+      <PageShell>
         <JsonLd
           data={breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -101,14 +103,14 @@ export function CategorySlugPage({
             ]}
           />
           <header className="mt-8 max-w-2xl">
-            <h1 className="font-display text-5xl">{subcategory.name}</h1>
+            <h1 className="page-title">{subcategory.name}</h1>
             <p className="mt-4 text-muted">{subcategory.description}</p>
           </header>
-          <Suspense fallback={<div className="mt-10 h-96 animate-pulse bg-linen" />}>
+          <Suspense fallback={<CatalogueSkeleton />}>
             <Catalogue products={products} subcategories={getSubcategories(category)} activeSubcategory={slug} />
           </Suspense>
         </Container>
-      </div>
+      </PageShell>
     );
   }
 
@@ -117,7 +119,7 @@ export function CategorySlugPage({
   const related = getRelatedProducts(product);
 
   return (
-    <div className="pb-28 pt-10 md:pb-24">
+    <PageShell className="pb-28 md:pb-24">
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
@@ -136,15 +138,14 @@ export function CategorySlugPage({
             { name: product.name },
           ]}
         />
-        <div className="mt-8 grid gap-12 lg:grid-cols-2">
+        <div className="mt-8 grid items-start gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16">
           <ProductGallery product={product} />
           <div>
-            <p className="text-[11px] uppercase tracking-[0.22em] text-walnut">{product.subcategory}</p>
-            <h1 className="mt-3 font-display text-4xl sm:text-5xl">{product.name}</h1>
-            <p className="mt-4 text-lg text-muted">{product.shortDescription}</p>
+            <p className="eyebrow tracking-[0.22em]">{product.subcategory}</p>
+            <h1 className="page-title mt-3">{product.name}</h1>
+            <p className="mt-4 text-base text-muted sm:text-lg">{product.shortDescription}</p>
             <p className="mt-6 font-display text-3xl">{formatPrice(product.price)}</p>
             <p className="mt-1 text-sm text-muted">{availabilityLabel(product.availability)}</p>
-            <p className="mt-6 leading-relaxed text-muted">{product.description}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href={`/contact?product=${encodeURIComponent(product.name)}`}>Enquire Now</Button>
               <Button
@@ -155,7 +156,8 @@ export function CategorySlugPage({
                 <IconWhatsApp /> WhatsApp
               </Button>
             </div>
-            <dl className="mt-10 grid grid-cols-2 gap-4 text-sm">
+            <p className="mt-6 leading-relaxed text-muted">{product.description}</p>
+            <dl className="mt-10 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2">
               <Spec label="Material" value={product.material} />
               <Spec label="Finish" value={product.finish} />
               <Spec
@@ -172,7 +174,8 @@ export function CategorySlugPage({
                 {product.colors.map((color) => (
                   <li key={color.name} className="flex items-center gap-2">
                     <span
-                      className="h-3.5 w-3.5 rounded-full border border-charcoal/20"
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5 shrink-0 rounded-full border border-charcoal/20"
                       style={{ backgroundColor: color.hex }}
                     />
                     {color.name}
@@ -197,17 +200,17 @@ export function CategorySlugPage({
             </div>
             <p className="mt-8 text-sm">
               Looking for similar pieces?{" "}
-              <a className="underline" href={`/${category}/${product.subcategorySlug}`}>
+              <Link className="underline" href={`/${category}/${product.subcategorySlug}`}>
                 Explore our {product.subcategory.toLowerCase()}
-              </a>
+              </Link>
               .
             </p>
           </div>
         </div>
         {related.length ? (
           <section className="mt-20">
-            <h2 className="font-display text-3xl">Related pieces</h2>
-            <div className="mt-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            <h2 className="section-title">Related pieces</h2>
+            <div className="mt-8 grid gap-10 sm:grid-cols-2 xl:grid-cols-3">
               {related.map((item) => (
                 <ProductCard key={item.id} product={item} />
               ))}
@@ -216,14 +219,14 @@ export function CategorySlugPage({
         ) : null}
       </Container>
       <StickyEnquire productName={product.name} />
-    </div>
+    </PageShell>
   );
 }
 
 function Spec({ label, value }: { label: string; value: string }) {
   return (
     <div className="border-t border-border pt-3">
-      <dt className="text-[11px] uppercase tracking-[0.16em] text-muted">{label}</dt>
+      <dt className="eyebrow tracking-[0.16em] text-muted">{label}</dt>
       <dd className="mt-1">{value}</dd>
     </div>
   );

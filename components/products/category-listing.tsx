@@ -2,9 +2,10 @@ import { Suspense } from "react";
 import type { ProductCategory } from "@/types/product";
 import { getPrimaryCategory, getSubcategories } from "@/data/categories";
 import { getProductsByCategory } from "@/data/products";
-import { Container, JsonLd } from "@/components/ui/primitives";
+import { Container, JsonLd, PageShell } from "@/components/ui/primitives";
 import { Breadcrumbs } from "@/components/products/breadcrumbs";
 import { Catalogue } from "@/components/products/catalogue";
+import { CatalogueSkeleton } from "@/components/products/product-skeleton";
 import { breadcrumbJsonLd, itemListJsonLd } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 
@@ -24,7 +25,7 @@ export function CategoryListing({
   if (!definition) return null;
 
   return (
-    <div className="pb-24 pt-10">
+    <PageShell>
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
@@ -43,14 +44,14 @@ export function CategoryListing({
       <Container>
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: definition.name }]} />
         <header className="mt-8 max-w-2xl">
-          <p className="text-[11px] uppercase tracking-[0.28em] text-walnut">{site.city} showroom</p>
-          <h1 className="mt-3 font-display text-5xl">{title}</h1>
+          <p className="eyebrow">{site.city} showroom</p>
+          <h1 className="page-title mt-3">{title}</h1>
           <p className="mt-4 text-muted">{intro}</p>
         </header>
-        <Suspense fallback={<div className="mt-10 h-96 animate-pulse bg-linen" />}>
+        <Suspense fallback={<CatalogueSkeleton />}>
           <Catalogue products={products} subcategories={subcategories} />
         </Suspense>
       </Container>
-    </div>
+    </PageShell>
   );
 }

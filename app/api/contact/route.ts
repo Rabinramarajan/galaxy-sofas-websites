@@ -53,8 +53,7 @@ export async function POST(request: Request) {
   } catch {
     return NextResponse.json(
       {
-        error:
-          "The showroom could not send email just now. Please call us, or try again after SMTP is configured.",
+        error: "We could not send your enquiry just now. Please call the showroom or try again shortly.",
       },
       { status: 503 },
     );

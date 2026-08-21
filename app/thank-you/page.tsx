@@ -13,14 +13,14 @@ export const metadata = createMetadata({
 export default function ThankYouPage() {
   return (
     <div className="flex min-h-[60vh] items-center py-20">
-      <Container className="max-w-xl text-center">
-        <p className="text-[11px] uppercase tracking-[0.28em] text-walnut">Enquiry received</p>
-        <h1 className="mt-4 font-display text-5xl">We will be in touch</h1>
+      <Container width="narrow" className="text-center">
+        <p className="eyebrow">Enquiry received</p>
+        <h1 className="page-title mt-4">We will be in touch</h1>
         <p className="mt-4 text-muted">
           Thank you. A specialist at {site.name} will reply by phone or email. If you need the showroom today, call{" "}
           {site.phoneDisplay}.
         </p>
-        <div className="mt-8 flex justify-center gap-3">
+        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <Button href="/sofas">Explore our sofas</Button>
           <Button href="/" variant="secondary">
             Back home

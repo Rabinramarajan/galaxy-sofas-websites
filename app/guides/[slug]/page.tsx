@@ -47,7 +47,7 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
           { name: guide.title, path: `/guides/${guide.slug}` },
         ])}
       />
-      <Container className="max-w-3xl">
+      <Container width="copy">
         <Breadcrumbs
           items={[
             { name: "Home", href: "/" },
@@ -55,11 +55,11 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
             { name: guide.title },
           ]}
         />
-        <h1 className="mt-8 font-display text-5xl">{guide.title}</h1>
+        <h1 className="page-title mt-8">{guide.title}</h1>
         <p className="mt-4 text-lg text-muted">{guide.excerpt}</p>
         {guide.content.map((section) => (
           <section key={section.heading} className="mt-10">
-            <h2 className="font-display text-3xl">{section.heading}</h2>
+            <h2 className="section-title">{section.heading}</h2>
             {section.paragraphs.map((paragraph) => (
               <p key={paragraph.slice(0, 24)} className="mt-4 leading-relaxed text-muted">
                 {paragraph}
@@ -77,8 +77,8 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
       </Container>
       {related.length ? (
         <Container className="mt-16">
-          <h2 className="font-display text-3xl">Pieces that relate to this guide</h2>
-          <div className="mt-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <h2 className="section-title">Pieces that relate to this guide</h2>
+          <div className="mt-8 grid gap-10 sm:grid-cols-2 xl:grid-cols-3">
             {related.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

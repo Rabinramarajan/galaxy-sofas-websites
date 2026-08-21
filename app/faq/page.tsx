@@ -1,5 +1,5 @@
 import { faqs } from "@/data/faq";
-import { Container, JsonLd } from "@/components/ui/primitives";
+import { Container, JsonLd, PageShell } from "@/components/ui/primitives";
 import { Breadcrumbs } from "@/components/products/breadcrumbs";
 import { createMetadata } from "@/lib/seo";
 import { breadcrumbJsonLd, faqJsonLd } from "@/lib/jsonld";
@@ -14,7 +14,7 @@ export const metadata = createMetadata({
 
 export default function FaqPage() {
   return (
-    <div className="pb-24 pt-10">
+    <PageShell>
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
@@ -22,13 +22,13 @@ export default function FaqPage() {
         ])}
       />
       <JsonLd data={faqJsonLd(faqs)} />
-      <Container className="max-w-3xl">
+      <Container width="copy">
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "FAQ" }]} />
-        <h1 className="mt-8 font-display text-5xl">Questions before you visit</h1>
+        <h1 className="page-title mt-8">Questions before you visit</h1>
         <div className="mt-10 space-y-8">
           {faqs.map((faq) => (
-            <section key={faq.question}>
-              <h2 className="font-display text-2xl">{faq.question}</h2>
+            <section key={faq.question} className="border-t border-border pt-6">
+              <h2 className="font-display text-2xl leading-tight">{faq.question}</h2>
               <p className="mt-3 text-muted">{faq.answer}</p>
             </section>
           ))}
@@ -45,6 +45,6 @@ export default function FaqPage() {
           .
         </p>
       </Container>
-    </div>
+    </PageShell>
   );
 }

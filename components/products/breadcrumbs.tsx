@@ -15,7 +15,9 @@ export function Breadcrumbs({
                 {item.name}
               </Link>
             ) : (
-              <span className="text-charcoal">{item.name}</span>
+              <span className="text-charcoal" aria-current="page">
+                {item.name}
+              </span>
             )}
             {index < items.length - 1 ? <span aria-hidden="true">/</span> : null}
           </li>

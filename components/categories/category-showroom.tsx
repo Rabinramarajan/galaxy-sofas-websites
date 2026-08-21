@@ -13,7 +13,7 @@ export function CategoryShowroom({ categories }: { categories: CategoryDefinitio
         return (
           <Reveal key={category.slug} delay={index * 0.08}>
             <Link href={category.href} className="group block">
-              <div className="relative aspect-[3/4] overflow-hidden bg-linen">
+              <div className="relative aspect-[3/4] overflow-hidden bg-linen sm:aspect-[4/5] lg:aspect-[3/4]">
                 <SafeImage
                   src={category.image.src}
                   alt={category.image.alt}
@@ -25,8 +25,8 @@ export function CategoryShowroom({ categories }: { categories: CategoryDefinitio
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6 text-parchment">
-                  <p className="text-[11px] uppercase tracking-[0.22em]">{count} pieces</p>
-                  <h3 className="mt-2 font-display text-4xl">{category.name}</h3>
+                  <p className="eyebrow text-parchment">{count} pieces</p>
+                  <h3 className="mt-2 font-display text-3xl sm:text-4xl">{category.name}</h3>
                   <p className="mt-2 max-w-xs text-sm text-parchment/85">{category.description}</p>
                   <span className="mt-4 inline-block text-[11px] uppercase tracking-[0.18em]">
                     Explore {category.name}

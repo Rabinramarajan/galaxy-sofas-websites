@@ -9,8 +9,8 @@ export function Footer() {
 
   return (
     <footer className="rail mt-auto border-t border-border bg-linen">
-      <Container className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
-        <div className="max-w-sm">
+      <Container className="grid gap-10 py-16 sm:gap-12 md:grid-cols-2 lg:grid-cols-4 lg:py-20">
+        <div className="max-w-sm lg:pr-4">
           <p className="font-display text-2xl">{site.name}</p>
           <p className="mt-4 text-sm leading-relaxed text-muted">
             A furniture showroom in {site.city} for sofas, beds and home furnishings made with considered
@@ -23,7 +23,7 @@ export function Footer() {
           </div>
         </div>
         <div>
-          <p className="text-[11px] uppercase tracking-[0.22em] text-walnut">Quick links</p>
+          <p className="eyebrow">Quick links</p>
           <ul className="mt-4 space-y-2 text-sm">
             {primaryCategories.map((category) => (
               <li key={category.slug}>
@@ -45,7 +45,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="text-[11px] uppercase tracking-[0.22em] text-walnut">Company</p>
+          <p className="eyebrow">Company</p>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
               <Link className="hover:text-walnut" href="/about">
@@ -65,7 +65,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="text-[11px] uppercase tracking-[0.22em] text-walnut">Showroom</p>
+          <p className="eyebrow">Showroom</p>
           <address className="mt-4 space-y-2 text-sm not-italic text-muted">
             <p>
               {site.addressLine}
@@ -88,14 +88,14 @@ export function Footer() {
               </p>
             ))}
           </address>
-          <div className="mt-4 flex gap-4 text-sm">
-            <a href={site.social.instagram} className="hover:text-walnut">
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            <a href={site.social.instagram} className="hover:text-walnut" target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
-            <a href={site.social.facebook} className="hover:text-walnut">
+            <a href={site.social.facebook} className="hover:text-walnut" target="_blank" rel="noopener noreferrer">
               Facebook
             </a>
-            <a href={site.social.pinterest} className="hover:text-walnut">
+            <a href={site.social.pinterest} className="hover:text-walnut" target="_blank" rel="noopener noreferrer">
               Pinterest
             </a>
           </div>
@@ -106,9 +106,13 @@ export function Footer() {
           <p>
             © {year} {site.name}. All rights reserved.
           </p>
-          <div className="flex gap-5">
-            <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/terms-and-conditions">Terms</Link>
+          <div className="flex flex-wrap gap-5">
+            <Link href="/privacy-policy" className="hover:text-charcoal">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-and-conditions" className="hover:text-charcoal">
+              Terms
+            </Link>
           </div>
         </Container>
       </div>

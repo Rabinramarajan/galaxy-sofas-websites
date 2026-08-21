@@ -1,5 +1,5 @@
 import { SafeImage } from "@/components/ui/safe-image";
-import { Container, JsonLd } from "@/components/ui/primitives";
+import { Container, JsonLd, PageShell } from "@/components/ui/primitives";
 import { Breadcrumbs } from "@/components/products/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { createMetadata } from "@/lib/seo";
@@ -15,7 +15,7 @@ export const metadata = createMetadata({
 
 export default function AboutPage() {
   return (
-    <div className="pb-24 pt-10">
+    <PageShell>
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
@@ -26,7 +26,7 @@ export default function AboutPage() {
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "About" }]} />
         <div className="mt-8 grid items-start gap-12 lg:grid-cols-2">
           <div>
-            <h1 className="font-display text-5xl">A showroom, not a warehouse aisle</h1>
+            <h1 className="page-title">A showroom, not a warehouse aisle</h1>
             <p className="mt-6 text-muted">
               {site.name} is a furniture showroom in {site.city} for people who want sofas, beds and dining pieces that
               will still look considered in five years. We keep a focused floor rather than a wall of lookalikes, and we
@@ -41,17 +41,19 @@ export default function AboutPage() {
               <Button href="/contact">Contact the showroom</Button>
             </div>
           </div>
-          <SafeImage
-            src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1400&q=80"
-            alt="Galaxy Sofas showroom-style living room with a tailored sofa and warm lighting"
-            width={1400}
-            height={1600}
-            className="h-auto w-full object-cover"
-            placeholder="blur"
-            blurDataURL={imageBlur}
-          />
+          <div className="relative aspect-[4/5] overflow-hidden bg-linen">
+            <SafeImage
+              src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1400&q=80"
+              alt="Galaxy Sofas showroom-style living room with a tailored sofa and warm lighting"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-center"
+              placeholder="blur"
+              blurDataURL={imageBlur}
+            />
+          </div>
         </div>
       </Container>
-    </div>
+    </PageShell>
   );
 }

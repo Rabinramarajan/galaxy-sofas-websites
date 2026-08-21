@@ -1,4 +1,4 @@
-import { Container, JsonLd } from "@/components/ui/primitives";
+import { Container, JsonLd, PageShell } from "@/components/ui/primitives";
 import { Breadcrumbs } from "@/components/products/breadcrumbs";
 import { createMetadata } from "@/lib/seo";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
@@ -12,16 +12,16 @@ export const metadata = createMetadata({
 
 export default function TermsPage() {
   return (
-    <div className="pb-24 pt-10">
+    <PageShell>
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
           { name: "Terms", path: "/terms-and-conditions" },
         ])}
       />
-      <Container className="max-w-3xl">
+      <Container width="copy">
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Terms" }]} />
-        <h1 className="mt-8 font-display text-5xl">Terms and Conditions</h1>
+        <h1 className="page-title mt-8">Terms and Conditions</h1>
         <div className="mt-8 space-y-5 text-muted">
           <p>
             This website is a catalogue and enquiry service. Prices shown are indicative and may change with fabric,
@@ -37,6 +37,6 @@ export default function TermsPage() {
           </p>
         </div>
       </Container>
-    </div>
+    </PageShell>
   );
 }

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { IconClose, IconMenu } from "@/components/ui/icons";
+import { Container } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -43,27 +44,51 @@ export function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const overHero = pathname === "/" && !scrolled && !open;
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 transition-colors duration-300",
-        scrolled || open ? "border-b border-border bg-parchment/95 backdrop-blur-sm" : "bg-transparent",
+        "sticky top-0 z-40 border-b transition-colors duration-300",
+        scrolled || open ? "border-border bg-parchment/95 backdrop-blur-sm" : "border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-        <Link href="/" className="font-display text-2xl tracking-tight text-charcoal">
+      <Container className="flex min-h-[4.75rem] items-center justify-between gap-4 py-3">
+        <Link
+          href="/"
+          className={cn(
+            "shrink-0 font-display text-xl tracking-tight transition-colors sm:text-2xl",
+            overHero ? "text-parchment" : "text-charcoal",
+          )}
+        >
           {site.name}
         </Link>
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 xl:flex xl:gap-7" aria-label="Primary">
           {links.map((link) => {
             const active = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={active ? "page" : undefined}
                 className={cn(
-                  "text-[11px] uppercase tracking-[0.2em] transition-colors",
-                  active ? "text-walnut" : "text-charcoal/80 hover:text-charcoal",
+                  "whitespace-nowrap text-xs uppercase tracking-[0.2em] transition-colors",
+                  overHero
+                    ? active
+                      ? "text-sand"
+                      : "text-parchment/80 hover:text-parchment"
+                    : active
+                      ? "text-walnut"
+                      : "text-charcoal/80 hover:text-charcoal",
                 )}
               >
                 {link.label}
@@ -71,13 +96,16 @@ export function Header() {
             );
           })}
         </nav>
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:block">
-            <Button href="/contact">Enquire Now</Button>
-          </div>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <Button href="/contact" variant={overHero ? "inverse" : "primary"} className="hidden sm:inline-flex">
+            Enquire Now
+          </Button>
           <button
             type="button"
-            className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center lg:hidden"
+            className={cn(
+              "inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center xl:hidden",
+              overHero ? "text-parchment" : "text-charcoal",
+            )}
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -86,19 +114,29 @@ export function Header() {
             {open ? <IconClose /> : <IconMenu />}
           </button>
         </div>
-      </div>
+      </Container>
       {open ? (
-        <div id="mobile-menu" className="border-t border-border bg-parchment lg:hidden">
-          <nav className="flex flex-col px-5 py-6" aria-label="Mobile">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="min-h-12 border-b border-border/70 py-3 text-sm tracking-[0.16em] uppercase"
-              >
-                {link.label}
-              </Link>
-            ))}
+        <div
+          id="mobile-menu"
+          className="max-h-[calc(100dvh-4.75rem)] overflow-y-auto border-t border-border bg-parchment xl:hidden"
+        >
+          <nav className="flex flex-col px-5 py-4 sm:px-8" aria-label="Mobile">
+            {links.map((link) => {
+              const active = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "flex min-h-12 items-center border-b border-border/70 text-sm tracking-[0.16em] uppercase",
+                    active && "text-walnut",
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <div className="pt-5">
               <Button href="/contact" className="w-full">
                 Enquire Now

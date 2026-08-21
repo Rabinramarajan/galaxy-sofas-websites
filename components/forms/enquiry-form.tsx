@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { contactSchema } from "@/lib/validation";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function EnquiryForm({
   defaultProduct = "",
@@ -75,10 +76,12 @@ export function EnquiryForm({
           name="message"
           required
           rows={5}
-          className="min-h-32 w-full border border-border bg-parchment px-3 py-2 text-sm"
+          aria-invalid={fieldErrors.message ? true : undefined}
+          aria-describedby={fieldErrors.message ? "message-error" : undefined}
+          className={cn("field-input min-h-32")}
         />
         {fieldErrors.message ? (
-          <p className="mt-1 text-sm text-danger" role="alert">
+          <p id="message-error" className="mt-1 text-sm text-danger" role="alert">
             {fieldErrors.message}
           </p>
         ) : null}
@@ -88,7 +91,7 @@ export function EnquiryForm({
           {error}
         </p>
       ) : null}
-      <Button type="submit" disabled={pending}>
+      <Button type="submit" loading={pending} className="w-full sm:w-auto">
         {pending ? "Sending…" : "Send enquiry"}
       </Button>
     </form>
@@ -112,6 +115,7 @@ function Field({
   defaultValue?: string;
   error?: string;
 }) {
+  const errorId = `${id}-error`;
   return (
     <div>
       <label htmlFor={id} className="mb-1 block text-sm">
@@ -124,10 +128,12 @@ function Field({
         required={required}
         autoComplete={autoComplete}
         defaultValue={defaultValue}
-        className="min-h-11 w-full border border-border bg-parchment px-3 text-sm"
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? errorId : undefined}
+        className="field-input"
       />
       {error ? (
-        <p className="mt-1 text-sm text-danger" role="alert">
+        <p id={errorId} className="mt-1 text-sm text-danger" role="alert">
           {error}
         </p>
       ) : null}

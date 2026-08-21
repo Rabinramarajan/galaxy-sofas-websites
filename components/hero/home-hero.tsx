@@ -4,6 +4,8 @@ import { SafeImage } from "@/components/ui/safe-image";
 import { motion, useReducedMotion } from "motion/react";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
+import { containerClass } from "@/components/ui/primitives";
+import { cn } from "@/lib/utils";
 import { imageBlur, unsplash } from "@/lib/images";
 
 const hero = unsplash(
@@ -17,7 +19,7 @@ export function HomeHero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative -mt-[4.5rem] min-h-[100dvh] overflow-hidden bg-ink text-parchment">
+    <section className="relative -mt-[var(--header-height)] min-h-[85dvh] overflow-hidden bg-ink text-parchment md:min-h-[100dvh]">
       <SafeImage
         src={hero.src}
         alt={hero.alt}
@@ -26,22 +28,26 @@ export function HomeHero() {
         sizes="100vw"
         placeholder="blur"
         blurDataURL={imageBlur}
-        className="object-cover object-center"
+        className="object-cover object-[center_35%]"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/35 to-transparent" />
-      <div className="relative mx-auto flex min-h-[100dvh] max-w-6xl items-end px-5 py-20 sm:px-8">
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/45 to-ink/15" />
+      <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-ink/60 to-transparent" />
+      <div
+        className={cn(
+          containerClass,
+          "relative flex min-h-[85dvh] items-end pb-16 pt-28 md:min-h-[100dvh] md:pb-20 md:pt-32",
+        )}
+      >
         <motion.div
           className="max-w-xl"
           initial={reduce ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-[11px] uppercase tracking-[0.32em] text-sand">Showroom · {site.city}</p>
-          <h1 className="mt-4 font-display text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
-            {site.tagline}
-          </h1>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-parchment/85">{site.description}</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <p className="eyebrow text-sand">Showroom · {site.city}</p>
+          <h1 className="mt-4 font-display text-4xl leading-[1.08] sm:text-6xl lg:text-7xl">{site.tagline}</h1>
+          <p className="mt-5 max-w-md text-sm leading-relaxed text-parchment/90 sm:text-base">{site.description}</p>
+          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <Button href="/collections" className="bg-parchment text-charcoal hover:bg-linen">
               Explore Collection
             </Button>
