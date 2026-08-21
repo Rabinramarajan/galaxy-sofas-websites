@@ -23,6 +23,10 @@ const styles = {
   ghost: "text-charcoal underline-offset-4 hover:underline disabled:opacity-50 disabled:cursor-not-allowed",
   danger:
     "bg-danger text-parchment hover:bg-danger/90 disabled:opacity-50 disabled:cursor-not-allowed",
+  inverse:
+    "bg-parchment text-charcoal hover:bg-linen disabled:opacity-50 disabled:cursor-not-allowed",
+  onDark:
+    "border border-parchment/60 bg-transparent text-parchment hover:border-parchment hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed",
 };
 
 export function Button({

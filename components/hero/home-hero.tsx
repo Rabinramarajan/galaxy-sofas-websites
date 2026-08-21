@@ -48,11 +48,11 @@ export function HomeHero() {
           <h1 className="mt-4 font-display text-4xl leading-[1.08] sm:text-6xl lg:text-7xl">{site.tagline}</h1>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-parchment/90 sm:text-base">{site.description}</p>
           <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <Button href="/collections" className="bg-parchment text-charcoal hover:bg-linen">
+            <Button href="/collections" variant="inverse">
               Explore Collection
             </Button>
-            <Button href="/contact" variant="secondary" className="border-parchment/50 text-parchment hover:bg-white/10">
-              Enquire Now
+            <Button href="/contact" variant="onDark">
+              Book a visit
             </Button>
           </div>
         </motion.div>
