@@ -19,7 +19,7 @@ export function SectionHeading({
       {eyebrow ? (
         <p className={cn("eyebrow", tone === "light" && "text-sand")}>{eyebrow}</p>
       ) : null}
-      <Tag className={cn(Tag === "h1" ? "page-title" : "section-title", eyebrow && "mt-3")}>{title}</Tag>
+      <Tag className={cn(Tag === "h1" ? "page-title" : "section-title", eyebrow && "mt-3", tone === "light" && "text-parchment")}>{title}</Tag>
     </div>
   );
 }

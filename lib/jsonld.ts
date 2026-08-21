@@ -70,7 +70,9 @@ export function productJsonLd(product: Product) {
     name: product.name,
     description: product.description,
     sku: product.id,
-    image: product.images.map((image) => image.src),
+    image: product.images.map((image) =>
+      image.src.startsWith("http") ? image.src : absoluteUrl(image.src),
+    ),
     brand: { "@type": "Brand", name: site.name },
     material: product.material,
     color: product.colors.map((color) => color.name),

@@ -1,4 +1,4 @@
-import { unsplash } from "@/lib/images";
+import { galleryFor } from "@/data/media";
 import type { Availability, Product, ProductCategory } from "@/types/product";
 
 const CARE_FABRIC =
@@ -8,13 +8,14 @@ const CARE_WOOD =
 const DELIVERY =
   "White-glove delivery is available within Chennai city limits, typically 10–21 days for ready pieces and 4–8 weeks for made-to-order. A specialist will confirm access, floor and assembly before dispatch.";
 
-type Draft = Omit<Product, "currency" | "careInstructions" | "deliveryInformation"> & {
+type Draft = Omit<Product, "currency" | "careInstructions" | "deliveryInformation" | "images"> & {
   care?: string;
 };
 
 function make(draft: Draft): Product {
   return {
     ...draft,
+    images: galleryFor(draft.category, draft.subcategorySlug, draft.name),
     currency: "INR",
     careInstructions: draft.care ?? CARE_FABRIC,
     deliveryInformation: DELIVERY,
@@ -33,11 +34,6 @@ export const products: Product[] = [
     description:
       "The Modern L-Shaped Sofa is designed for living rooms that need to host without looking overstuffed. Deep cushions, a chaise that can be specified left or right, and a timber plinth keep the silhouette calm. Upholstery is available in performance weaves suited to family use.",
     price: 124900,
-    images: [
-      unsplash("photo-1540574163026-643ea20ade25", "Modern beige L-shaped sofa in a contemporary living room"),
-      unsplash("photo-1555041469-a586c61ea9bc", "Detail of a generously upholstered sofa in natural light"),
-      unsplash("photo-1615873968403-89e068629265", "L-shaped sofa styled with linen cushions and a timber floor"),
-    ],
     colors: [
       { name: "Sand", hex: "#D8C3A5" },
       { name: "Olive", hex: "#6B705C" },
@@ -67,10 +63,6 @@ export const products: Product[] = [
     description:
       "Harbour is a more traditional L-shape with rolled arms and a slightly higher back. It suits formal living rooms that still need to be comfortable for a full evening. Cushions are fibre-wrapped foam so they recover without looking rigid.",
     price: 139900,
-    images: [
-      unsplash("photo-1616486338812-3dadae4b4ace", "Harbour-style L-shaped sofa in a pale living room"),
-      unsplash("photo-1586023492125-27b2c045efd7", "Living room arrangement with a large corner sofa"),
-    ],
     colors: [
       { name: "Ivory", hex: "#EFE6D6" },
       { name: "Slate", hex: "#6D7278" },
@@ -99,10 +91,6 @@ export const products: Product[] = [
     description:
       "Calicut is the sofa we recommend when a room cannot take a corner piece. Slim track arms, a bench-style seat option, and legs that lift the frame keep the floor visually open. It pairs cleanly with our coffee tables and side chairs.",
     price: 68900,
-    images: [
-      unsplash("photo-1493663284031-b7e3aefcae8e", "Grey three-seater sofa in a bright contemporary room"),
-      unsplash("photo-1484101403633-562f891dc89a", "Three-seater sofa with cushions in a living room"),
-    ],
     colors: [
       { name: "Fog", hex: "#C5C0B8" },
       { name: "Ink", hex: "#2C3136" },
@@ -132,10 +120,6 @@ export const products: Product[] = [
     description:
       "Nook sits two adults comfortably without asking for a full wall. Use it opposite a three-seater, under a window, or as the only sofa in a studio. The seat depth is slightly reduced so conversation stays upright and easy.",
     price: 42900,
-    images: [
-      unsplash("photo-1551298370-9d3d53740c72", "Compact two-seater sofa in a small living room"),
-      unsplash("photo-1567538096630-e0c55bd6374c", "Upholstered seating detail in warm interior light"),
-    ],
     colors: [
       { name: "Oatmeal", hex: "#D7C9B1" },
       { name: "Forest", hex: "#3E4A3D" },
@@ -164,10 +148,6 @@ export const products: Product[] = [
     description:
       "Atelier is built as connected modules: armless seats, corners, ottomans and a chaise. Families who move homes, or who are still deciding how a room should work, can add pieces later in matching fabric. Hidden connectors keep the join tidy.",
     price: 168900,
-    images: [
-      unsplash("photo-1618220179428-22790b461013", "Modular sectional sofa in an open-plan living space"),
-      unsplash("photo-1618221195710-dd6b41faaea6", "Modern living room with a large sectional arrangement"),
-    ],
     colors: [
       { name: "Stone", hex: "#C9C2B6" },
       { name: "Navy", hex: "#2B3A4A" },
@@ -196,10 +176,6 @@ export const products: Product[] = [
     description:
       "Stillwater reclines electrically with a slim mechanism hidden in the seat. The arm and back stay visually light, so it can live in a sitting room rather than only a media room. USB charging is optional, not default, so the piece stays calm.",
     price: 98900,
-    images: [
-      unsplash("photo-1550254478-ead40cc54513", "Leather recliner sofa in a modern living room"),
-      unsplash("photo-1540574163026-643ea20ade25", "Reclining sofa shown in a bright interior"),
-    ],
     colors: [
       { name: "Cognac", hex: "#8A4B2F" },
       { name: "Graphite", hex: "#4A4A48" },
@@ -228,10 +204,6 @@ export const products: Product[] = [
     description:
       "Pavilion is sold as a coordinated set so seat height, arm profile and fabric batch match. The single chair can sit opposite or to the side. If you only need the three-seater later, we can supply it from the same specification.",
     price: 154900,
-    images: [
-      unsplash("photo-1615873968403-89e068629265", "Coordinated sofa set in a designer living room"),
-      unsplash("photo-1616486338812-3dadae4b4ace", "Sofa and armchair set with timber legs"),
-    ],
     colors: [
       { name: "Parchment", hex: "#E4D7C3" },
       { name: "Moss", hex: "#5C6848" },
@@ -260,10 +232,6 @@ export const products: Product[] = [
     description:
       "Bespoke Atelier starts with a site discussion or a drawing of your room. We confirm seat depth, arm width, cushion fill and fabric before production. This is the right path when a standard size will not clear a stair, or when you need a precise fabric match to existing curtains or walls.",
     price: null,
-    images: [
-      unsplash("photo-1600210492493-0946911123ea", "Custom tailored sofa in a refined living room"),
-      unsplash("photo-1618221195710-dd6b41faaea6", "Bespoke seating in a contemporary interior"),
-    ],
     colors: [
       { name: "By fabric", hex: "#C4B7A6" },
       { name: "COM", hex: "#8C7B6A" },
@@ -292,10 +260,6 @@ export const products: Product[] = [
     description:
       "Solstice is a king frame with a 120 cm upholstered headboard and a low footboard so the room still feels open. The frame accepts a standard Indian king mattress. Side rails are designed for easy assembly in apartments.",
     price: 79900,
-    images: [
-      unsplash("photo-1616594039964-ae9021a400a0", "King size upholstered bed in a calm hotel-style bedroom"),
-      unsplash("photo-1631049307264-da0ec9d70304", "King bed with layered linen and a tall headboard"),
-    ],
     colors: [
       { name: "Dove", hex: "#C9C4BB" },
       { name: "Espresso", hex: "#3B2F2A" },
@@ -323,10 +287,6 @@ export const products: Product[] = [
     description:
       "Linen Queen is sized for typical Chennai bedrooms. The headboard is channelled rather than tufted, so it reads contemporary. A matching bench is available separately from our furniture collection.",
     price: 58900,
-    images: [
-      unsplash("photo-1560448204-e02f11c3d0e2", "Queen bed with white linen in a bright bedroom"),
-      unsplash("photo-1616627561950-9f746e330187", "Modern queen platform bed in a minimal room"),
-    ],
     colors: [
       { name: "Flax", hex: "#D5C7AE" },
       { name: "Cloud", hex: "#E8E4DC" },
@@ -354,10 +314,6 @@ export const products: Product[] = [
     description:
       "Hold hides off-season bedding and spare pillows without a bulky chest. The lift is counterbalanced so one person can open it. Internal height is planned for folded quilts rather than loose clutter. We recommend this when wardrobes are already full.",
     price: 72900,
-    images: [
-      unsplash("photo-1505693416388-ac5ce068fe85", "Storage bed in a compact modern bedroom"),
-      unsplash("photo-1631679706909-1844bbd07221", "Bedroom with a tailored bed and calm storage"),
-    ],
     colors: [
       { name: "Taupe", hex: "#B7A99A" },
       { name: "Midnight", hex: "#2A2E35" },
@@ -385,10 +341,6 @@ export const products: Product[] = [
     description:
       "The Velvet Upholstered Bed wraps the frame so there is no exposed timber at the sides. Matte velvet is specified over high-shine pile so it photographs and lives more quietly. A stain-guard finish is available on request.",
     price: 84900,
-    images: [
-      unsplash("photo-1631049307264-da0ec9d70304", "Upholstered velvet-look bed with layered bedding"),
-      unsplash("photo-1616594039964-ae9021a400a0", "Fully upholstered bed in a serene bedroom"),
-    ],
     colors: [
       { name: "Clove", hex: "#6B4F4A" },
       { name: "Sage", hex: "#8A9A84" },
@@ -417,10 +369,6 @@ export const products: Product[] = [
       "Teak Line is for bedrooms that want wood, not fabric. The slatted headboard adds texture without carving. We finish in a natural oil that can be maintained at home. Mattress slats are spaced for ventilation.",
     price: 67900,
     care: CARE_WOOD,
-    images: [
-      unsplash("photo-1505693314120-0d443867891c", "Wooden bed frame with a slatted headboard"),
-      unsplash("photo-1560448204-e02f11c3d0e2", "Timber bedroom with a simple wooden bed"),
-    ],
     colors: [
       { name: "Natural teak tone", hex: "#B08B5B" },
       { name: "Deep walnut tone", hex: "#5C4033" },
@@ -448,10 +396,6 @@ export const products: Product[] = [
     description:
       "Horizon sits lower than our upholstered beds, which makes tall ceilings feel calmer and small rooms feel less crowded. The headboard is a slim padded panel, not a wall of foam. Pair it with our side tables for a complete bedside.",
     price: 61900,
-    images: [
-      unsplash("photo-1616627561950-9f746e330187", "Low modern platform bed in a minimal bedroom"),
-      unsplash("photo-1505693314120-0d443867891c", "Contemporary bedroom with a simple bed frame"),
-    ],
     colors: [
       { name: "Putty", hex: "#C8BDB0" },
       { name: "Blackened oak", hex: "#2F2C28" },
@@ -479,10 +423,6 @@ export const products: Product[] = [
     description:
       "When a standard bed leaves awkward gaps on a long wall, we design the headboard to the wall. Lighting, niches and flanking storage can be included. This is planned in the showroom with measurements from your room.",
     price: null,
-    images: [
-      unsplash("photo-1631679706909-1844bbd07221", "Custom bedroom with a wall-spanning headboard"),
-      unsplash("photo-1616594039964-ae9021a400a0", "Bespoke upholstered bed in a tailored bedroom"),
-    ],
     colors: [
       { name: "By fabric", hex: "#D4C4B0" },
       { name: "Painted timber", hex: "#8A8175" },
@@ -511,10 +451,6 @@ export const products: Product[] = [
       "Gather is sized for everyday meals and the occasional extra guest. The top is eased so elbows are comfortable. A closed grain finish resists rings better than raw oil, while still showing timber movement.",
     price: 54900,
     care: CARE_WOOD,
-    images: [
-      unsplash("photo-1577140917170-285929fb55b7", "Timber dining table set for a meal in a sunlit dining room"),
-      unsplash("photo-1617093727343-374698b1b08d", "Dining table surface with ceramic tableware"),
-    ],
     colors: [
       { name: "Oak tone", hex: "#C4A574" },
       { name: "Walnut tone", hex: "#6B4F32" },
@@ -543,10 +479,6 @@ export const products: Product[] = [
     description:
       "Curve is sold individually so you can mix timber and upholstered seats around Gather. The back is curved, not upright-office, and the seat foam is firm enough that guests do not sink after an hour.",
     price: 12900,
-    images: [
-      unsplash("photo-1567538096630-e0c55bd6374c", "Upholstered dining chair in a pale dining room"),
-      unsplash("photo-1598300042247-d088f8ab3a91", "Dining chair detail with timber legs"),
-    ],
     colors: [
       { name: "Oat", hex: "#D9CCB6" },
       { name: "Ink", hex: "#2C3136" },
@@ -576,10 +508,6 @@ export const products: Product[] = [
       "Plinth is designed to sit in front of our three-seaters and L-shapes without blocking circulation. The recessed base makes the top feel lighter. A lower shelf holds books without visual clutter.",
     price: 28900,
     care: CARE_WOOD,
-    images: [
-      unsplash("photo-1617093727343-374698b1b08d", "Low coffee table in a contemporary living room"),
-      unsplash("photo-1586023492125-27b2c045efd7", "Coffee table styled in front of a sofa"),
-    ],
     colors: [
       { name: "Stone oak", hex: "#C9B8A0" },
       { name: "Charred oak", hex: "#3A342E" },
@@ -608,10 +536,6 @@ export const products: Product[] = [
       "Ember takes a lamp without looking like a full console. The round top is kinder in tight circulation paths. Pair two as nightstands with Horizon or Linen Queen.",
     price: 14900,
     care: CARE_WOOD,
-    images: [
-      unsplash("photo-1532372320572-cda25653a26d", "Round wooden side table beside a sofa"),
-      unsplash("photo-1616486338812-3dadae4b4ace", "Side table styled in a living room corner"),
-    ],
     colors: [
       { name: "Honey", hex: "#C4A265" },
       { name: "Ebony", hex: "#2B2622" },
@@ -640,10 +564,6 @@ export const products: Product[] = [
       "Quiet is a low unit so the television does not sit too high. Rear cut-outs and a ventilated shelf keep devices cool. Doors are handleless with a push-catch so the front stays a single plane.",
     price: 38900,
     care: CARE_WOOD,
-    images: [
-      unsplash("photo-1586023492125-27b2c045efd7", "Low TV unit in a contemporary living room"),
-      unsplash("photo-1618221195710-dd6b41faaea6", "Living room media wall with calm storage"),
-    ],
     colors: [
       { name: "Greige", hex: "#B7AFA4" },
       { name: "Walnut tone", hex: "#6B4F32" },
@@ -672,10 +592,6 @@ export const products: Product[] = [
       "Fold uses sliding doors so it works in rooms where hinged doors would hit a bed. Interiors are planned with hanging, shelves and drawers rather than a single empty carcass. Sizes can be adjusted as a custom enquiry.",
     price: 89900,
     care: CARE_WOOD,
-    images: [
-      unsplash("photo-1594026112284-02bb6f3352fe", "Sliding-door wardrobe with timber fronts"),
-      unsplash("photo-1631679706909-1844bbd07221", "Bedroom with integrated wardrobe storage"),
-    ],
     colors: [
       { name: "Warm white", hex: "#EFE8DC" },
       { name: "Oak", hex: "#C4A574" },
@@ -704,10 +620,6 @@ export const products: Product[] = [
       "This sideboard is scaled to sit behind a dining table or on a living room wall. Soft-close drawers and adjustable shelves keep china and glassware stable. The top is finished to take a lamp or a pair of candlesticks.",
     price: 42900,
     care: CARE_WOOD,
-    images: [
-      unsplash("photo-1551298370-9d3d53740c72", "Timber sideboard cabinet in a dining room"),
-      unsplash("photo-1577140917170-285929fb55b7", "Dining room storage beside a timber table"),
-    ],
     colors: [
       { name: "Walnut tone", hex: "#6B4F32" },
       { name: "Painted putty", hex: "#C8BDB0" },
@@ -736,10 +648,6 @@ export const products: Product[] = [
       "Focus keeps the work surface empty. Cable ports sit at the back, and a wide drawer takes adapters. The height is standard desk height, not dining height, so chairs from our dining range should be checked before pairing.",
     price: 24900,
     care: CARE_WOOD,
-    images: [
-      unsplash("photo-1518455027359-f3f8164ba6bd", "Wooden study desk in a quiet home office"),
-      unsplash("photo-1532372320572-cda25653a26d", "Compact timber work table in a home interior"),
-    ],
     colors: [
       { name: "Natural oak", hex: "#C4A574" },
       { name: "White oak", hex: "#E6DCC8" },
@@ -767,10 +675,6 @@ export const products: Product[] = [
     description:
       "Arc is useful in rental homes and in rooms where the ceiling rose is in the wrong place. The shade is fabric so the light stays warm. Pair it with Nook or Calicut when a side table lamp is not enough.",
     price: 18900,
-    images: [
-      unsplash("photo-1616486338812-3dadae4b4ace", "Floor lamp lighting a styled living room"),
-      unsplash("photo-1586023492125-27b2c045efd7", "Living room lighting beside a sofa"),
-    ],
     colors: [
       { name: "Antique brass", hex: "#B08D57" },
       { name: "Blackened steel", hex: "#2F2F2F" },

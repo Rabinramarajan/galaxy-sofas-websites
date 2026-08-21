@@ -25,12 +25,15 @@ export default function FaqPage() {
       <Container width="copy">
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "FAQ" }]} />
         <h1 className="page-title mt-8">Questions before you visit</h1>
-        <div className="mt-10 space-y-8">
+        <div className="mt-10 space-y-0">
           {faqs.map((faq) => (
-            <section key={faq.question} className="border-t border-border pt-6">
-              <h2 className="font-display text-2xl leading-tight">{faq.question}</h2>
-              <p className="mt-3 text-muted">{faq.answer}</p>
-            </section>
+            <details key={faq.question} className="group border-t border-border py-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-2xl leading-tight marker:content-none [&::-webkit-details-marker]:hidden">
+                {faq.question}
+                <span className="text-sm text-muted transition-transform duration-300 group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 max-w-2xl text-muted">{faq.answer}</p>
+            </details>
           ))}
         </div>
         <p className="mt-12 text-sm">

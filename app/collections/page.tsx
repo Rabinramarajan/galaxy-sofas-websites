@@ -53,7 +53,7 @@ export default function CollectionsPage() {
                     sizes="(max-width: 1280px) 100vw, 1280px"
                     placeholder="blur"
                     blurDataURL={imageBlur}
-                    className="object-cover object-center"
+                    className="object-cover object-[center_55%] transition-transform duration-[700ms] group-hover:scale-[1.04]"
                   />
                 </div>
                 <h2 className="section-title">{collection.name}</h2>

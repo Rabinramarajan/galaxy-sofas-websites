@@ -1,4 +1,4 @@
-import { unsplash } from "@/lib/images";
+import { collectionImage } from "@/data/media";
 import { products } from "@/data/products";
 import type { Collection } from "@/types/product";
 
@@ -8,31 +8,28 @@ export const collections: Collection[] = [
     name: "The Living Edit",
     description:
       "Sofas, tables and lighting composed as a sitting room rather than a set of isolated products.",
-    image: unsplash(
-      "photo-1615873968403-89e068629265",
-      "Living room collection with sofa, table and warm lighting",
-    ),
+    image: collectionImage("the-living-edit"),
     productIds: ["sofa-01", "sofa-03", "fur-03", "fur-04", "fur-09"],
   },
   {
     slug: "rest",
     name: "Rest",
     description: "Beds and bedroom storage planned for quiet rooms and uncluttered floors.",
-    image: unsplash("photo-1631049307264-da0ec9d70304", "Bedroom collection with an upholstered bed"),
+    image: collectionImage("rest"),
     productIds: ["bed-01", "bed-02", "bed-03", "fur-06", "fur-04"],
   },
   {
     slug: "dining-and-gather",
     name: "Dining & Gather",
     description: "Tables, chairs and sideboards for rooms that work as hard at breakfast as they do at dinner.",
-    image: unsplash("photo-1577140917170-285929fb55b7", "Dining collection with a timber table and chairs"),
+    image: collectionImage("dining-and-gather"),
     productIds: ["fur-01", "fur-02", "fur-07"],
   },
   {
     slug: "custom-atelier",
     name: "Custom Atelier",
     description: "Made-to-measure sofas, beds and storage when a standard size will not serve the room.",
-    image: unsplash("photo-1600210492493-0946911123ea", "Custom furniture atelier pieces in a refined interior"),
+    image: collectionImage("custom-atelier"),
     productIds: ["sofa-08", "bed-07", "fur-05", "fur-06"],
   },
 ];

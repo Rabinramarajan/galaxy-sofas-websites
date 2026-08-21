@@ -53,7 +53,10 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const overHero = pathname === "/" && !scrolled && !open;
+  const overHero =
+    (pathname === "/" || pathname === "/sofas" || pathname === "/beds" || pathname === "/furniture") &&
+    !scrolled &&
+    !open;
 
   return (
     <header
@@ -81,7 +84,7 @@ export function Header() {
                 href={link.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "whitespace-nowrap text-xs uppercase tracking-[0.2em] transition-colors",
+                  "nav-link relative whitespace-nowrap text-xs uppercase tracking-[0.2em] transition-colors",
                   overHero
                     ? active
                       ? "text-sand"

@@ -89,7 +89,7 @@ export function Footer() {
             ))}
           </address>
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-            <a href={site.social.instagram} className="hover:text-walnut" target="_blank" rel="noopener noreferrer">
+            <a href={site.social.instagram} className="transition-colors hover:text-walnut" target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
             <a href={site.social.facebook} className="hover:text-walnut" target="_blank" rel="noopener noreferrer">

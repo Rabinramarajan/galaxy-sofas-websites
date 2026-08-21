@@ -216,9 +216,52 @@ body {
   }
 }
 
+.media-sheen {
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    color-mix(in srgb, var(--parchment) 14%, transparent) 48%,
+    transparent 58%
+  );
+  transform: translateX(-40%);
+  animation: none;
+}
+
+.group:hover .media-sheen {
+  animation: sheen-sweep 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes sheen-sweep {
+  to {
+    transform: translateX(40%);
+  }
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .preloader-line {
-    transform: scaleX(1);
+  .group:hover .media-sheen,
+  .media-sheen {
     animation: none;
+  }
+
+  .nav-link::after {
+    transition: none;
   }
 }

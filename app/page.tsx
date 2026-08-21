@@ -6,6 +6,8 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { IconArrow } from "@/components/ui/icons";
+import { CraftsmanshipSection } from "@/components/sections/craftsmanship";
+import { LifestyleBand } from "@/components/sections/lifestyle-band";
 import { primaryCategories } from "@/data/categories";
 import { getFeaturedProducts } from "@/data/products";
 import { collections } from "@/data/collections";
@@ -16,6 +18,7 @@ import { site } from "@/lib/site";
 import Link from "next/link";
 import { SafeImage } from "@/components/ui/safe-image";
 import { imageBlur } from "@/lib/images";
+import { media } from "@/data/media";
 
 export const metadata = createMetadata({
   title: `Premium Sofas, Beds & Furniture | ${site.name}`,
@@ -61,22 +64,23 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+      <LifestyleBand />
       <section className="py-20 md:py-24">
-        <Container className="grid items-center gap-12 lg:grid-cols-2">
-          <Reveal>
+        <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <Reveal variant="clip-reveal" className="lg:order-2">
             <div className="relative aspect-[7/5] overflow-hidden bg-linen">
               <SafeImage
-                src="https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=1400&q=80"
-                alt="Timber dining chairs and table in a sunlit interior"
+                src={media.images.furnitureDining.src}
+                alt={media.images.furnitureDining.alt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center"
+                className="object-cover object-[32%_center]"
                 placeholder="blur"
                 blurDataURL={imageBlur}
               />
             </div>
           </Reveal>
-          <Reveal>
+          <Reveal className="lg:order-1">
             <SectionHeading as="h2" eyebrow="How we work" title="Materials you can sit with for years" />
             <ul className="mt-8 space-y-6 text-sm leading-relaxed text-muted">
               <li>
@@ -99,6 +103,7 @@ export default function HomePage() {
           </Reveal>
         </Container>
       </section>
+      <CraftsmanshipSection />
       <section className="bg-charcoal py-20 text-parchment md:py-24">
         <Container>
           <SectionHeading as="h2" eyebrow="Collections" title="Rooms, not isolated products" tone="light" />
@@ -113,10 +118,10 @@ export default function HomePage() {
                   src={collection.image.src}
                   alt={collection.image.alt}
                   fill
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover object-center transition-transform duration-[700ms] group-hover:scale-[1.04]"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-ink/45" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent" />
                 <div className="relative flex min-h-72 flex-col justify-end p-6 sm:p-8">
                   <h3 className="font-display text-3xl">{collection.name}</h3>
                   <p className="mt-2 max-w-md text-sm text-parchment/85">{collection.description}</p>
@@ -131,11 +136,18 @@ export default function HomePage() {
           <SectionHeading as="h2" title="Guides worth reading before you buy" />
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {guides.map((guide) => (
-              <Link key={guide.slug} href={`/guides/${guide.slug}`} className="border-t border-border pt-5">
+              <Link
+                key={guide.slug}
+                href={`/guides/${guide.slug}`}
+                className="group border-t border-border pt-5"
+              >
                 <h3 className="font-display text-2xl leading-tight">{guide.title}</h3>
                 <p className="mt-3 text-sm text-muted">{guide.excerpt}</p>
                 <span className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.16em]">
-                  Read the guide <IconArrow />
+                  Read the guide{" "}
+                  <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+                    <IconArrow />
+                  </span>
                 </span>
               </Link>
             ))}

@@ -6,6 +6,7 @@ import { createMetadata } from "@/lib/seo";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { imageBlur } from "@/lib/images";
 import { site } from "@/lib/site";
+import { media } from "@/data/media";
 
 export const metadata = createMetadata({
   title: `About ${site.name} | Premium Furniture`,
@@ -43,11 +44,11 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-[4/5] overflow-hidden bg-linen">
             <SafeImage
-              src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1400&q=80"
-              alt="Galaxy Sofas showroom-style living room with a tailored sofa and warm lighting"
+              src={media.images.sofasLiving.src}
+              alt={media.images.sofasLiving.alt}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center"
+              className="object-cover object-[center_58%]"
               placeholder="blur"
               blurDataURL={imageBlur}
             />

@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Analytics } from "@/components/layout/analytics";
 import { Preloader } from "@/components/layout/preloader";
+import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import "./globals.css";
 
 const display = Cormorant_Garamond({
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+        <WhatsAppFloat />
         <Analytics />
       </body>
     </html>
