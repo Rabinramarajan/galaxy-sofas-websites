@@ -10,6 +10,7 @@ import { CatalogueSkeleton } from "@/components/products/product-skeleton";
 import { CinematicVideo } from "@/components/media/cinematic-video";
 import { breadcrumbJsonLd, itemListJsonLd } from "@/lib/jsonld";
 import { site } from "@/lib/site";
+import Link from "next/link";
 
 export function CategoryListing({
   category,
@@ -55,21 +56,21 @@ export function CategoryListing({
           {category === "sofas" ? (
             <p className="mt-6 max-w-xl text-sm text-parchment/80">
               Browse{" "}
-              <a className="underline decoration-parchment/50" href="/sofas/l-shaped-sofas">
+              <Link className="underline decoration-parchment/50" href="/sofas/l-shaped-sofas">
                 L-shaped sofas
-              </a>
+              </Link>
               ,{" "}
-              <a className="underline decoration-parchment/50" href="/sofas/corner-sofas">
+              <Link className="underline decoration-parchment/50" href="/sofas/corner-sofas">
                 corner sofas
-              </a>
+              </Link>
               ,{" "}
-              <a className="underline decoration-parchment/50" href="/sofas/3-seater-sofas">
+              <Link className="underline decoration-parchment/50" href="/sofas/3-seater-sofas">
                 3-seaters
-              </a>{" "}
+              </Link>{" "}
               and{" "}
-              <a className="underline decoration-parchment/50" href="/contact">
+              <Link className="underline decoration-parchment/50" href="/contact">
                 visit the showroom
-              </a>{" "}
+              </Link>{" "}
               in Virugambakkam.
             </p>
           ) : null}

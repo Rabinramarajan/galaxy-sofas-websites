@@ -52,8 +52,8 @@ export function LifestyleBand() {
             A sofa, a table, and enough empty floor that the architecture can still speak.
           </p>
           <div className="mt-8">
-            <Button href="/collections" variant="inverse">
-              See the living edit
+            <Button href="/sofas" variant="inverse">
+              Explore Sofas
             </Button>
           </div>
         </div>

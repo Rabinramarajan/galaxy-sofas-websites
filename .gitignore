@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local screenshot captures
+/screenshots
+[INFO] Recording command outcome: printf
+
+[OK] Command outcome recorded

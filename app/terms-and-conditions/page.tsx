@@ -29,11 +29,11 @@ export default function TermsPage() {
           </p>
           <p>
             Images are representative. Timber grain, fabric dye lots and handmade upholstery will vary. Lead times are
-            estimates until production is scheduled.
+            estimates until the showroom confirms them.
           </p>
           <p>
-            You may not scrape or republish our product copy or photography without permission. Showroom visits are by
-            opening hours listed on the contact page unless we agree otherwise.
+            You may not scrape or republish our product copy or photography without permission. Showroom visits can be
+            arranged via the contact page, phone or email.
           </p>
         </div>
       </Container>

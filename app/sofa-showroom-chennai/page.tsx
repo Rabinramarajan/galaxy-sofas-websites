@@ -6,7 +6,6 @@ import { createMetadata } from "@/lib/seo";
 import { breadcrumbJsonLd, faqJsonLd } from "@/lib/jsonld";
 import { mapsLink, site, telLink } from "@/lib/site";
 import { sofaSubcategories } from "@/data/categories";
-import { VisitShowroomSection } from "@/components/sections/local-seo";
 
 export const metadata = createMetadata({
   title: "Sofa Showroom in Chennai | Galaxy Sofas",
@@ -139,10 +138,6 @@ export default function SofaShowroomChennaiPage() {
           </div>
         </section>
       </Container>
-      <VisitShowroomSection
-        title="Directions to the Chennai showroom"
-        intro="Use the map for the verified Galaxy Sofas location in Nerkundram, Virugambakkam. If you are coming from another part of Chennai, call ahead so we can confirm what is on the floor that day."
-      />
     </PageShell>
   );
 }

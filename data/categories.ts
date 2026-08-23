@@ -1,5 +1,6 @@
 import { media } from "@/data/media";
 import type { CategoryDefinition, Product, SubcategoryDefinition } from "@/types/product";
+import { productInSubcategory } from "@/lib/utils";
 
 function from(image: { src: string; alt: string; width: number; height: number }, alt?: string) {
   return { src: image.src, alt: alt ?? image.alt, width: image.width, height: image.height };
@@ -326,23 +327,6 @@ export function getPrimaryCategory(slug: string) {
 
 export function getSubcategory(category: string, slug: string) {
   return allSubcategories.find((item) => item.category === category && item.slug === slug);
-}
-
-export function productInSubcategory(product: Product, subcategory: SubcategoryDefinition) {
-  if (product.category !== subcategory.category) return false;
-
-  if (subcategory.match === "corner") {
-    return product.subcategorySlug === "l-shaped-sofas" || product.tags.includes("l-shaped");
-  }
-
-  if (subcategory.match === "fabric") {
-    const material = product.material.toLowerCase();
-    const fabricLike = /fabric|linen|weave|cotton/.test(material);
-    const leatherLed = material.startsWith("semi-aniline leather") || material.startsWith("leather");
-    return fabricLike && !leatherLed;
-  }
-
-  return product.subcategorySlug === subcategory.slug;
 }
 
 export function productsForSubcategory(products: Product[], subcategory: SubcategoryDefinition) {

@@ -37,14 +37,14 @@ export function Catalogue({
     () =>
       filterCatalogue(products, {
         query: searchParams.get("q") ?? "",
-        category: products[0]?.category,
         subcategory: activeSubcategory,
+        subcategoryMatch: subcategories.find((item) => item.slug === activeSubcategory)?.match,
         material: searchParams.get("material") ?? "",
         color: searchParams.get("color") ?? "",
         availability: searchParams.get("availability") ?? "",
         sort: searchParams.get("sort") ?? "",
       }),
-    [products, searchParams, activeSubcategory],
+    [products, searchParams, activeSubcategory, subcategories],
   );
 
   function update(key: string, value: string) {

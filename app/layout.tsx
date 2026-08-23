@@ -25,7 +25,7 @@ const body = Figtree({
 export const metadata: Metadata = {
   metadataBase: new URL(absoluteUrl("/")),
   title: {
-    default: `Premium Sofas, Beds & Furniture | ${site.name}`,
+    default: "Sofas & Furniture Showroom in Chennai | Galaxy Sofas",
     template: `%s | ${site.name}`,
   },
   description: site.description,

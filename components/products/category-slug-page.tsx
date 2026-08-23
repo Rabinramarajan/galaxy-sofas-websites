@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import type { ProductCategory } from "@/types/product";
-import { getPrimaryCategory, getSubcategories, getSubcategory, productInSubcategory } from "@/data/categories";
+import { getPrimaryCategory, getSubcategories, getSubcategory } from "@/data/categories";
+import { productInSubcategory } from "@/lib/utils";
 import { getProductBySlug, getProductsByCategory, getRelatedProducts } from "@/data/products";
 import Link from "next/link";
 import { Container, JsonLd, PageShell } from "@/components/ui/primitives";
@@ -107,13 +108,13 @@ export function CategorySlugPage({
             <p className="mt-4 text-muted">{subcategory.description}</p>
             <p className="mt-4 text-sm text-muted">
               Looking for something else?{" "}
-              <a className="underline" href={parent.href}>
+              <Link className="underline" href={parent.href}>
                 Browse all {parent.name.toLowerCase()}
-              </a>
+              </Link>
               {" "}or{" "}
-              <a className="underline" href="/contact">
+              <Link className="underline" href="/contact">
                 visit the showroom
-              </a>
+              </Link>
               .
             </p>
           </header>
@@ -213,6 +214,10 @@ export function CategorySlugPage({
               Looking for similar pieces?{" "}
               <Link className="underline" href={`/${category}/${product.subcategorySlug}`}>
                 Explore our {product.subcategory.toLowerCase()}
+              </Link>
+              {" "}or{" "}
+              <Link className="underline" href={`/contact?product=${encodeURIComponent(product.name)}`}>
+                contact Galaxy Sofas
               </Link>
               .
             </p>

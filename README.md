@@ -12,7 +12,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Edit `lib/site.ts` for brand, city, phone, WhatsApp and address.
+Edit `lib/site.ts` for the verified NAP: Galaxy Sofas, No. 19, Nerkundram, Virugambakkam, Chennai, Tamil Nadu 600107, phone 097862 11128, email galaxysofas1717@gmail.com.
 
 ## Email
 

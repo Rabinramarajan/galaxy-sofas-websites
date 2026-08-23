@@ -13,8 +13,8 @@ export function Footer() {
         <div className="max-w-sm lg:pr-4">
           <p className="font-display text-2xl">{site.name}</p>
           <p className="mt-4 text-sm leading-relaxed text-muted">
-            A furniture showroom in {site.city} for sofas, beds and home furnishings made with considered
-            materials and a quiet, lasting style.
+            A sofa and furniture showroom in Virugambakkam, Chennai — contemporary sofas, beds and home furniture you
+            can sit in, measure and choose with assistance on the floor.
           </p>
           <div className="mt-6">
             <Button href="/contact" variant="secondary">
@@ -23,18 +23,23 @@ export function Footer() {
           </div>
         </div>
         <div>
-          <p className="eyebrow">Quick links</p>
+          <p className="eyebrow">Explore</p>
           <ul className="mt-4 space-y-2 text-sm">
             {primaryCategories.map((category) => (
               <li key={category.slug}>
                 <Link className="hover:text-walnut" href={category.href}>
-                  Explore our {category.name.toLowerCase()}
+                  {category.name} in Chennai
                 </Link>
               </li>
             ))}
             <li>
+              <Link className="hover:text-walnut" href="/sofas/l-shaped-sofas">
+                L-shaped sofas
+              </Link>
+            </li>
+            <li>
               <Link className="hover:text-walnut" href="/collections">
-                Browse collections
+                Collections
               </Link>
             </li>
             <li>
@@ -45,8 +50,18 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="eyebrow">Company</p>
+          <p className="eyebrow">Showroom</p>
           <ul className="mt-4 space-y-2 text-sm">
+            <li>
+              <Link className="hover:text-walnut" href="/sofa-showroom-chennai">
+                Sofa showroom in Chennai
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:text-walnut" href="/sofa-showroom-virugambakkam">
+                Sofa showroom in Virugambakkam
+              </Link>
+            </li>
             <li>
               <Link className="hover:text-walnut" href="/about">
                 About {site.name}
@@ -54,21 +69,23 @@ export function Footer() {
             </li>
             <li>
               <Link className="hover:text-walnut" href="/contact">
-                Contact the showroom
+                Contact
               </Link>
             </li>
             <li>
               <Link className="hover:text-walnut" href="/faq">
-                Frequently asked questions
+                FAQ
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <p className="eyebrow">Showroom</p>
+          <p className="eyebrow">NAP</p>
           <address className="mt-4 space-y-2 text-sm not-italic text-muted">
             <p>
-              {site.addressLine}
+              {site.name}
+              <br />
+              {site.streetAddress}
               <br />
               {site.city}, {site.region} {site.postalCode}
             </p>
@@ -82,23 +99,12 @@ export function Footer() {
                 {site.email}
               </a>
             </p>
-            {site.hours.map((item) => (
-              <p key={item.days}>
-                {item.days}: {item.time}
-              </p>
-            ))}
+            <p>
+              <a className="text-charcoal hover:text-walnut" href="https://www.galaxysofas.com/">
+                www.galaxysofas.com
+              </a>
+            </p>
           </address>
-          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-            <a href={site.social.instagram} className="transition-colors hover:text-walnut" target="_blank" rel="noopener noreferrer">
-              Instagram
-            </a>
-            <a href={site.social.facebook} className="hover:text-walnut" target="_blank" rel="noopener noreferrer">
-              Facebook
-            </a>
-            <a href={site.social.pinterest} className="hover:text-walnut" target="_blank" rel="noopener noreferrer">
-              Pinterest
-            </a>
-          </div>
         </div>
       </Container>
       <div className="border-t border-border">

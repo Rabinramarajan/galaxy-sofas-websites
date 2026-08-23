@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { createMetadata } from "@/lib/seo";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { imageBlur } from "@/lib/images";
-import { site } from "@/lib/site";
 import { media } from "@/data/media";
 import Link from "next/link";
 

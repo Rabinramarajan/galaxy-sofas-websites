@@ -17,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy-policy",
     "/terms-and-conditions",
     "/guides",
+    "/sofa-showroom-chennai",
+    "/sofa-showroom-virugambakkam",
   ];
 
   const subcategoryPaths = allSubcategories.map((item) => `/${item.category}/${item.slug}`);

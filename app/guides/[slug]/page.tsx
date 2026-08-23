@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps<"/guides/[slug]">):
     });
   }
   return createMetadata({
-    title: guide.seoTitle.replace(" | Galaxy Sofas", ""),
+    title: guide.seoTitle,
     description: guide.seoDescription,
     path: `/guides/${guide.slug}`,
   });
@@ -71,6 +71,10 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
           Continue to{" "}
           <Link className="underline" href={`/${guide.relatedCategory}`}>
             explore our {guide.relatedCategory}
+          </Link>
+          {" "}or{" "}
+          <Link className="underline" href="/contact">
+            contact the showroom
           </Link>
           .
         </p>
