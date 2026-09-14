@@ -35,7 +35,7 @@ export function HeroSection() {
         tabIndex={-1}
       >
         <source
-          src="/images/hero/Muted_Sofa_Video_Background.mp4"
+          src="/images/hero/galaxy-sofas-hero-loop.mp4"
           type="video/mp4"
           media="(min-width: 640px)"
         />
