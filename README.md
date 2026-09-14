@@ -1,59 +1,95 @@
-# Angular22
+# Galaxy Sofas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.0.
+Static marketing website for Galaxy Sofas — a sofa and furniture brand in Chennai.
 
-## Development server
+## Tech
 
-To start a local development server, run:
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Lucide React
+- Static export (`output: "export"`)
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Install
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Run locally
 
 ```bash
-ng generate --help
+npm run dev
 ```
 
-## Building
+Open [http://localhost:3000](http://localhost:3000).
 
-To build the project run:
+## Build
 
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Static files are written to the `out/` folder.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Preview the export:
 
 ```bash
-ng test
+npx serve out
 ```
 
-## Running end-to-end tests
+## Update contact details
 
-For end-to-end (e2e) testing, run:
+Edit `src/constants/site.ts`:
 
-```bash
-ng e2e
+- `phone`
+- `email`
+- `whatsappNumber` / `whatsappUrl`
+- `location`
+- `social.instagram`
+- `social.facebook`
+- `url` (used by sitemap, robots, and Open Graph)
+
+## Replace placeholder images
+
+Put your photos in `public/images/` using these paths:
+
+- `public/images/logo/galaxy-sofas-logo.png`
+- `public/images/hero/galaxy-sofas-hero.jpg`
+- `public/images/about/workshop.jpg`
+- `public/images/about/custom-design.jpg`
+- `public/images/products/*.jpg`
+- `public/images/gallery/work-01.jpg` through `work-08.jpg`
+
+Keep the filenames, or update the matching paths in `src/data/products.ts` and `src/data/gallery.ts`.
+
+## Deploy on Vercel
+
+1. Push the project to GitHub.
+2. Import the repository in Vercel.
+3. Framework preset: Next.js.
+4. Build command: `npm run build`
+5. Output directory: `out`
+6. Set the production domain, then update `site.url` in `src/constants/site.ts`.
+
+Because `output: "export"` is enabled, Vercel should treat this as a static site. Confirm the output directory is `out`.
+
+## Deploy on Netlify
+
+1. Push the project to GitHub.
+2. Create a new Netlify site from that repository.
+3. Build command: `npm run build`
+4. Publish directory: `out`
+5. Add a `public/_redirects` file if you need custom redirects. With `trailingSlash: true`, most internal links already match static folders.
+
+Optional `netlify.toml`:
+
+```toml
+[build]
+  command = "npm run build"
+  publish = "out"
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## WhatsApp
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Enquiries use `https://wa.me/919786211128` with a prefilled message from `src/utils/whatsapp.ts`.
