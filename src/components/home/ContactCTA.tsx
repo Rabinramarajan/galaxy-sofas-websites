@@ -20,8 +20,7 @@ export function ContactCTA() {
           </Button>
           <WhatsAppButton
             message={getGeneralEnquiryMessage()}
-            className="border-white/50 text-white hover:border-white hover:bg-white hover:text-dark"
-            variant="outline"
+            variant="inverse"
           />
         </div>
       </Container>

@@ -1,11 +1,11 @@
 import { MessageCircle } from "lucide-react";
-import { Button } from "@/components/common/Button";
+import { Button, type ButtonVariant } from "@/components/common/Button";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 type WhatsAppButtonProps = {
   message: string;
   label?: string;
-  variant?: "primary" | "secondary" | "outline" | "ghost";
+  variant?: ButtonVariant;
   className?: string;
 };
 

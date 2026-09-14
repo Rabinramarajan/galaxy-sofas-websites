@@ -17,9 +17,12 @@ export const headerNav: NavLink[] = [
   { label: "About", href: "/about/" },
 ];
 
+/** Category landing pages, not on-page anchors, so crawlers reach real URLs. */
 export const footerProductLinks: NavLink[] = [
-  { label: "L Shape Sofa", href: "/products/#l-shape" },
-  { label: "Recliner Sofa", href: "/products/#recliner" },
-  { label: "Sofa Cum Bed", href: "/products/#sofa-cum-bed" },
-  { label: "Custom Sofa", href: "/products/#custom" },
+  { label: "L Shape Sofas", href: "/products/l-shape/" },
+  { label: "Recliner Sofas", href: "/products/recliner/" },
+  { label: "Sofa Cum Beds", href: "/products/sofa-cum-bed/" },
+  { label: "3 Seater Sofas", href: "/products/3-seater/" },
+  { label: "2 Seater Sofas", href: "/products/2-seater/" },
+  { label: "Custom Sofas", href: "/products/custom/" },
 ];

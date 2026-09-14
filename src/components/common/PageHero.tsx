@@ -10,7 +10,7 @@ type PageHeroProps = {
 export function PageHero({
   title,
   description,
-  image = "/images/hero/galaxy-sofas-hero.jpg",
+  image = "/images/sofas/green-velvet-three-seater-sofa.webp",
 }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden bg-dark">

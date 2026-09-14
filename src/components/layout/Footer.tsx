@@ -35,10 +35,17 @@ export function Footer() {
               height={44}
               className="h-10 w-auto"
               sizes="150px"
+              unoptimized
             />
           </Link>
-          <p className="mt-5 max-w-xs text-sm leading-relaxed">{site.description}</p>
+          <p className="mt-5 max-w-xs text-sm leading-relaxed">
+            Custom sofas, recliners, sofa cum beds and sofa repair services, made and serviced in
+            {" "}{site.city}.
+          </p>
           <div className="mt-6 flex gap-2">
+            {/* Rendered only when the profiles are confirmed real (site.socialVerified). */}
+            {site.socialVerified ? (
+              <>
             <a
               href={site.social.instagram}
               className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-md text-dark transition-colors duration-200 hover:text-primary"
@@ -57,6 +64,8 @@ export function Footer() {
             >
               <FacebookIcon />
             </a>
+              </>
+            ) : null}
           </div>
         </div>
 
@@ -77,7 +86,7 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="text-sm text-dark">Products</p>
+          <p className="text-sm text-dark">Sofa types</p>
           <ul className="mt-5 space-y-2.5">
             {footerProductLinks.map((item) => (
               <li key={item.href}>
@@ -94,22 +103,24 @@ export function Footer() {
 
         <div>
           <p className="text-sm text-dark">Contact</p>
-          <ul className="mt-5 space-y-2.5 text-sm">
-            <li>
-              <a href={site.phoneHref} className="cursor-pointer hover:text-primary">
-                {site.phone}
-              </a>
-            </li>
-            <li>
-              <a
-                href={`mailto:${site.email}`}
-                className="break-all cursor-pointer hover:text-primary"
-              >
-                {site.email}
-              </a>
-            </li>
-            <li>{site.location}</li>
-          </ul>
+          <address className="mt-5 not-italic">
+            <ul className="space-y-2.5 text-sm">
+              <li>
+                <a href={site.phoneHref} className="cursor-pointer hover:text-primary">
+                  {site.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.emailHref}
+                  className="break-all cursor-pointer hover:text-primary"
+                >
+                  {site.email}
+                </a>
+              </li>
+              <li>{site.location}, {site.country}</li>
+            </ul>
+          </address>
         </div>
       </Container>
       <div className="border-t border-line py-5 pb-[max(5.5rem,calc(env(safe-area-inset-bottom)+4.5rem))] md:pb-5">

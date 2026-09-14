@@ -1,52 +1,58 @@
 import type { GalleryItem } from "@/types";
 
+const IMG = "/images/sofas";
+
+/**
+ * Gallery captions describe what is visible in each photograph.
+ * `image` doubles as the alt source, so captions stay honest and useful.
+ */
 export const galleryItems: GalleryItem[] = [
   {
     id: "g01",
-    title: "L shape sofa in a family living room",
+    title: "Light grey L shape sectional with chaise",
     category: "L Shape",
-    image: "/images/gallery/work-01.jpg",
+    image: `${IMG}/light-grey-l-shape-sectional-sofa.webp`,
   },
   {
     id: "g02",
-    title: "Neutral three-seater with custom cushions",
-    category: "3 Seater",
-    image: "/images/gallery/work-02.jpg",
+    title: "Grey sectional arranged around wooden coffee tables",
+    category: "L Shape",
+    image: `${IMG}/grey-l-shape-sectional-living-room.webp`,
   },
   {
     id: "g03",
-    title: "Recliner sofa for a TV lounge",
-    category: "Recliner",
-    image: "/images/gallery/work-03.jpg",
+    title: "Green velvet three seater on wooden legs",
+    category: "3 Seater",
+    image: `${IMG}/green-velvet-three-seater-sofa.webp`,
   },
   {
     id: "g04",
-    title: "Compact sofa cum bed for a guest room",
-    category: "Sofa Cum Bed",
-    image: "/images/gallery/work-04.jpg",
+    title: "Tan leather sofa below a gallery wall",
+    category: "3 Seater",
+    image: `${IMG}/tan-leather-sofa-gallery-wall.webp`,
   },
   {
     id: "g05",
-    title: "Custom corner sofa in warm fabric",
-    category: "Custom",
-    image: "/images/gallery/work-05.jpg",
+    title: "Grey tufted sofa with teal cushions",
+    category: "3 Seater",
+    image: `${IMG}/grey-tufted-three-seater-sofa.webp`,
   },
   {
     id: "g06",
-    title: "Two-seater lounge for a smaller apartment",
+    title: "Rust orange two seater with a pale pink cushion",
     category: "2 Seater",
-    image: "/images/gallery/work-06.jpg",
+    image: `${IMG}/rust-orange-two-seater-sofa.webp`,
   },
   {
     id: "g07",
-    title: "Modular living room seating",
-    category: "L Shape",
-    image: "/images/gallery/work-07.jpg",
+    title: "Brown leather sofa in a sunlit living room",
+    category: "Custom",
+    image: `${IMG}/brown-leather-sofa-sunlit-living-room.webp`,
   },
   {
     id: "g08",
-    title: "Finished sofa after fabric replacement",
+    title: "Tan leather three seater after fabric and cushion work",
     category: "Services",
-    image: "/images/gallery/work-08.jpg",
+    image: `${IMG}/tan-leather-three-seater-sofa.webp`,
   },
 ];

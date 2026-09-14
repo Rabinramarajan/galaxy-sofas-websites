@@ -15,8 +15,8 @@ export function AboutSection() {
       <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative aspect-[4/3] overflow-hidden rounded-lg sm:aspect-[5/4] lg:aspect-[4/5]">
           <Image
-            src="/images/about/workshop.jpg"
-            alt="Sofa craftsmanship at Galaxy Sofas"
+            src="/images/sofas/tan-leather-three-seater-sofa.webp"
+            alt="Tan leather three seater sofa made by Galaxy Sofas"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"

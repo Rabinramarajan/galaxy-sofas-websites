@@ -15,7 +15,7 @@ export function FloatingActions() {
       <a
         href={getWhatsAppUrl(getGeneralEnquiryMessage())}
         className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-md bg-[#25D366] text-white transition-[filter] duration-200 hover:brightness-95 sm:h-12 sm:w-12"
-        aria-label="Chat on WhatsApp"
+        aria-label={`Chat with ${site.name} on WhatsApp`}
         target="_blank"
         rel="noopener noreferrer"
       >

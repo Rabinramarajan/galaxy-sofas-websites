@@ -22,10 +22,6 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 8);
     };

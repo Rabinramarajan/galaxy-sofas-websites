@@ -9,8 +9,8 @@ export function CustomSofaCTA() {
       <Container className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
         <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
           <Image
-            src="/images/about/custom-design.jpg"
-            alt="Custom sofa design discussion"
+            src="/images/sofas/grey-l-shape-sectional-living-room.webp"
+            alt="Grey sectional sofa arranged around wooden coffee tables"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"

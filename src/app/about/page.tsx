@@ -1,33 +1,41 @@
-import type { Metadata } from "next";
+import Link from "next/link";
+import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { Button } from "@/components/common/Button";
 import { Container } from "@/components/common/Container";
 import { PageHero } from "@/components/common/PageHero";
 import { WhatsAppButton } from "@/components/common/WhatsAppButton";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { site } from "@/constants/site";
+import { pageMetadata } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/structured-data";
 import { getCustomDesignMessage } from "@/utils/whatsapp";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata = pageMetadata({
+  title: `About ${site.name} | Sofa Makers in ${site.city}`,
+  absoluteTitle: `About ${site.name} | Sofa Makers in ${site.city}`,
   description:
-    "Learn about Galaxy Sofas in Chennai — a furniture brand focused on comfortable, durable and custom-made sofas.",
-  alternates: { canonical: "/about/" },
-  openGraph: {
-    title: "About Galaxy Sofas",
-    description:
-      "Learn about Galaxy Sofas in Chennai — stylish, comfortable and custom-made sofas.",
-  },
-};
+    "Galaxy Sofas is a sofa workshop in Chennai making custom sofas and rebuilding existing ones. Read how we plan size, foam, fabric and delivery with you.",
+  path: "/about/",
+});
 
 const values = ["Comfort", "Quality", "Craftsmanship", "Trust", "Customization"];
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about/" },
+        ])}
+      />
       <PageHero
-        title="About Galaxy Sofas"
+        title="About Galaxy Sofas, Sofa Makers in Chennai"
         description="A Chennai sofa workshop focused on comfort, lasting build quality and custom designs for modern homes."
-        image="/images/about/workshop.jpg"
+        image="/images/sofas/tan-leather-three-seater-sofa.webp"
       />
       <Container className="section-y space-y-12 md:space-y-20">
+        <Breadcrumbs trail={[{ name: "Home", path: "/" }]} current="About" />
         <section>
           <h2 className="font-serif text-[1.625rem] text-dark sm:text-[2.25rem]">Our Story</h2>
           <p className="mt-4 max-w-2xl leading-relaxed">
@@ -41,7 +49,12 @@ export default function AboutPage() {
           <p className="mt-4 max-w-2xl leading-relaxed">
             We start with the space and the people who use it. Measurements, fabric feel, cushion
             firmness and daily wear all shape the design. Whether you need an L shape for a family
-            room or a compact two-seater, the process stays practical and clear.
+            room or a compact two-seater, the process stays practical and clear. You can see the
+            range on our{" "}
+            <Link href="/products/" className="cursor-pointer text-primary hover:underline">
+              sofa collection page
+            </Link>
+            .
           </p>
         </section>
         <section>
@@ -49,7 +62,11 @@ export default function AboutPage() {
           <p className="mt-4 max-w-2xl leading-relaxed">
             Frames, foam and upholstery are chosen for durability. Skilled stitching and finishing
             keep the sofa looking composed in the home. If you already have a sofa worth keeping,
-            we also remodel, repair and replace fabric or cushions.
+            we also{" "}
+            <Link href="/services/" className="cursor-pointer text-primary hover:underline">
+              remodel, repair and replace fabric or cushions
+            </Link>
+            .
           </p>
         </section>
         <section>

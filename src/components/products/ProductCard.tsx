@@ -18,7 +18,7 @@ export function ProductCard({ product }: ProductCardProps) {
       >
         <Image
           src={product.image}
-          alt={product.name}
+          alt={product.imageAlt}
           fill
           className="object-cover transition-opacity duration-200 group-hover:opacity-90"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

@@ -12,19 +12,19 @@ type ContactCardItem = {
 const baseCards: ContactCardItem[] = [
   {
     label: "Phone",
-    value: site.phone,
+    value: site.phoneDisplay,
     href: site.phoneHref,
     icon: Phone,
   },
   {
     label: "Email",
     value: site.email,
-    href: `mailto:${site.email}`,
+    href: site.emailHref,
     icon: Mail,
   },
   {
-    label: "Location",
-    value: site.location,
+    label: "Service area",
+    value: site.serviceArea,
     icon: MapPin,
   },
 ];
