@@ -9,7 +9,7 @@ import { Button } from "@/components/common/Button";
 import { Container } from "@/components/common/Container";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { site } from "@/constants/site";
-import { mainNav } from "@/data/navigation";
+import { headerNav } from "@/data/navigation";
 import { isActivePath } from "@/utils/navigation";
 
 export function Header() {
@@ -42,32 +42,33 @@ export function Header() {
           scrolled ? "shadow-[0_1px_0_rgb(23_23_23_/_0.08)]" : ""
         }`}
       >
-        <Container className="flex h-14 min-w-0 items-center justify-between gap-3 sm:h-[4.25rem] sm:gap-4">
+        <Container className="flex h-16 min-w-0 items-center justify-between gap-3 sm:h-[4.75rem] sm:gap-4">
           <Link
             href="/"
             aria-label={site.name}
-            className="flex min-w-0 shrink cursor-pointer items-center"
+            className="flex min-w-0 shrink cursor-pointer items-center overflow-hidden rounded-md"
           >
             <Image
               src={site.logo}
               alt={`${site.name} logo`}
-              width={160}
-              height={48}
-              className="h-8 w-auto max-w-[148px] sm:h-10 sm:max-w-none"
-              sizes="160px"
+              width={320}
+              height={96}
+              className="h-9 w-auto max-w-[160px] sm:h-11 sm:max-w-none"
+              sizes="(max-width: 640px) 160px, 220px"
+              unoptimized
               priority
             />
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
-            {mainNav.map((item) => {
+          <nav className="hidden items-center gap-9 lg:flex" aria-label="Primary">
+            {headerNav.map((item) => {
               const isActive = isActivePath(pathname, item.href);
 
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`cursor-pointer border-b py-1 text-[0.8125rem] transition-colors duration-200 ${
+                  className={`cursor-pointer border-b py-1 text-sm tracking-wide transition-colors duration-200 ${
                     isActive
                       ? "border-primary text-primary"
                       : "border-transparent text-dark hover:text-primary"

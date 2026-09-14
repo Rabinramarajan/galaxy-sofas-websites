@@ -67,12 +67,11 @@ Keep the filenames, or update the matching paths in `src/data/products.ts` and `
 
 1. Push the project to GitHub.
 2. Import the repository in Vercel.
-3. Framework preset: Next.js.
-4. Build command: `npm run build`
-5. Output directory: `out`
-6. Set the production domain, then update `site.url` in `src/constants/site.ts`.
+3. Framework preset: **Next.js**.
+4. Leave **Output Directory** empty (do not set `out` or any Angular `dist/...` path).
+5. Set the production domain, then update `site.url` in `src/constants/site.ts`.
 
-Because `output: "export"` is enabled, Vercel should treat this as a static site. Confirm the output directory is `out`.
+`output: "export"` is fine on Vercel. The Next.js preset finds `out/` automatically. Overriding Output Directory (for example leftover Angular `dist/galaxy-sofas/browser`) causes `now-next-routes-manifest` failures.
 
 ## Deploy on Netlify
 

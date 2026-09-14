@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/common/Button";
+import { ArrowUpRight } from "lucide-react";
 import { getCategoryLabel } from "@/data/products";
 import type { Product } from "@/types";
 import { getProductEnquiryUrl } from "@/utils/whatsapp";
@@ -11,10 +11,10 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <article className="flex h-full flex-col">
+    <article className="group flex h-full flex-col">
       <Link
         href={`/products/${product.slug}/`}
-        className="group relative block aspect-[4/3] cursor-pointer overflow-hidden rounded-lg sm:aspect-[4/5]"
+        className="relative block aspect-[4/5] cursor-pointer overflow-hidden rounded-lg bg-dark/5"
       >
         <Image
           src={product.image}
@@ -24,22 +24,30 @@ export function ProductCard({ product }: ProductCardProps) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </Link>
-      <div className="flex flex-1 flex-col pt-4">
-        <p className="text-[0.8125rem] text-primary">{getCategoryLabel(product.category)}</p>
-        <h3 className="mt-1 font-serif text-lg text-dark sm:text-xl">
-          <Link
-            href={`/products/${product.slug}/`}
-            className="cursor-pointer transition-colors duration-200 hover:text-primary"
-          >
-            {product.name}
-          </Link>
-        </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed">{product.shortDescription}</p>
-        <div className="mt-4">
-          <Button href={getProductEnquiryUrl(product.name)} variant="outline" className="w-full sm:w-auto" external>
-            Enquire Now
-          </Button>
+      <div className="flex items-start justify-between gap-4 pt-4">
+        <div className="min-w-0">
+          <h3 className="font-serif text-lg text-dark sm:text-xl">
+            <Link
+              href={`/products/${product.slug}/`}
+              className="cursor-pointer transition-colors duration-200 group-hover:text-primary"
+            >
+              {product.name}
+            </Link>
+          </h3>
+          <p className="mt-1 text-[0.8125rem] text-primary">
+            {getCategoryLabel(product.category)}
+          </p>
         </div>
+        <a
+          href={getProductEnquiryUrl(product.name)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-11 shrink-0 cursor-pointer items-center gap-1 text-sm text-dark transition-colors duration-200 hover:text-primary"
+          aria-label={`Enquire about ${product.name} on WhatsApp`}
+        >
+          Enquire
+          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </a>
       </div>
     </article>
   );

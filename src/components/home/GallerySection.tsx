@@ -10,26 +10,32 @@ export function GallerySection() {
   return (
     <section className="section-y">
       <Container>
-        <SectionHeader title="Our Recent Works" />
-        <div className="grid grid-cols-1 gap-3 min-[375px]:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+        <SectionHeader
+          title="Completed Works"
+          description="Real sofas delivered to real homes across Chennai."
+        />
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
           {preview.map((item) => (
             <figure
               key={item.id}
-              className="relative aspect-[4/3] overflow-hidden rounded-lg"
+              className="group relative aspect-[4/5] overflow-hidden rounded-lg bg-dark/5"
             >
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
-                className="object-cover"
-                sizes="(max-width: 374px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                className="object-cover transition-opacity duration-200 group-hover:opacity-90"
+                sizes="(max-width: 1024px) 50vw, 25vw"
               />
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark/80 to-transparent px-3 pb-3 pt-8 text-xs text-white sm:text-sm">
+                {item.title}
+              </figcaption>
             </figure>
           ))}
         </div>
         <div className="action-stack mt-10">
           <Button href="/gallery/" variant="outline">
-            View Gallery
+            View Full Gallery
           </Button>
         </div>
       </Container>

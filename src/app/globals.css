@@ -47,7 +47,7 @@ body {
 }
 
 .section-y {
-  padding-block: 3.5rem;
+  padding-block: 3.25rem;
 }
 
 .action-stack {
@@ -86,7 +86,7 @@ body {
 
 @media (min-width: 768px) {
   .section-y {
-    padding-block: 7rem;
+    padding-block: 5rem;
   }
 
   body {
@@ -105,5 +105,11 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-y {
+    padding-block: 6.5rem;
   }
 }
