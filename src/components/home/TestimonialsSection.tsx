@@ -1,5 +1,5 @@
-import { Star } from "lucide-react";
 import { Container } from "@/components/common/Container";
+import { Icon } from "@/components/common/Icon";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { testimonials } from "@/data/testimonials";
 
@@ -13,7 +13,7 @@ export function TestimonialsSection() {
             <blockquote key={item.id} className="border-t border-accent/50 pt-6">
               <div className="flex gap-1 text-accent" aria-label="5 out of 5 stars">
                 {Array.from({ length: item.rating }).map((_, index) => (
-                  <Star key={index} className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
+                  <Icon key={index} name="star" size={14} />
                 ))}
               </div>
               <p className="mt-4 text-sm leading-relaxed">{item.review}</p>

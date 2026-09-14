@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { X } from "lucide-react";
 import { Button } from "@/components/common/Button";
+import { Icon } from "@/components/common/Icon";
 import { mainNav } from "@/data/navigation";
 import { isActivePath } from "@/utils/navigation";
 
@@ -73,7 +73,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-md text-dark"
             aria-label="Close menu"
           >
-            <X className="h-5 w-5" aria-hidden="true" />
+            <Icon name="close" size={22} />
           </button>
         </div>
         <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-4 sm:p-5" aria-label="Mobile">

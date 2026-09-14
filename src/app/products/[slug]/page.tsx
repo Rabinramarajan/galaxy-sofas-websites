@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Phone } from "lucide-react";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { Button } from "@/components/common/Button";
+import { Icon } from "@/components/common/Icon";
 import { Container } from "@/components/common/Container";
 import { WhatsAppButton } from "@/components/common/WhatsAppButton";
 import { ProductCard } from "@/components/products/ProductCard";
@@ -175,7 +175,7 @@ export default async function ProductOrCategoryPage({ params }: ProductPageProps
               label="Enquire on WhatsApp"
             />
             <Button href={site.phoneHref} variant="outline">
-              <Phone className="h-4 w-4" aria-hidden="true" />
+              <Icon name="phone" size={18} />
               Call {site.phoneDisplay}
             </Button>
           </div>

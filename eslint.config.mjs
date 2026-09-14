@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored Ionicons runtime, copied in by scripts/copy-ionicons.mjs.
+    "public/ionicons/**",
   ]),
 ]);
 

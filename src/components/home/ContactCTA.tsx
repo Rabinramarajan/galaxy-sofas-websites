@@ -1,5 +1,5 @@
-import { Phone } from "lucide-react";
 import { Button } from "@/components/common/Button";
+import { Icon } from "@/components/common/Icon";
 import { Container } from "@/components/common/Container";
 import { WhatsAppButton } from "@/components/common/WhatsAppButton";
 import { site } from "@/constants/site";
@@ -15,7 +15,7 @@ export function ContactCTA() {
         </p>
         <div className="action-stack mt-8 sm:justify-center">
           <Button href={site.phoneHref} variant="primary">
-            <Phone className="h-4 w-4" aria-hidden="true" />
+            <Icon name="phone" size={18} />
             Call Now
           </Button>
           <WhatsAppButton

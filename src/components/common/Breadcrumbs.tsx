@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { Icon } from "@/components/common/Icon";
 
 export type Crumb = { name: string; path: string };
 
@@ -23,7 +23,7 @@ export function Breadcrumbs({ trail, current, className = "" }: BreadcrumbsProps
             <Link href={crumb.path} className="cursor-pointer hover:text-primary">
               {crumb.name}
             </Link>
-            <ChevronRight className="h-3.5 w-3.5 text-line" aria-hidden="true" />
+            <Icon name="chevronRight" size={14} className="text-dark/30" />
           </li>
         ))}
         <li className="text-dark" aria-current="page">

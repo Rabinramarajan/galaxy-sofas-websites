@@ -141,3 +141,20 @@ Update it when page copy or product data genuinely changes — not on every buil
 3. Submit `https://<domain>/sitemap.xml`.
 4. Inspect the homepage URL and request indexing.
 5. Repeat the inspection for `/products/`, `/services/` and the six category pages.
+
+## Icons
+
+Icons come from [Ionicons](https://ionic.io/ionicons) via the `ionicons` npm
+package, rendered as `<ion-icon>` web components.
+
+- **Registry:** `src/constants/icons.ts` maps a semantic key (`phone`, `whatsapp`,
+  `craftsmanship`) to an Ionicons name. Add an icon there before using it.
+- **Component:** `src/components/common/Icon.tsx` — `<Icon name="phone" size={20} />`.
+  Icons are decorative (`aria-hidden`) unless you pass `label`.
+- **Assets:** `scripts/copy-ionicons.mjs` copies the runtime plus *only the
+  registered SVGs* into `public/ionicons/` (~85 KB, versus the 2.6 MB the package
+  ships). It runs on `npm install` and before every build; run it manually with
+  `npm run icons:copy`. The folder is generated and git-ignored.
+- **Loading:** served from this origin, never a CDN, as a deferred module script.
+  The custom element upgrades after hydration, so every icon box is sized up
+  front in `Icon.tsx` to keep layout shift at zero.

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { Icon } from "@/components/common/Icon";
 import { getCategoryLabel } from "@/data/products";
 import type { Product } from "@/types";
 import { getProductEnquiryUrl } from "@/utils/whatsapp";
@@ -46,7 +46,7 @@ export function ProductCard({ product }: ProductCardProps) {
           aria-label={`Enquire about ${product.name} on WhatsApp`}
         >
           Enquire
-          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          <Icon name="arrowUpRight" size={16} />
         </a>
       </div>
     </article>

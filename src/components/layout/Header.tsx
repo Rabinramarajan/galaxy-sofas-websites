@@ -4,8 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
 import { Button } from "@/components/common/Button";
+import { Icon } from "@/components/common/Icon";
 import { Container } from "@/components/common/Container";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { site } from "@/constants/site";
@@ -90,7 +90,7 @@ export function Header() {
               aria-controls="mobile-menu"
               onClick={() => setMenuOpen(true)}
             >
-              <Menu className="h-5 w-5" aria-hidden="true" />
+              <Icon name="menu" size={22} />
             </button>
           </div>
         </Container>

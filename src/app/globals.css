@@ -30,6 +30,13 @@ body {
   overflow-wrap: break-word;
 }
 
+/* Ionicons render as a custom element; hold their box from first paint. */
+.ion-icon-box {
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+}
+
 ::selection {
   background: #c69c6d;
   color: #171717;

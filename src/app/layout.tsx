@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingActions } from "@/components/layout/FloatingActions";
 import { Header } from "@/components/layout/Header";
 import { Analytics } from "@/components/seo/Analytics";
+import { IoniconsLoader } from "@/components/seo/IoniconsLoader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/constants/site";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
@@ -107,6 +108,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         <FloatingActions />
+        <IoniconsLoader />
         <Analytics />
       </body>
     </html>

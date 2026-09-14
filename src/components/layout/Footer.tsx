@@ -1,26 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/common/Container";
+import { Icon } from "@/components/common/Icon";
 import { site } from "@/constants/site";
 import { footerProductLinks, mainNav } from "@/data/navigation";
-
-function InstagramIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function FacebookIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true" fill="currentColor">
-      <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4V10c0-.6.4-1 1-1Z" />
-    </svg>
-  );
-}
 
 export function Footer() {
   return (
@@ -53,7 +36,7 @@ export function Footer() {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <InstagramIcon />
+              <Icon name="instagram" size={20} />
             </a>
             <a
               href={site.social.facebook}
@@ -62,7 +45,7 @@ export function Footer() {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <FacebookIcon />
+              <Icon name="facebook" size={20} />
             </a>
               </>
             ) : null}

@@ -1,4 +1,4 @@
-import { MessageCircle, Phone } from "lucide-react";
+import { Icon } from "@/components/common/Icon";
 import { site } from "@/constants/site";
 import { getGeneralEnquiryMessage, getWhatsAppUrl } from "@/utils/whatsapp";
 
@@ -10,7 +10,7 @@ export function FloatingActions() {
         className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-md bg-primary text-white sm:hidden"
         aria-label={`Call ${site.name}`}
       >
-        <Phone className="h-5 w-5" aria-hidden="true" />
+        <Icon name="phone" size={20} />
       </a>
       <a
         href={getWhatsAppUrl(getGeneralEnquiryMessage())}
@@ -19,7 +19,7 @@ export function FloatingActions() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
+        <Icon name="whatsapp" size={24} />
       </a>
     </div>
   );
