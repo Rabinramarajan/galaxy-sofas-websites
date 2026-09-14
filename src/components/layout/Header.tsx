@@ -47,10 +47,10 @@ export function Header() {
             <Image
               src={site.logo}
               alt={`${site.name} logo`}
-              width={320}
-              height={96}
-              className="h-9 w-auto max-w-[160px] sm:h-11 sm:max-w-none"
-              sizes="(max-width: 640px) 160px, 220px"
+              width={1275}
+              height={360}
+              className="h-10 w-auto sm:h-11"
+              sizes="(max-width: 640px) 142px, 156px"
               unoptimized
               priority
             />

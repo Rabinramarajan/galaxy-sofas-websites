@@ -14,10 +14,10 @@ export function Footer() {
             <Image
               src={site.logo}
               alt={`${site.name} logo`}
-              width={150}
-              height={44}
-              className="h-10 w-auto"
-              sizes="150px"
+              width={638}
+              height={180}
+              className="h-12 w-auto"
+              sizes="170px"
               unoptimized
             />
           </Link>
