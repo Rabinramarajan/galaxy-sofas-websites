@@ -12,6 +12,7 @@
     "icons:copy": "node scripts/copy-ionicons.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "ionicons": "^8.1.0",
     "next": "16.3.5",
     "react": "19.2.8",
@@ -26,5 +27,8 @@
     "eslint-config-next": "16.3.5",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true
   }
 }

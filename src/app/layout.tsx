@@ -1,3 +1,4 @@
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
@@ -110,6 +111,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <FloatingActions />
         <IoniconsLoader />
         <Analytics />
+        <VercelAnalytics />
       </body>
     </html>
   );
