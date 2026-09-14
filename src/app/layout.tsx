@@ -8,6 +8,7 @@ import { IoniconsLoader } from "@/components/seo/IoniconsLoader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/constants/site";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -110,6 +111,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <FloatingActions />
         <IoniconsLoader />
         <Analytics />
+        <VercelAnalytics />
       </body>
     </html>
   );
